@@ -151,7 +151,8 @@
 ;;; to override c-electric-star
 	     (local-set-key "*" 'self-insert-command )
 
-	     (font-lock-mode)
+             (cond (window-system
+                    (font-lock-mode)))
 
 	     (hs-minor-mode 1)
 
