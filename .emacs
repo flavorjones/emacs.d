@@ -53,7 +53,7 @@
 (set-input-mode nil nil t) ; so we can use ALT as a META key (?)
 (set-scroll-bar-mode 'right)
 (setq-default indent-tabs-mode nil)
-(cond ((commandp 'tool-bar-mode) (tool-bar-mode nil)))
+(cond ((commandp 'tool-bar-mode) (tool-bar-mode 0)))
 
 ;;;;;;;;;;
 ;;;  some random stuff.
