@@ -192,6 +192,16 @@
 
 
 ;;;;;;;;;;
+;;;  java mode
+;;;;;;;;;;
+(add-hook 'java-mode-hook
+	  (function
+	   (lambda ()
+             (local-set-key "\C-cc" 'my-cpp-comment-wide)
+             (local-set-key "\C-cv" 'my-cpp-comment))))
+
+
+;;;;;;;;;;
 ;;;  fortran mode
 ;;;;;;;;;;
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
