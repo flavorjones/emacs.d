@@ -21,7 +21,7 @@
 ;;;  literal strings
 	     (set-face-foreground 'font-lock-string-face nil)
 	     (set-face-background 'font-lock-string-face "MediumAquaMarine")
-	     (set-face-underline-p 'font-lock-string-face t) ; note underscores
+	     (set-face-underline-p 'font-lock-string-face nil) ; note underscores
 ;;;  keywords (like: static, const, new, this)
 ;;;  constants (like: true, false)
 ;;;  builtins (preprocessor imperatives like: include, ifdef)
@@ -39,6 +39,12 @@
 	     (set-face-foreground 'font-lock-function-name-face nil)
 ;;;  variable names (definitions, parameters)
 	     (set-face-foreground 'font-lock-variable-name-face nil)
+;;;  warnings
+             (set-face-foreground 'font-lock-warning-face "White")
+             (set-face-background 'font-lock-warning-face "Red")
+             (font-lock-add-keywords
+              nil ;; mode name
+              '(("\\(XXX\\|TODO\\|FIXME\\).*" 0 font-lock-warning-face t)))
 	     )))
 
 ;;;;;;;;;;
@@ -93,6 +99,8 @@
 (global-set-key "\C-c\C-fo" 'other-frame)
 (global-set-key "\C-c\C-fn" 'new-frame)
 (global-set-key "\C-c\C-fd" 'delete-frame)
+(global-set-key "\C-c\C-fs" 'speedbar)
+
 (global-set-key "\C-c\C-c" 'comment-region)
 
 ;;;
