@@ -284,6 +284,12 @@
 	     (font-lock-mode 1)
 	     )))
 
+(add-hook 'perl-mode-hook
+ 	  (function
+ 	   (lambda ()
+             (cperl-mode))))
+
+
 ;; (autoload 'perl-mode "perl-mode" "Perl mode." t)
 ;; (setq auto-mode-alist (append (list (cons "\\.pl$" 'perl-mode))
 ;; 			      auto-mode-alist))
