@@ -438,6 +438,15 @@
              )))
 
 ;;;;;;;;;;
+;;;  texinfo mode
+;;;;;;;;;;
+(add-hook 'texinfo-mode-hook
+          (function
+           (lambda ()
+	     (font-lock-mode 1)
+             )))
+
+;;;;;;;;;;
 ;;;  my ruler
 ;;;;;;;;;;
 (defvar my-column-ruler
