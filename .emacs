@@ -167,6 +167,7 @@
       (append '(("\\.c$"  . c-mode)   ; to edit C code
 		("\\.h$"  . c-mode)   ; to edit C code
 		("\\.ec$" . c-mode)
+		("\\.php$" . c-mode)
 		) auto-mode-alist))
 (add-hook 'c-mode-hook
 	  (function
