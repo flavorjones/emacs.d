@@ -98,6 +98,13 @@
 (global-set-key [vertical-line down-mouse-1] 'mldrag-drag-vertical-line)
 (global-set-key [vertical-scroll-bar S-down-mouse-1] 'mldrag-drag-vertical-line)
 
+;;  prepend or replace a cons cell with given key
+(defun my-unique-prepend (key val assoc)
+  "Returns a copy of assoc with cons cell (key . val)."
+  (let ((CELL (assq key assoc)))
+    (cond ((consp CELL) (setcdr CELL val))
+          ((push '(key . val) assoc)))))
+
 ;;;;;;;;;;
 ;;;  common c modes
 ;;;;;;;;;;
@@ -111,9 +118,12 @@
 	     (setq tab-width 4)
 	     (c-set-style "stroustrup")
 ;;; make inline function definitions indent like i want
-             (let ((VAL (assq 'inline-open c-offsets-alist)))
-               (cond (VAL (setcdr VAL 0))
+             (let ((CELL (assq 'inline-open c-offsets-alist)))
+               (cond ((consp CELL) (setcdr CELL 0))
                      ((push '(inline-open . 0) c-offsets-alist))))
+             (let ((CELL (assq 'inher-intro c-offsets-alist)))
+               (cond ((consp CELL) (setcdr CELL 0))
+                     ((push '(inher-intro . 0) c-offsets-alist))))
 
 	     (auto-fill-mode)
 	     (set-fill-column 80)
