@@ -322,6 +322,18 @@
  	     )))
 
 ;;;;;;;;;;
+;;;  sh-mode
+;;;;;;;;;;
+(add-hook 'sh-mode-hook
+          (function
+           (lambda ()
+             (fset 'my-sh-comment
+                   [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
+             (local-set-key "\C-cv" 'my-sh-comment)
+)))
+
+
+;;;;;;;;;;
 ;;; ksh mode
 ;;;;;;;;;;
 ; (autoload 'ksh-mode "ksh-mode" "Major mode for editing sh Scripts." t)
