@@ -6,6 +6,7 @@
 ;;;
 (setq load-path (append '("~/.elisp") load-path))
 (load "mylocal")
+(require 'cmake-mode)
 
 ;;;;;;;;;;
 ;;;  font-lock mode setup
@@ -201,6 +202,17 @@
 	   (lambda ()
              (local-set-key "\C-cc" 'my-cpp-comment-wide)
              (local-set-key "\C-cv" 'my-cpp-comment))))
+
+
+;;;;;;;;;;
+;;;  cmake-mode
+;;;;;;;;;;
+(setq auto-mode-alist
+      (append
+       '(("\\.cmake\\'" . cmake-mode))
+       '(("CMakeLists\\.txt\\'" . cmake-mode))
+       auto-mode-alist))
+
 
 
 ;;;;;;;;;;
