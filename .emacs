@@ -415,6 +415,19 @@
              )))
 
 ;;;;;;;;;;
+;;;  scheme mode
+;;;;;;;;;;
+(add-hook 'scheme-mode-hook
+          (function
+           (lambda ()
+             (fset 'my-scheme-comment
+                   [15 escape 49 48 59 return 59 59 59 return escape
+                       49 48 59 16 32 32])
+             (local-set-key "\C-cc" 'my-scheme-comment)
+	     (font-lock-mode 1)
+             )))
+
+;;;;;;;;;;
 ;;;  my ruler
 ;;;;;;;;;;
 (defvar my-column-ruler
