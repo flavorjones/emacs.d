@@ -286,28 +286,28 @@
 
 (autoload 'perl-mode "perl-mode" "Perl mode." t)
 (setq auto-mode-alist (append (list (cons "\\.pl$" 'perl-mode))
-			      auto-mode-alist))
+ 			      auto-mode-alist))
 (add-hook 'perl-mode-hook
-	  (function
-	   (lambda ()
-	     (setq
-	      perl-tab-to-comment nil
-	      perl-indent-level 2
-	      perl-continued-brace-offset -2
-	      perl-label-offset 0
-	      )
-	     (fset 'my-perl-comment
-		   [15 32 escape 49 48 35 tab return 32 35 tab return
-		       32 escape 49 48 35 tab 16 32 32])
-	     (fset 'my-perl-comment2
-		   (read-kbd-macro
-		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
-	     (local-set-key "\C-cc" 'my-perl-comment)
-	     (local-set-key "\C-cv" 'my-perl-comment2)
-	     (cond (window-system 
-		    (font-lock-mode 1)
-		    ))
-	     )))
+ 	  (function
+ 	   (lambda ()
+ 	     (setq
+ 	      perl-tab-to-comment nil
+ 	      perl-indent-level 2
+ 	      perl-continued-brace-offset -2
+ 	      perl-label-offset 0
+ 	      )
+ 	     (fset 'my-perl-comment
+ 		   [15 32 escape 49 48 35 tab return 32 35 tab return
+ 		       32 escape 49 48 35 tab 16 32 32])
+ 	     (fset 'my-perl-comment2
+ 		   (read-kbd-macro
+ 		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
+ 	     (local-set-key "\C-cc" 'my-perl-comment)
+ 	     (local-set-key "\C-cv" 'my-perl-comment2)
+ 	     (cond (window-system 
+ 		    (font-lock-mode 1)
+ 		    ))
+ 	     )))
 
 ;;;;;;;;;;
 ;;; ksh mode
