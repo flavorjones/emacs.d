@@ -17,6 +17,7 @@
 ;;;  comments
 	     (set-face-foreground 'font-lock-comment-face "Blue")
 	     (set-face-background 'font-lock-comment-face "Turquoise")
+	     (set-face-italic-p 'font-lock-comment-face t)
 ;;;  literal strings
 	     (set-face-foreground 'font-lock-string-face nil)
 	     (set-face-background 'font-lock-string-face "MediumAquaMarine")
@@ -52,6 +53,7 @@
 (set-input-mode nil nil t) ; so we can use ALT as a META key (?)
 (set-scroll-bar-mode 'right)
 (setq-default indent-tabs-mode nil)
+(cond ((commandp 'tool-bar-mode) (tool-bar-mode nil)))
 
 ;;;;;;;;;;
 ;;;  some random stuff.
