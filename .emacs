@@ -54,6 +54,9 @@
 (set-scroll-bar-mode 'right)
 (setq-default indent-tabs-mode nil)
 (cond ((commandp 'tool-bar-mode) (tool-bar-mode 0)))
+(when window-system
+  ;; enable wheelmouse support by default
+  (mwheel-install))
 
 ;;;;;;;;;;
 ;;;  some random stuff.
