@@ -212,7 +212,11 @@
        '(("\\.cmake\\'" . cmake-mode))
        '(("CMakeLists\\.txt\\'" . cmake-mode))
        auto-mode-alist))
-
+(add-hook 'cmake-mode-hook
+          (function (lambda ()
+                      (cond (window-system
+                             (font-lock-mode)))
+)))
 
 
 ;;;;;;;;;;
