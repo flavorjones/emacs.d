@@ -45,7 +45,7 @@
              (set-face-background 'font-lock-warning-face "Red")
              (font-lock-add-keywords
               nil ;; mode name
-              '(("\\(XXX\\|TODO\\|FIXME\\).*" 0 font-lock-warning-face t)))
+              '(("\\[?\\(XXX\\|TODO\\|FIXME\\)\\([^]]*\\]\\|.*$\\)" 0 font-lock-warning-face t)))
 	     )))
 
 ;;;;;;;;;;
@@ -64,6 +64,7 @@
 (when window-system
   ;; enable wheelmouse support by default
   (mwheel-install))
+
 
 ;;;;;;;;;;
 ;;;  some random stuff.
@@ -118,6 +119,15 @@
   (let ((CELL (assq key assoc)))
     (cond ((consp CELL) (setcdr CELL val))
           ((push '(key . val) assoc)))))
+
+;;;;;;;;;;
+;;;  text-mode
+;;;;;;;;;;
+(add-hook 'text-mode-hook
+          (function
+           (lambda ()
+             (cond (window-system (font-lock-mode t)))
+             )))
 
 ;;;;;;;;;;
 ;;;  common c modes
