@@ -43,9 +43,14 @@
 ;;;  warnings
              (set-face-foreground 'font-lock-warning-face "White")
              (set-face-background 'font-lock-warning-face "Red")
+
+;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
+;; then one-line 'TODO ...'
              (font-lock-add-keywords
               nil ;; mode name
-              '(("\\[?\\(XXX\\|TODO\\|FIXME\\)\\([^]]*\\]\\|.*$\\)" 0 font-lock-warning-face t)))
+              '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
+?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
+0 font-lock-warning-face t)))
 	     )))
 
 ;;;;;;;;;;
