@@ -21,7 +21,7 @@
 ;;;  literal strings
 	     (set-face-foreground 'font-lock-string-face nil)
 	     (set-face-background 'font-lock-string-face "MediumAquaMarine")
-	     (set-face-underline-p 'font-lock-string-face t)
+	     (set-face-underline-p 'font-lock-string-face t) ; note underscores
 ;;;  keywords (like: static, const, new, this)
 ;;;  constants (like: true, false)
 ;;;  builtins (preprocessor imperatives like: include, ifdef)
