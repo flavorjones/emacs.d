@@ -61,7 +61,7 @@
 ;;;;;;;;;;
 ;;;  some random stuff.
 ;;;;;;;;;;
-(require 'ediff)  ;  cool diff mode
+(autoload 'ediff "ediff" nil t)  ;  cool diff mode
 (autoload 'flame "flame" nil t)  ;  automated flaming
 
 ;;;;;;;;;;
