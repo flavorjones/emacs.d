@@ -6,7 +6,7 @@
 ;;;
 (setq load-path (append '("~/.elisp") load-path))
 (load "mylocal")
-(require 'cmake-mode)
+
 
 ;;;;;;;;;;
 ;;;  font-lock mode setup
