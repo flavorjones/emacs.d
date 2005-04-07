@@ -290,6 +290,8 @@
 	 ;;
 	 (modify-syntax-entry ?_  "_" )
 
+         (cond (window-system (font-lock-mode 1)))
+
 	 ))
 
 
