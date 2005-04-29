@@ -228,9 +228,15 @@
        '(("CMakeLists\\.txt\\'" . cmake-mode))
        auto-mode-alist))
 (add-hook 'cmake-mode-hook
-          (function (lambda ()
-                      (cond (window-system
-                             (font-lock-mode)))
+          (function
+           (lambda ()
+             ;;
+             ;; this rocking one-line command makes '_' a word delimiter
+             ;; just like in cc-mode
+             ;;
+             (modify-syntax-entry ?_  "_" )
+             (cond (window-system
+                    (font-lock-mode)))
 )))
 
 
