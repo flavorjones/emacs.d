@@ -97,8 +97,8 @@
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'toggle-read-only)
 (global-set-key "\C-co" 'my-find-other-file)
-;(global-set-key [\C-tab] 'yic-next-buffer)
-;(global-set-key [\S-tab] 'yic-prev-buffer)
+(global-set-key [\C-tab] 'yic-next-buffer)
+(global-set-key [\S-tab] 'yic-prev-buffer)
 
 ;;;
 ;;; frame-related bindings
