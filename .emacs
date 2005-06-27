@@ -131,7 +131,7 @@
 (add-hook 'text-mode-hook
           (function
            (lambda ()
-             (cond (window-system (font-lock-mode t)))
+             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
@@ -180,8 +180,7 @@
 ;;; to override c-electric-star
 	     (local-set-key "*" 'self-insert-command )
 
-             (cond (window-system
-                    (font-lock-mode)))
+             (cond (window-system (font-lock-mode 1)))
 
 	     (hs-minor-mode 1)
 
@@ -235,8 +234,7 @@
              ;; just like in cc-mode
              ;;
              (modify-syntax-entry ?_  "_" )
-             (cond (window-system
-                    (font-lock-mode)))
+             (cond (window-system (font-lock-mode 1)))
 )))
 
 
@@ -332,7 +330,7 @@
 ;;  		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
 ;;  	     (local-set-key "\C-cc" 'my-perl-comment)
 ;;  	     (local-set-key "\C-cv" 'my-perl-comment2)
-;; 	     (font-lock-mode 1)
+;;           (cond (window-system (font-lock-mode 1)))
 ;; 	     )))
 
 (autoload 'perl-mode "perl-mode" "Perl mode." t)
@@ -355,9 +353,7 @@
  		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
  	     (local-set-key "\C-cc" 'my-perl-comment)
  	     (local-set-key "\C-cv" 'my-perl-comment2)
- 	     (cond (window-system 
- 		    (font-lock-mode 1)
- 		    ))
+             (cond (window-system (font-lock-mode 1)))
  	     )))
 
 ;;;;;;;;;;
@@ -369,10 +365,8 @@
              (fset 'my-sh-comment
                    [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
              (local-set-key "\C-cv" 'my-sh-comment)
- 	     (cond (window-system 
- 		    (font-lock-mode 1)
- 		    ))
-)))
+             (cond (window-system (font-lock-mode 1)))
+             )))
 
 
 ;;;;;;;;;;
@@ -411,9 +405,7 @@
 ; 		   [15 35 tab return 35 tab return 35 tab 16 32 32])
 ; 	     (local-set-key "\C-cc" 'my-ksh-comment)
 ; 	     (local-set-key "\C-cv" 'my-ksh-comment2)
-; 	     (cond (window-system 
-; 		    (font-lock-mode 1)
-; 		    ))
+;             (cond (window-system (font-lock-mode 1)))
 ; 	     )))
 
 ;;;;;;;;;;
@@ -460,7 +452,7 @@
 				   [15 escape 49 48 59 return 59 59 59 return escape
 					   49 48 59 16 32 32])
 			 (local-set-key "\C-cc" 'my-lisp-comment)
-			 (font-lock-mode 1)
+                         (cond (window-system (font-lock-mode 1)))
 			 )))
 
 ;;;;;;;;;;
@@ -500,7 +492,7 @@
                    [15 escape 49 48 59 return 59 59 59 return escape
                        49 48 59 16 32 32])
              (local-set-key "\C-cc" 'my-scheme-comment)
-	     (font-lock-mode 1)
+             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
@@ -509,7 +501,7 @@
 (add-hook 'texinfo-mode-hook
           (function
            (lambda ()
-	     (font-lock-mode 1)
+             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
