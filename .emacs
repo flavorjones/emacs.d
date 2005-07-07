@@ -505,6 +505,33 @@
              )))
 
 ;;;;;;;;;;
+;;;  tex mode
+;;;;;;;;;;
+(add-hook 'tex-mode-hook
+          (function
+           (lambda ()
+             (setq tex-dvi-view-command "xdvi")
+             (fset 'my-tex-comment-wide
+                   [?\C-o tab ?% escape ?9 ?* return tab ?%
+                          return tab ?% escape ?9 ?* ?\C-p ?  ? ])
+             (fset 'my-tex-comment
+                   [?\C-o tab ?% return tab ?% return tab ?%
+                          ?\C-p ?  ? ])
+             (local-set-key "\C-cc" 'my-tex-comment-wide)
+             (local-set-key "\C-cv" 'my-tex-comment)
+             )))
+
+
+;;;;;;;;;;
+;;;  latex mode
+;;;;;;;;;;
+(add-hook 'latex-mode-hook
+          (function
+           (lambda ()
+             (setq tex-command "pdflatex")
+             )))
+
+;;;;;;;;;;
 ;;;  my ruler
 ;;;;;;;;;;
 (defvar my-column-ruler
