@@ -1,4 +1,4 @@
-;;;;;;;;;;
+;;;;;;;;;; -*- emacs-lisp -*-
 ;;;  emacs init file
 ;;;;;;;;;;
 ;;;
@@ -236,6 +236,19 @@
              (modify-syntax-entry ?_  "_" )
              (cond (window-system (font-lock-mode 1)))
 )))
+
+
+;;;;;;;;;;
+;;;  ruby-mode
+;;;;;;;;;;
+(setq auto-mode-alist
+      (append
+       '(("\\.rb\\'" . ruby-mode))))
+(add-hook 'ruby-mode-hook
+          (function
+           (lambda ()
+             (cond (window-system (font-lock-mode 1)))
+             )))
 
 
 ;;;;;;;;;;
