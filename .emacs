@@ -235,6 +235,15 @@
              ;;
              (modify-syntax-entry ?_  "_" )
              (cond (window-system (font-lock-mode 1)))
+             
+ 	     (fset 'my-perl-comment
+ 		   [15 32 escape 49 48 35 tab return 32 35 tab return
+ 		       32 escape 49 48 35 tab 16 32 32])
+ 	     (fset 'my-perl-comment2
+ 		   (read-kbd-macro
+ 		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
+ 	     (local-set-key "\C-cc" 'my-perl-comment)
+ 	     (local-set-key "\C-cv" 'my-perl-comment2)
 )))
 
 
@@ -243,7 +252,8 @@
 ;;;;;;;;;;
 (setq auto-mode-alist
       (append
-       '(("\\.rb\\'" . ruby-mode))))
+       '(("\\.rb\\'" . ruby-mode))
+       auto-mode-alist))
 (add-hook 'ruby-mode-hook
           (function
            (lambda ()
