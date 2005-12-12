@@ -257,14 +257,12 @@
 (add-hook 'ruby-mode-hook
           (function
            (lambda ()
- 	     (fset 'my-perl-comment
- 		   [15 32 escape 49 48 35 tab return 32 35 tab return
- 		       32 escape 49 48 35 tab 16 32 32])
- 	     (fset 'my-perl-comment2
- 		   (read-kbd-macro
- 		    "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
- 	     (local-set-key "\C-cc" 'my-perl-comment)
- 	     (local-set-key "\C-cv" 'my-perl-comment2)
+             (fset 'my-ruby-comment
+                   [?\C-o tab escape ?1 ?0 ?# return tab ?# ?  ?  return tab escape ?1 ?0 ?# ?\C-p])
+             (fset 'my-ruby-comment2
+                   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
+ 	     (local-set-key "\C-cc" 'my-ruby-comment)
+ 	     (local-set-key "\C-cv" 'my-ruby-comment2)
              (cond (window-system (font-lock-mode 1)))
              )))
 
