@@ -266,6 +266,20 @@
              (cond (window-system (font-lock-mode 1)))
              )))
 
+;;;;;;;;;;
+;;;  sql-mode
+;;;;;;;;;;
+(add-hook 'sql-mode-hook
+          (function
+           (lambda ()
+             (fset 'my-sql-comment
+                   [?\C-o tab escape ?1 ?0 ?- return tab ?- ?- ?- ?  ?  return tab escape ?1 ?0 ?- ?\C-p])
+             (fset 'my-sql-comment2
+                   [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
+ 	     (local-set-key "\C-cc" 'my-sql-comment)
+ 	     (local-set-key "\C-cv" 'my-sql-comment2)
+             (cond (window-system (font-lock-mode 1)))
+          )))
 
 ;;;;;;;;;;
 ;;;  java mode
