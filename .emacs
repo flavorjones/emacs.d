@@ -141,8 +141,8 @@
 	  (function
 	   (lambda ()
 
-;;; use tabs instead of spaces
-	     (setq indent-tabs-mode t) ;;; nil forces spaces always
+;;; shall we use tabs or spaces? t is tabs, nil is spaces.
+	     (setq indent-tabs-mode nil) ;;; nil forces spaces always
 ;;; set tabbing convention and display
 	     (setq tab-width 4)
 	     (c-set-style "stroustrup")
