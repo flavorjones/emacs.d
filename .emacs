@@ -69,6 +69,8 @@
 (when window-system
   ;; enable wheelmouse support by default
   (mwheel-install))
+(setq auto-mode-alist (append '(("\\.mxml$" . xml-mode))))
+(setq auto-mode-alist (append '(("\\.html$" . html-mode))))
 
 
 ;;;;;;;;;;
