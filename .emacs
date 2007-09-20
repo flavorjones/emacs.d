@@ -69,8 +69,13 @@
 (when window-system
   ;; enable wheelmouse support by default
   (mwheel-install))
+
+;;;;;;;;;;
+;;;  miscellaneous file types linked to modes
+;;;;;;;;;;
 (setq auto-mode-alist (append '(("\\.mxml$" . xml-mode)
-                                ("\\.html$" . html-mode))
+                                ("\\.html$" . html-mode)
+                                ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 
 ;;;;;;;;;;
