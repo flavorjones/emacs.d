@@ -260,7 +260,8 @@
 ;;;;;;;;;;
 (setq auto-mode-alist
       (append
-       '(("\\.rb\\'" . ruby-mode))
+       '(("\\.rb$" . ruby-mode)
+         ("\\.rake$" . ruby-mode))
        auto-mode-alist))
 (add-hook 'ruby-mode-hook
           (function
