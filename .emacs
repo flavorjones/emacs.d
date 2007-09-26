@@ -63,12 +63,15 @@
 (put 'upcase-region 'disabled nil)
 (display-time)
 (set-input-mode nil nil t) ; so we can use ALT as a META key (?)
-(set-scroll-bar-mode 'right)
 (setq-default indent-tabs-mode nil)
-(cond ((commandp 'tool-bar-mode) (tool-bar-mode 0)))
 (when window-system
   ;; enable wheelmouse support by default
   (mwheel-install))
+;;; turn off all the decorations and gui-helpful bullshit
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
