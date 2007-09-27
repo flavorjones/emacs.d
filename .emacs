@@ -264,6 +264,8 @@
 (setq auto-mode-alist
       (append
        '(("\\.rb$" . ruby-mode)
+         ("\\.rxml$" . ruby-mode)
+         ("\\.rhtml$" . ruby-mode)
          ("\\.rake$" . ruby-mode))
        auto-mode-alist))
 (add-hook 'ruby-mode-hook
