@@ -119,7 +119,7 @@
 (global-set-key "\C-c\C-fd" 'delete-frame)
 (global-set-key "\C-c\C-fs" 'speedbar)
 
-(global-set-key "\C-c\C-c" 'comment-region)
+(global-set-key "\C-c;" 'comment-region)
 
 ;;;
 ;;;  these so we can resize buffer windows using the mouse
@@ -499,18 +499,30 @@
 	      (list "~/.rmail/MBOX" )
 	      ))
 
+
 ;;;;;;;;;;
-;;;  emacs-lisp mode
+;;;  lisps
 ;;;;;;;;;;
+(defun my-lisp-mode-hook ()
+  (fset 'my-lisp-comment
+        [15 escape 49 48 59 return 59 59 59 return escape
+            49 48 59 16 32 32])
+  (fset 'my-lisp-comment2
+        [?\C-o tab ?\; ?\; ?\; return tab ?\; ?\; ?\; return tab ?\; ?\; ?\; ?\C-p ?  ? ])
+  (local-set-key "\C-cc" 'my-lisp-comment)
+  (local-set-key "\C-cv" 'my-lisp-comment2)
+  (cond (window-system (font-lock-mode 1))))
+
 (add-hook 'emacs-lisp-mode-hook
-		  (function
-		   (lambda ()
-			 (fset 'my-lisp-comment
-				   [15 escape 49 48 59 return 59 59 59 return escape
-					   49 48 59 16 32 32])
-			 (local-set-key "\C-cc" 'my-lisp-comment)
-                         (cond (window-system (font-lock-mode 1)))
-			 )))
+          (function my-lisp-mode-hook))
+
+(add-hook 'lisp-mode-hook
+          (function my-lisp-mode-hook))
+
+(setq auto-mode-alist (append '(("\\.el$" . emacs-lisp-mode)
+                                ("\\.cl$" . lisp-mode)
+                                ("\\.lisp$" . lisp-mode))
+                              auto-mode-alist))
 
 ;;;;;;;;;;
 ;;;  outline mode
