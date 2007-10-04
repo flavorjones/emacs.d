@@ -512,13 +512,10 @@
   (local-set-key "\C-cc" 'my-lisp-comment)
   (local-set-key "\C-cv" 'my-lisp-comment2)
   (cond (window-system (font-lock-mode 1))))
-
 (add-hook 'emacs-lisp-mode-hook
           (function my-lisp-mode-hook))
-
 (add-hook 'lisp-mode-hook
           (function my-lisp-mode-hook))
-
 (setq auto-mode-alist (append '(("\\.el$" . emacs-lisp-mode)
                                 ("\\.cl$" . lisp-mode)
                                 ("\\.lisp$" . lisp-mode))
@@ -599,6 +596,13 @@
            (lambda ()
              (setq tex-command "pdflatex")
              )))
+
+;;;;;;;;;;
+;;;  longlines (emacs 22 and up)
+;;;;;;;;;;
+(autoload 'longlines-mode
+ "longlines.el"
+ "Minor mode for automatically wrapping long lines." t)
 
 ;;;;;;;;;;
 ;;;  my ruler
