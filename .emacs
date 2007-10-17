@@ -142,6 +142,7 @@
 (add-hook 'text-mode-hook
           (function
            (lambda ()
+             (local-set-key "\C-c\C-l" 'longlines-mode)
              (cond (window-system (font-lock-mode 1)))
              )))
 
