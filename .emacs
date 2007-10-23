@@ -266,6 +266,7 @@
       (append
        '(("\\.rb$" . ruby-mode)
          ("\\.rxml$" . ruby-mode)
+         ("\\.cap$" . ruby-mode)
          ("\\.rake$" . ruby-mode))
        auto-mode-alist))
 (add-hook 'ruby-mode-hook
