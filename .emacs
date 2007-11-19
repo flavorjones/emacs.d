@@ -50,7 +50,7 @@
               nil ;; mode name
               '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
 ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
-0 font-lock-warning-face t)))
+                 0 font-lock-warning-face t)))
              )))
 
 ;;;;;;;;;;
@@ -71,6 +71,7 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(global-font-lock-mode t)
 
 
 ;;;;;;;;;;
@@ -143,7 +144,6 @@
           (function
            (lambda ()
              (local-set-key "\C-c\C-l" 'longlines-mode)
-             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
@@ -191,8 +191,6 @@
 
 ;;; to override c-electric-star
              (local-set-key "*" 'self-insert-command )
-
-             (cond (window-system (font-lock-mode 1)))
 
              (hs-minor-mode 1)
 
@@ -246,7 +244,6 @@
              ;; just like in cc-mode
              ;;
              (modify-syntax-entry ?_  "_" )
-             (cond (window-system (font-lock-mode 1)))
 
              (fset 'my-perl-comment
                    [15 32 escape 49 48 35 tab return 32 35 tab return
@@ -278,8 +275,6 @@
                    [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
-             (cond (window-system (font-lock-mode 1)))
-             (abbrev-mode)
              )))
 
 ;;;;;;;;;;
@@ -294,7 +289,6 @@
                    [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-sql-comment)
              (local-set-key "\C-cv" 'my-sql-comment2)
-             (cond (window-system (font-lock-mode 1)))
           )))
 
 ;;;;;;;;;;
@@ -353,8 +347,6 @@
          ;;
          (modify-syntax-entry ?_  "_" )
 
-         (cond (window-system (font-lock-mode 1)))
-
          ))
 
 
@@ -389,7 +381,6 @@
 ;;                  "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
 ;;           (local-set-key "\C-cc" 'my-perl-comment)
 ;;           (local-set-key "\C-cv" 'my-perl-comment2)
-;;           (cond (window-system (font-lock-mode 1)))
 ;;           )))
 
 (autoload 'perl-mode "perl-mode" "Perl mode." t)
@@ -412,7 +403,6 @@
                     "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
              (local-set-key "\C-cc" 'my-perl-comment)
              (local-set-key "\C-cv" 'my-perl-comment2)
-             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
@@ -424,7 +414,6 @@
              (fset 'my-sh-comment
                    [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
              (local-set-key "\C-cv" 'my-sh-comment)
-             (cond (window-system (font-lock-mode 1)))
              )))
 
 
@@ -464,7 +453,6 @@
 ;                  [15 35 tab return 35 tab return 35 tab 16 32 32])
 ;            (local-set-key "\C-cc" 'my-ksh-comment)
 ;            (local-set-key "\C-cv" 'my-ksh-comment2)
-;             (cond (window-system (font-lock-mode 1)))
 ;            )))
 
 ;;;;;;;;;;
@@ -513,7 +501,7 @@
         [?\C-o tab ?\; ?\; ?\; return tab ?\; ?\; ?\; return tab ?\; ?\; ?\; ?\C-p ?  ? ])
   (local-set-key "\C-cc" 'my-lisp-comment)
   (local-set-key "\C-cv" 'my-lisp-comment2)
-  (cond (window-system (font-lock-mode 1))))
+  )
 (add-hook 'emacs-lisp-mode-hook
           (function my-lisp-mode-hook))
 (add-hook 'lisp-mode-hook
@@ -560,7 +548,6 @@
                    [15 escape 49 48 59 return 59 59 59 return escape
                        49 48 59 16 32 32])
              (local-set-key "\C-cc" 'my-scheme-comment)
-             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
@@ -569,7 +556,6 @@
 (add-hook 'texinfo-mode-hook
           (function
            (lambda ()
-             (cond (window-system (font-lock-mode 1)))
              )))
 
 ;;;;;;;;;;
