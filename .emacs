@@ -2,6 +2,14 @@
 ;;;  emacs init file
 ;;;;;;;;;;
 ;;;
+;;;  for blocks executed conditionally based on emacs version number
+;;;
+(defun requires-emacs-version (at-least function)
+  (if (>= emacs-major-version at-least)
+      (funcall function)))
+
+
+;;;
 ;;;  local emacs stuff (if any)
 ;;;
 (setq load-path (append '("~/.elisp") load-path))
@@ -700,3 +708,44 @@ The key typed is executed unless it is SPC."
   (interactive)
   (bury-buffer (current-buffer))
   (yic-next (buffer-list)))
+
+
+;;;;;;;;;;
+;;;  some nice font shit
+;;;;;;;;;;
+(defun what-font ()
+  (interactive)
+  (message (frame-parameter nil 'font)))
+
+(requires-emacs-version 23
+ '(lambda ()
+    (set-default-font "Bitstream Vera Sans Mono-12")
+    
+    (defun modify-font-size (increment)
+      ;; font will be something like:
+      ;; "-bitstream-bitstream vera sans mono-medium-r-normal--12-*-*-*-*-*-fontset-startup"
+      ;; so we replace the 7th element ("12") with an incremented or decremented value
+      (interactive)
+      (let* ((font (frame-parameter nil 'font))
+             (fontinfo (split-string font "-")) ; (list fontname fontsize)
+             (fontsize (string-to-number (nth 7 fontinfo)))
+             (newfontsize (number-to-string (+ fontsize increment)))
+             (newfont (concat "Bitstream Vera Sans Mono-" newfontsize)))
+        (set-default-font newfont)
+        (what-font)
+        ))
+    
+    (defun increase-font-size ()
+      (interactive)
+      (modify-font-size 1)) ;; up by one
+    
+    (defun decrease-font-size ()
+      (interactive)
+      (modify-font-size -2)) ;; down by two, because font sizes round up
+    
+    (global-set-key [?\C-=] 'increase-font-size)
+    (global-set-key [?\C-+] 'increase-font-size)
+    (global-set-key [?\C--] 'decrease-font-size)
+    
+    ))
+
