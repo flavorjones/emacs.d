@@ -270,7 +270,6 @@
 (setq auto-mode-alist
       (append
        '(("\\.rb$" . ruby-mode)
-         ("\\.rxml$" . ruby-mode)
          ("\\.cap$" . ruby-mode)
          ("\\.rake$" . ruby-mode))
        auto-mode-alist))
@@ -719,7 +718,7 @@ The key typed is executed unless it is SPC."
 
 (requires-emacs-version 23
  '(lambda ()
-    (set-default-font "Bitstream Vera Sans Mono-12")
+    (set-default-font "Bitstream Vera Sans Mono-15")
     
     (defun modify-font-size (increment)
       ;; font will be something like:
@@ -748,4 +747,3 @@ The key typed is executed unless it is SPC."
     (global-set-key [?\C--] 'decrease-font-size)
     
     ))
-
