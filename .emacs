@@ -718,32 +718,54 @@ The key typed is executed unless it is SPC."
 
 (requires-emacs-version 23
  '(lambda ()
-    (set-default-font "Bitstream Vera Sans Mono-15")
+;;;    (defun modify-font-size (increment)
+;;;      ;; font will be something like:
+;;;      ;; "-bitstream-bitstream vera sans mono-medium-r-normal--12-*-*-*-*-*-fontset-startup"
+;;;      ;; so we replace the 7th element ("12") with an incremented or decremented value
+;;;       (interactive)
+;;;       (let* ((font (frame-parameter nil 'font))
+;;;              (fontinfo (split-string font "-")) ; (list fontname fontsize)
+;;;              (fontsize (string-to-number (nth 7 fontinfo)))
+;;;              (newfontsize (number-to-string (+ fontsize increment)))
+;;;              (newfont (concat "Bitstream Vera Sans Mono-" newfontsize)))
+;;;         (set-default-font newfont)
+;;;         (what-font)
+;;;         ))
     
-    (defun modify-font-size (increment)
-      ;; font will be something like:
-      ;; "-bitstream-bitstream vera sans mono-medium-r-normal--12-*-*-*-*-*-fontset-startup"
-      ;; so we replace the 7th element ("12") with an incremented or decremented value
+    (setq mike:font-face nil)
+    (setq mike:font-size nil)
+
+    (defun mike:set-font-face (face)
       (interactive)
-      (let* ((font (frame-parameter nil 'font))
-             (fontinfo (split-string font "-")) ; (list fontname fontsize)
-             (fontsize (string-to-number (nth 7 fontinfo)))
-             (newfontsize (number-to-string (+ fontsize increment)))
-             (newfont (concat "Bitstream Vera Sans Mono-" newfontsize)))
-        (set-default-font newfont)
-        (what-font)
-        ))
-    
-    (defun increase-font-size ()
+      (setq mike:font-face face)
+      (mike:enact-font))
+
+    (defun mike:set-font-size (size)
       (interactive)
-      (modify-font-size 1)) ;; up by one
-    
-    (defun decrease-font-size ()
+      (setq mike:font-size size)
+      (mike:enact-font))
+
+    (defun mike:enact-font ()
+      (if (and mike:font-face mike:font-size)
+          (set-default-font (concat mike:font-face "-" (number-to-string mike:font-size)))))
+
+    (defun mike:modify-font-size (increment)
+      (setq mike:font-size (+ mike:font-size increment))
+      (mike:enact-font))
+
+    (defun mike:increase-font-size ()
       (interactive)
-      (modify-font-size -2)) ;; down by two, because font sizes round up
+      (mike:modify-font-size 1))
     
-    (global-set-key [?\C-=] 'increase-font-size)
-    (global-set-key [?\C-+] 'increase-font-size)
-    (global-set-key [?\C--] 'decrease-font-size)
+    (defun mike:decrease-font-size ()
+      (interactive)
+      (mike:modify-font-size -1))
     
+    (global-set-key [?\C-=] 'mike:increase-font-size)
+    (global-set-key [?\C-+] 'mike:increase-font-size)
+    (global-set-key [?\C--] 'mike:decrease-font-size)
+    
+    (mike:set-font-size 14)
+    (mike:set-font-face "Bitstream Vera Sans")
+
     ))
