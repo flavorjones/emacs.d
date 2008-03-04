@@ -747,7 +747,9 @@ The key typed is executed unless it is SPC."
 
     (defun mike:enact-font ()
       (if (and mike:font-face mike:font-size)
-          (set-default-font (concat mike:font-face "-" (number-to-string mike:font-size)))))
+          (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
+            (set-default-font font)
+            (prin1 font))))
 
     (defun mike:modify-font-size (increment)
       (setq mike:font-size (+ mike:font-size increment))
