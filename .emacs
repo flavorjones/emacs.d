@@ -767,7 +767,7 @@ The key typed is executed unless it is SPC."
     (global-set-key [?\C-+] 'mike:increase-font-size)
     (global-set-key [?\C--] 'mike:decrease-font-size)
     
-    (mike:set-font-size 14)
+    (mike:set-font-size 11)
     (mike:set-font-face "Bitstream Vera Sans")
 
     ))
