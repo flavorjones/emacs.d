@@ -80,7 +80,7 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (global-font-lock-mode t)
-
+(menu-bar-enable-clipboard)
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
