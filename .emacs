@@ -52,8 +52,8 @@
              (set-face-foreground 'font-lock-warning-face "White")
              (set-face-background 'font-lock-warning-face "Red")
 
-;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
-;; then one-line 'TODO ...'
+             ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
+             ;; then one-line 'TODO ...'
              (font-lock-add-keywords
               nil ;; mode name
               '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
@@ -70,7 +70,7 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (display-time)
-(set-input-mode nil nil t) ; so we can use ALT as a META key (?)
+(set-input-mode nil nil t)       ; so we can use ALT as a META key (?)
 (setq-default indent-tabs-mode nil)
 (when window-system
   ;; enable wheelmouse support by default
@@ -87,14 +87,15 @@
 ;;;;;;;;;;
 (setq auto-mode-alist (append '(("\\.mxml$" . xml-mode)
                                 ("\\.html$" . html-mode)
+                                ("\\.css$" . css-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 
 ;;;;;;;;;;
 ;;;  some random stuff.
 ;;;;;;;;;;
-(autoload 'ediff "ediff" nil t)  ;  cool diff mode
-(autoload 'flame "flame" nil t)  ;  automated flaming
+(autoload 'ediff "ediff" nil t)         ;  cool diff mode
+(autoload 'flame "flame" nil t)         ;  automated flaming
 
 ;;;;;;;;;;
 ;;;  minibuffer resizes dynamically
@@ -111,8 +112,8 @@
 (global-set-key "\C-cr" 'replace-regexp)
 (global-set-key "\er" 'query-replace-regexp)
 (global-set-key "\C-c\C-a" 'auto-fill-mode)
-; (global-set-key "\C-cd" 'spell-buffer)
-; (global-set-key "\C-cj" 'justify-current-line)
+                                        ; (global-set-key "\C-cd" 'spell-buffer)
+                                        ; (global-set-key "\C-cj" 'justify-current-line)
 (global-set-key "\C-cj" 'join-line)
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'toggle-read-only)
@@ -177,23 +178,23 @@
              (auto-fill-mode)
              (set-fill-column 80)
 
-; c++-style comments
+             ;; c++-style comments
              (fset 'my-cpp-comment-wide
-                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
+		   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
                           return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
              (fset 'my-cpp-comment
-                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
+		   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
                           ?\C-p ?  ? ])
-; c-style comments
+             ;; c-style comments
              (fset 'my-c-comment-wide
-                   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
+		   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
                           return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
              (fset 'my-c-comment
-                   [?\C-o tab ?/ ?* return ?* tab return ?* ?/
+		   [?\C-o tab ?/ ?* return ?* tab return ?* ?/
                           ?\C-p ?  ? ])
 
              (fset 'my-c-dox-comment
-                   [?\C-o tab ?/ ?* ?* return ?* tab return ?*
+		   [?\C-o tab ?/ ?* ?* return ?* tab return ?*
                           ?/ ?\C-p ?  ? ])
              (local-set-key "\C-c\C-v" 'my-c-dox-comment)
 
@@ -208,11 +209,11 @@
 ;;; cc-mode (c-mode)
 ;;;;;;;;;;
 (setq auto-mode-alist
-      (append '(("\\.c$"  . c-mode)   ; to edit C code
-                ("\\.h$"  . c-mode)   ; to edit C code
-                ("\\.ec$" . c-mode)
-                ("\\.php$" . c-mode)
-                ) auto-mode-alist))
+      (append '(("\\.c$"  . c-mode)     ; to edit C code
+		("\\.h$"  . c-mode)     ; to edit C code
+		("\\.ec$" . c-mode)
+		("\\.php$" . c-mode)
+		) auto-mode-alist))
 (add-hook 'c-mode-hook
           (function
            (lambda ()
@@ -254,14 +255,14 @@
              (modify-syntax-entry ?_  "_" )
 
              (fset 'my-perl-comment
-                   [15 32 escape 49 48 35 tab return 32 35 tab return
+		   [15 32 escape 49 48 35 tab return 32 35 tab return
                        32 escape 49 48 35 tab 16 32 32])
              (fset 'my-perl-comment2
-                   (read-kbd-macro
+		   (read-kbd-macro
                     "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
              (local-set-key "\C-cc" 'my-perl-comment)
              (local-set-key "\C-cv" 'my-perl-comment2)
-)))
+             )))
 
 
 ;;;;;;;;;;
@@ -277,9 +278,9 @@
           (function
            (lambda ()
              (fset 'my-ruby-comment
-                   [?\C-o tab escape ?1 ?0 ?# return tab ?# ?  ?  return tab escape ?1 ?0 ?# ?\C-p])
+		   [?\C-o tab escape ?1 ?0 ?# return tab ?# ?  ?  return tab escape ?1 ?0 ?# ?\C-p])
              (fset 'my-ruby-comment2
-                   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
+		   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
              )))
@@ -291,12 +292,12 @@
           (function
            (lambda ()
              (fset 'my-sql-comment
-                   [?\C-o tab escape ?1 ?0 ?- return tab ?- ?- ?- ?  ?  return tab escape ?1 ?0 ?- ?\C-p])
+		   [?\C-o tab escape ?1 ?0 ?- return tab ?- ?- ?- ?  ?  return tab escape ?1 ?0 ?- ?\C-p])
              (fset 'my-sql-comment2
-                   [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
+		   [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-sql-comment)
              (local-set-key "\C-cv" 'my-sql-comment2)
-          )))
+             )))
 
 ;;;;;;;;;;
 ;;;  java mode
@@ -332,21 +333,21 @@
                [67 32 32 32 67 104 111 119 32 114 117 108 101 115 return 42 tab escape 49 48 42])
          (fset 'my-fortran-comment1
                [15 escape 49 48 42 return 42 return escape 49 48 42 16
-                   32 32])
+		   32 32])
          (fset 'my-fortran-comment2
                [15 42 32 escape 49 48 42 tab return 42 32 42 tab
-                   return 42 32 escape 49 48 42 tab 16 32 32])
+		   return 42 32 escape 49 48 42 tab 16 32 32])
          (local-set-key "\C-cp" 'fortranchow)
          (local-set-key "\C-cc" 'my-fortran-comment1)
          (local-set-key "\C-cv" 'my-fortran-comment2)
-;        (cond (window-system
-;               (setq hilit-mode-enable-list  '(fortran-mode)
-;                     hilit-background-mode   'light
-;                     hilit-auto-highlight    t
-;                     hilit-inhibit-hooks     nil
-;                     hilit-inhibit-rebinding nil)
-;               (require 'hilit19)
-;               ))
+;;;        (cond (window-system
+;;;               (setq hilit-mode-enable-list  '(fortran-mode)
+;;;                     hilit-background-mode   'light
+;;;                     hilit-auto-highlight    t
+;;;                     hilit-inhibit-hooks     nil
+;;;                     hilit-inhibit-rebinding nil)
+;;;               (require 'hilit19)
+;;;               ))
 
          ;;
          ;; this rocking one-line command makes '_' a word delimiter
@@ -360,9 +361,9 @@
 ;;;;;;;;;;
 ;;;  php-mode
 ;;;;;;;;;;
-;(autoload 'php-mode "php-mode" "PHP editing mode" t)
-;(add-to-list 'auto-mode-alist '("\\.php3\\'" . php-mode))
-;(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+;;(autoload 'php-mode "php-mode" "PHP editing mode" t)
+;;(add-to-list 'auto-mode-alist '("\\.php3\\'" . php-mode))
+;;(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 
 ;;;;;;;;;;
@@ -403,10 +404,10 @@
               perl-label-offset 0
               )
              (fset 'my-perl-comment
-                   [15 32 escape 49 48 35 tab return 32 35 tab return
+		   [15 32 escape 49 48 35 tab return 32 35 tab return
                        32 escape 49 48 35 tab 16 32 32])
              (fset 'my-perl-comment2
-                   (read-kbd-macro
+		   (read-kbd-macro
                     "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
              (local-set-key "\C-cc" 'my-perl-comment)
              (local-set-key "\C-cv" 'my-perl-comment2)
@@ -419,7 +420,7 @@
           (function
            (lambda ()
              (fset 'my-sh-comment
-                   [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
+		   [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
              (local-set-key "\C-cv" 'my-sh-comment)
              )))
 
@@ -486,7 +487,7 @@
            (lambda ()
              (setq
               next-screen-context-lines 5
-             )
+              )
              )))
 (setq rmail-file-name "~/.rmail/incoming")
 (setq rmail-last-rmail-file "~/.rmail/received")
@@ -524,7 +525,7 @@
 (add-hook 'outline-mode-hook
           (function
            (lambda ()
-             (hide-body) ; hide everything except headings
+             (hide-body)             ; hide everything except headings
              )))
 
 ;;;;;;;;;;
@@ -596,8 +597,8 @@
 ;;;  longlines (emacs 22 and up)
 ;;;;;;;;;;
 (autoload 'longlines-mode
- "longlines.el"
- "Minor mode for automatically wrapping long lines." t)
+  "longlines.el"
+  "Minor mode for automatically wrapping long lines." t)
 
 ;;;;;;;;;;
 ;;;  my ruler
@@ -717,57 +718,43 @@ The key typed is executed unless it is SPC."
   (message (frame-parameter nil 'font)))
 
 (requires-emacs-version 23
- '(lambda ()
-;;;    (defun modify-font-size (increment)
-;;;      ;; font will be something like:
-;;;      ;; "-bitstream-bitstream vera sans mono-medium-r-normal--12-*-*-*-*-*-fontset-startup"
-;;;      ;; so we replace the 7th element ("12") with an incremented or decremented value
-;;;       (interactive)
-;;;       (let* ((font (frame-parameter nil 'font))
-;;;              (fontinfo (split-string font "-")) ; (list fontname fontsize)
-;;;              (fontsize (string-to-number (nth 7 fontinfo)))
-;;;              (newfontsize (number-to-string (+ fontsize increment)))
-;;;              (newfont (concat "Bitstream Vera Sans Mono-" newfontsize)))
-;;;         (set-default-font newfont)
-;;;         (what-font)
-;;;         ))
+                        '(lambda ()
+                           (setq mike:font-face nil)
+                           (setq mike:font-size nil)
+
+                           (defun mike:set-font-face (face)
+                             (interactive)
+                             (setq mike:font-face face)
+                             (mike:enact-font))
+
+                           (defun mike:set-font-size (size)
+                             (interactive)
+                             (setq mike:font-size size)
+                             (mike:enact-font))
+
+                           (defun mike:enact-font ()
+                             (if (and mike:font-face mike:font-size)
+                                 (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
+                                   (set-default-font font)
+                                   (prin1 font))))
+
+                           (defun mike:modify-font-size (increment)
+                             (setq mike:font-size (+ mike:font-size increment))
+                             (mike:enact-font))
+
+                           (defun mike:increase-font-size ()
+                             (interactive)
+                             (mike:modify-font-size 1))
     
-    (setq mike:font-face nil)
-    (setq mike:font-size nil)
-
-    (defun mike:set-font-face (face)
-      (interactive)
-      (setq mike:font-face face)
-      (mike:enact-font))
-
-    (defun mike:set-font-size (size)
-      (interactive)
-      (setq mike:font-size size)
-      (mike:enact-font))
-
-    (defun mike:enact-font ()
-      (if (and mike:font-face mike:font-size)
-          (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
-            (set-default-font font)
-            (prin1 font))))
-
-    (defun mike:modify-font-size (increment)
-      (setq mike:font-size (+ mike:font-size increment))
-      (mike:enact-font))
-
-    (defun mike:increase-font-size ()
-      (interactive)
-      (mike:modify-font-size 1))
+                           (defun mike:decrease-font-size ()
+                             (interactive)
+                             (mike:modify-font-size -1))
     
-    (defun mike:decrease-font-size ()
-      (interactive)
-      (mike:modify-font-size -1))
+                           (global-set-key [?\C-=] 'mike:increase-font-size)
+                           (global-set-key [?\C-+] 'mike:increase-font-size)
+                           (global-set-key [?\C--] 'mike:decrease-font-size)
     
-    (global-set-key [?\C-=] 'mike:increase-font-size)
-    (global-set-key [?\C-+] 'mike:increase-font-size)
-    (global-set-key [?\C--] 'mike:decrease-font-size)
-    
-    (mike:set-font-size 9)
-    (mike:set-font-face "Bitstream Vera Sans")
+                           (mike:set-font-size 9)
+                           (mike:set-font-face "Bitstream Vera Sans")
 
-    ))
+                           ))
