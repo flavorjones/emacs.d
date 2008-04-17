@@ -81,6 +81,7 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (global-font-lock-mode t)
 (menu-bar-enable-clipboard)
+(ido-mode)
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
