@@ -81,7 +81,7 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (global-font-lock-mode t)
 (menu-bar-enable-clipboard)
-(ido-mode)
+;; (ido-mode) ;; uck.
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -89,6 +89,8 @@
 (setq auto-mode-alist (append '(("\\.mxml$" . xml-mode)
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
+                                ("\\.xml$" . xml-mode)
+                                ("\\.js.erb$" . javascript-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 
