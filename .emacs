@@ -82,6 +82,8 @@
 (global-font-lock-mode t)
 (menu-bar-enable-clipboard)
 ;; (ido-mode) ;; uck.
+(set-fill-column 100) ;; yay widescreen
+
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -90,6 +92,7 @@
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
                                 ("\\.xml$" . xml-mode)
+                                ("\\.js$" . javascript-mode)
                                 ("\\.js.erb$" . javascript-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
@@ -595,6 +598,26 @@
            (lambda ()
              (setq tex-command "pdflatex")
              )))
+
+;;;
+;;;  
+;;;
+;;;;;;;;;;
+;;;  javascript mode
+;;;;;;;;;;
+(add-hook 'javascript-mode-hook
+          (function (lambda ()
+                      ;; c-style comments
+                      (fset 'my-c-comment-wide
+                            [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
+                                   return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
+                      (fset 'my-c-comment
+                            [?\C-o tab ?/ ?* return ?* tab return ?* ?/
+                                   ?\C-p ?  ? ])
+                      (local-set-key "\C-cc" 'my-c-comment-wide)
+                      (local-set-key "\C-cv" 'my-c-comment)
+                      )))
+
 
 ;;;;;;;;;;
 ;;;  longlines (emacs 22 and up)
