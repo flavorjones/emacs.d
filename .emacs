@@ -83,6 +83,7 @@
 (menu-bar-enable-clipboard)
 ;; (ido-mode) ;; uck.
 (set-fill-column 100) ;; yay widescreen
+(setq max-specpdl-size 5000) ;; for byte-compiling js2-mode
 
 
 ;;;;;;;;;;
@@ -92,8 +93,6 @@
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
                                 ("\\.xml$" . xml-mode)
-                                ("\\.js$" . javascript-mode)
-                                ("\\.js.erb$" . javascript-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 
@@ -599,26 +598,6 @@
              (setq tex-command "pdflatex")
              )))
 
-;;;
-;;;  
-;;;
-;;;;;;;;;;
-;;;  javascript mode
-;;;;;;;;;;
-(add-hook 'javascript-mode-hook
-          (function (lambda ()
-                      ;; c-style comments
-                      (fset 'my-c-comment-wide
-                            [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
-                                   return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
-                      (fset 'my-c-comment
-                            [?\C-o tab ?/ ?* return ?* tab return ?* ?/
-                                   ?\C-p ?  ? ])
-                      (local-set-key "\C-cc" 'my-c-comment-wide)
-                      (local-set-key "\C-cv" 'my-c-comment)
-                      )))
-
-
 ;;;;;;;;;;
 ;;;  longlines (emacs 22 and up)
 ;;;;;;;;;;
@@ -780,7 +759,9 @@ The key typed is executed unless it is SPC."
                            (global-set-key [?\C-+] 'mike:increase-font-size)
                            (global-set-key [?\C--] 'mike:decrease-font-size)
     
-                           (mike:set-font-size 9)
-                           (mike:set-font-face "Bitstream Vera Sans")
+                           (mike:set-font-size 8)
+                           (mike:set-font-face "Bitstream Vera Sans Mono")
+;;                           (mike:set-font-size 9)
+;;                           (mike:set-font-face "Bitstream Vera Sans")
 
                            ))
