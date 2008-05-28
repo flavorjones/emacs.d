@@ -15,51 +15,54 @@
 (setq load-path (append '("~/.elisp") load-path))
 (load "mylocal")
 
-
 ;;;;;;;;;;
-;;;  font-lock mode setup
+;;;  color themes and font-lock mode setup
 ;;;;;;;;;;
-(add-hook 'font-lock-mode-hook
-          (function
-           (lambda ()
-             (setq font-lock-maximum-size nil)
-;;;  comments
-             (set-face-foreground 'font-lock-comment-face "Blue")
-             (set-face-background 'font-lock-comment-face "Turquoise")
-             (set-face-italic-p 'font-lock-comment-face t)
-;;;  literal strings
-             (set-face-foreground 'font-lock-string-face nil)
-             (set-face-background 'font-lock-string-face "MediumAquaMarine")
-             (set-face-underline-p 'font-lock-string-face nil) ; note underscores
-;;;  keywords (like: static, const, new, this)
-;;;  constants (like: true, false)
-;;;  builtins (preprocessor imperatives like: include, ifdef)
-             (mapcar #'(lambda (face)
-                         (set-face-foreground face nil)
-                         (set-face-bold-p face t))
-                     (list font-lock-keyword-face
-                           font-lock-constant-face
-                           font-lock-builtin-face))
-;;;  types (doesn't work for most user-defined types)
-             (set-face-foreground 'font-lock-type-face nil)
-             (set-face-foreground 'font-lock-type-face "ForestGreen")
-             (set-face-bold-p 'font-lock-type-face t)
-;;;  function names (definitions, declarations)
-             (set-face-foreground 'font-lock-function-name-face nil)
-;;;  variable names (definitions, parameters)
-             (set-face-foreground 'font-lock-variable-name-face nil)
-;;;  warnings
-             (set-face-foreground 'font-lock-warning-face "White")
-             (set-face-background 'font-lock-warning-face "Red")
+(require 'color-theme)
+(load "color-theme-vivid-chalk")
+(color-theme-vivid-chalk)
 
-             ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
-             ;; then one-line 'TODO ...'
-             (font-lock-add-keywords
-              nil ;; mode name
-              '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
-?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
-                 0 font-lock-warning-face t)))
-             )))
+ (add-hook 'font-lock-mode-hook
+           (function
+            (lambda ()
+;;              (setq font-lock-maximum-size nil)
+;; ;;;  comments
+;;              (set-face-foreground 'font-lock-comment-face "Blue")
+;;              (set-face-background 'font-lock-comment-face "Turquoise")
+;;              (set-face-italic-p 'font-lock-comment-face t)
+;; ;;;  literal strings
+;;              (set-face-foreground 'font-lock-string-face nil)
+;;              (set-face-background 'font-lock-string-face "MediumAquaMarine")
+;;              (set-face-underline-p 'font-lock-string-face nil) ; note underscores
+;; ;;;  keywords (like: static, const, new, this)
+;; ;;;  constants (like: true, false)
+;; ;;;  builtins (preprocessor imperatives like: include, ifdef)
+;;              (mapcar #'(lambda (face)
+;;                          (set-face-foreground face nil)
+;;                          (set-face-bold-p face t))
+;;                      (list font-lock-keyword-face
+;;                            font-lock-constant-face
+;;                            font-lock-builtin-face))
+;; ;;;  types (doesn't work for most user-defined types)
+;;              (set-face-foreground 'font-lock-type-face nil)
+;;              (set-face-foreground 'font-lock-type-face "ForestGreen")
+;;              (set-face-bold-p 'font-lock-type-face t)
+;; ;;;  function names (definitions, declarations)
+;;              (set-face-foreground 'font-lock-function-name-face nil)
+;; ;;;  variable names (definitions, parameters)
+;;              (set-face-foreground 'font-lock-variable-name-face nil)
+;; ;;;  warnings
+;;              (set-face-foreground 'font-lock-warning-face "White")
+;;              (set-face-background 'font-lock-warning-face "Red")
+
+              ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
+              ;; then one-line 'TODO ...'
+              (font-lock-add-keywords
+               nil ;; mode name
+               '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
+ ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
+                  0 font-lock-warning-face t)))
+              )))
 
 ;;;;;;;;;;
 ;;; general variables, functions
