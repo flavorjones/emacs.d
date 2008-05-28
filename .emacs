@@ -768,3 +768,9 @@ The key typed is executed unless it is SPC."
 ;;                           (mike:set-font-face "Bitstream Vera Sans")
 
                            ))
+
+;;;
+;;;  camelCase
+;;;
+(autoload 'camelCase-mode "camelCase-mode" nil t)
+(add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
