@@ -96,6 +96,7 @@
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
                                 ("\\.xml$" . xml-mode)
+                                ("\\.markdown$" . markdown-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 
@@ -158,6 +159,15 @@
 ;;;  text-mode
 ;;;;;;;;;;
 (add-hook 'text-mode-hook
+          (function
+           (lambda ()
+             (local-set-key "\C-c\C-l" 'longlines-mode)
+             )))
+
+;;;
+;;;  markdown-mode
+;;;
+(add-hook 'markdown-mode-hook
           (function
            (lambda ()
              (local-set-key "\C-c\C-l" 'longlines-mode)
