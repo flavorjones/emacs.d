@@ -79,12 +79,14 @@
   ;; enable wheelmouse support by default
   (mwheel-install))
 ;;; turn off all the decorations and gui-helpful bullshit
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
+(set-scroll-bar-mode 'right)
+;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; 
 (global-font-lock-mode t)
 (menu-bar-enable-clipboard)
-;; (ido-mode) ;; uck.
+(ido-mode)
 (set-fill-column 100) ;; yay widescreen
 (setq max-specpdl-size 5000) ;; for byte-compiling js2-mode
 
@@ -784,3 +786,20 @@ The key typed is executed unless it is SPC."
 ;;;
 (autoload 'camelCase-mode "camelCase-mode" nil t)
 (add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
+
+;;;
+;;;  customize!
+;;;
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ido-confirm-unique-completion t)
+ '(ido-enable-flex-matching t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
