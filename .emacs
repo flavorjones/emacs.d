@@ -18,9 +18,11 @@
 ;;;;;;;;;;
 ;;;  color themes and font-lock mode setup
 ;;;;;;;;;;
-(require 'color-theme)
-(load "color-theme-vivid-chalk")
-(color-theme-vivid-chalk)
+(cond (window-system
+       (require 'color-theme)
+       (load "color-theme-vivid-chalk")
+       (color-theme-vivid-chalk)
+       ))
 
  (add-hook 'font-lock-mode-hook
            (function
@@ -88,8 +90,8 @@
 (menu-bar-enable-clipboard)
 (ido-mode)
 (set-fill-column 100) ;; yay widescreen
-(setq max-specpdl-size 5000) ;; for byte-compiling js2-mode
-
+(setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
+(setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -614,6 +616,14 @@
              )))
 
 ;;;;;;;;;;
+;;;  html mode
+;;;;;;;;;;
+(add-hook 'html-mode-hook
+          (function (lambda ()
+                      (local-set-key "\C-c\C-i" 'indent-relative) ;; for embedded js
+                      )))
+
+;;;;;;;;;;
 ;;;  longlines (emacs 22 and up)
 ;;;;;;;;;;
 (autoload 'longlines-mode
@@ -774,10 +784,10 @@ The key typed is executed unless it is SPC."
                            (global-set-key [?\C-+] 'mike:increase-font-size)
                            (global-set-key [?\C--] 'mike:decrease-font-size)
     
-                           (mike:set-font-size 8)
+                           (mike:set-font-size 10)
                            (mike:set-font-face "Bitstream Vera Sans Mono")
-;;                           (mike:set-font-size 9)
-;;                           (mike:set-font-face "Bitstream Vera Sans")
+;;;                            (mike:set-font-size 9)
+;;;                            (mike:set-font-face "Bitstream Vera Sans")
 
                            ))
 
@@ -796,7 +806,9 @@ The key typed is executed unless it is SPC."
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(ido-confirm-unique-completion t)
- '(ido-enable-flex-matching t))
+ '(ido-enable-flex-matching t)
+ '(inhibit-startup-screen t)
+ '(js2-auto-indent-flag nil))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
