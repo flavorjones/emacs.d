@@ -25,15 +25,15 @@
        ))
 
  (add-hook 'font-lock-mode-hook
-           (function
-            (lambda ()
-              ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
-              ;; then one-line 'TODO ...'
-              (font-lock-add-keywords
-               nil ;; mode name
-               '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
+           '(lambda ()
+              (unless (string-equal "org-mode" major-mode)
+                ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
+                ;; then one-line 'TODO ...'
+                (font-lock-add-keywords
+                 nil ;; mode name
+                 '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
  ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
-                  0 font-lock-warning-face t)))
+                    0 font-lock-warning-face t)))
               )))
 
 ;;;;;;;;;;
@@ -713,7 +713,11 @@ The key typed is executed unless it is SPC."
  '(ido-confirm-unique-completion t)
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
- '(js2-auto-indent-flag nil))
+ '(js2-auto-indent-flag nil)
+ '(org-hide-leading-stars t)
+ '(org-log-done (quote time))
+ '(org-odd-levels-only t)
+ '(org-startup-folded (quote content)))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
