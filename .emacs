@@ -61,7 +61,11 @@
 (set-fill-column 100) ;; yay widescreen
 (setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
 (setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
-(desktop-save-mode 1)
+
+;; save desktop only when in windowing mode, to avoid getting prompted for
+;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
+;; is used by git, svn, etc.)
+(when window-system (desktop-save-mode 1))
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
