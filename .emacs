@@ -27,36 +27,6 @@
  (add-hook 'font-lock-mode-hook
            (function
             (lambda ()
-;;              (setq font-lock-maximum-size nil)
-;; ;;;  comments
-;;              (set-face-foreground 'font-lock-comment-face "Blue")
-;;              (set-face-background 'font-lock-comment-face "Turquoise")
-;;              (set-face-italic-p 'font-lock-comment-face t)
-;; ;;;  literal strings
-;;              (set-face-foreground 'font-lock-string-face nil)
-;;              (set-face-background 'font-lock-string-face "MediumAquaMarine")
-;;              (set-face-underline-p 'font-lock-string-face nil) ; note underscores
-;; ;;;  keywords (like: static, const, new, this)
-;; ;;;  constants (like: true, false)
-;; ;;;  builtins (preprocessor imperatives like: include, ifdef)
-;;              (mapcar #'(lambda (face)
-;;                          (set-face-foreground face nil)
-;;                          (set-face-bold-p face t))
-;;                      (list font-lock-keyword-face
-;;                            font-lock-constant-face
-;;                            font-lock-builtin-face))
-;; ;;;  types (doesn't work for most user-defined types)
-;;              (set-face-foreground 'font-lock-type-face nil)
-;;              (set-face-foreground 'font-lock-type-face "ForestGreen")
-;;              (set-face-bold-p 'font-lock-type-face t)
-;; ;;;  function names (definitions, declarations)
-;;              (set-face-foreground 'font-lock-function-name-face nil)
-;; ;;;  variable names (definitions, parameters)
-;;              (set-face-foreground 'font-lock-variable-name-face nil)
-;; ;;;  warnings
-;;              (set-face-foreground 'font-lock-warning-face "White")
-;;              (set-face-background 'font-lock-warning-face "Red")
-
               ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
               ;; then one-line 'TODO ...'
               (font-lock-add-keywords
@@ -85,13 +55,13 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
 (set-scroll-bar-mode 'right)
-;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; 
 (global-font-lock-mode t)
 (menu-bar-enable-clipboard)
 (ido-mode)
 (set-fill-column 100) ;; yay widescreen
 (setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
 (setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
+(desktop-save-mode 1)
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -102,6 +72,40 @@
                                 ("\\.xml$" . xml-mode)
                                 ("\\.markdown$" . markdown-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
+                              auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("\\.c$"  . c-mode)     ; to edit C code
+		("\\.h$"  . c-mode)     ; to edit C code
+		("\\.ec$" . c-mode)
+		("\\.php$" . c-mode)
+		) auto-mode-alist))
+(setq auto-mode-alist
+      (append
+       '(("\\.cpp\\'" . c++-mode))
+       '(("\\.h\\'" . c++-mode))
+       '(("\\.inl\\'" . c++-mode))
+       '(("\\.dox\\'" . c++-mode))
+       auto-mode-alist))
+(setq auto-mode-alist
+      (append
+       '(("\\.cmake\\'" . cmake-mode))
+       '(("CMakeLists\\.txt\\'" . cmake-mode))
+       auto-mode-alist))
+(setq auto-mode-alist
+      (append
+       '(("\\.rb$" . ruby-mode)
+         ("\\.cap$" . ruby-mode)
+         ("\\.rake$" . ruby-mode))
+       auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.hf$" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.inc$" . fortran-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.gob\\'" . c-mode))
+(setq auto-mode-alist (append (list (cons "\\.pl$" 'perl-mode))
+                              auto-mode-alist))
+(setq auto-mode-alist (append '(("\\.el$" . emacs-lisp-mode)
+                                ("\\.cl$" . lisp-mode)
+                                ("\\.lisp$" . lisp-mode))
                               auto-mode-alist))
 
 ;;;;;;;;;;
@@ -230,12 +234,6 @@
 ;;;;;;;;;;
 ;;; cc-mode (c-mode)
 ;;;;;;;;;;
-(setq auto-mode-alist
-      (append '(("\\.c$"  . c-mode)     ; to edit C code
-		("\\.h$"  . c-mode)     ; to edit C code
-		("\\.ec$" . c-mode)
-		("\\.php$" . c-mode)
-		) auto-mode-alist))
 (add-hook 'c-mode-hook
           (function
            (lambda ()
@@ -245,13 +243,6 @@
 ;;;;;;;;;;
 ;;;  c++-mode
 ;;;;;;;;;;
-(setq auto-mode-alist
-      (append
-       '(("\\.cpp\\'" . c++-mode))
-       '(("\\.h\\'" . c++-mode))
-       '(("\\.inl\\'" . c++-mode))
-       '(("\\.dox\\'" . c++-mode))
-       auto-mode-alist))
 (add-hook 'c++-mode-hook
           (function
            (lambda ()
@@ -262,11 +253,6 @@
 ;;;;;;;;;;
 ;;;  cmake-mode
 ;;;;;;;;;;
-(setq auto-mode-alist
-      (append
-       '(("\\.cmake\\'" . cmake-mode))
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
-       auto-mode-alist))
 (add-hook 'cmake-mode-hook
           (function
            (lambda ()
@@ -290,12 +276,6 @@
 ;;;;;;;;;;
 ;;;  ruby-mode
 ;;;;;;;;;;
-(setq auto-mode-alist
-      (append
-       '(("\\.rb$" . ruby-mode)
-         ("\\.cap$" . ruby-mode)
-         ("\\.rake$" . ruby-mode))
-       auto-mode-alist))
 (add-hook 'ruby-mode-hook
           (function
            (lambda ()
@@ -334,9 +314,6 @@
 ;;;;;;;;;;
 ;;;  fortran mode
 ;;;;;;;;;;
-(setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.hf$" . fortran-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.inc$" . fortran-mode) auto-mode-alist))
 (setq fortran-mode-hook
       '(lambda ()
          (fortran-auto-fill-mode 72)
@@ -381,41 +358,9 @@
 
 
 ;;;;;;;;;;
-;;;  php-mode
-;;;;;;;;;;
-;;(autoload 'php-mode "php-mode" "PHP editing mode" t)
-;;(add-to-list 'auto-mode-alist '("\\.php3\\'" . php-mode))
-;;(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-
-
-;;;;;;;;;;
-;;;  GOB files
-;;;;;;;;;;
-(add-to-list 'auto-mode-alist '("\\.gob\\'" . c-mode))
-
-
-;;;;;;;;;;
 ;;; perl-mode
 ;;;;;;;;;;
-;; (setq auto-mode-alist (append (list (cons "\\.pl$" 'cperl-mode))
-;;                        auto-mode-alist))
-
-;; (add-hook 'cperl-mode-hook
-;;        (function
-;;         (lambda ()
-;;           (fset 'my-perl-comment
-;;                 [15 32 escape 49 48 35 tab return 32 35 tab return
-;;                     32 escape 49 48 35 tab 16 32 32])
-;;           (fset 'my-perl-comment2
-;;                 (read-kbd-macro
-;;                  "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
-;;           (local-set-key "\C-cc" 'my-perl-comment)
-;;           (local-set-key "\C-cv" 'my-perl-comment2)
-;;           )))
-
 (autoload 'perl-mode "perl-mode" "Perl mode." t)
-(setq auto-mode-alist (append (list (cons "\\.pl$" 'perl-mode))
-                              auto-mode-alist))
 (add-hook 'perl-mode-hook
           (function
            (lambda ()
@@ -446,44 +391,6 @@
              (local-set-key "\C-cv" 'my-sh-comment)
              )))
 
-
-;;;;;;;;;;
-;;; ksh mode
-;;;;;;;;;;
-; (autoload 'ksh-mode "ksh-mode" "Major mode for editing sh Scripts." t)
-; (setq auto-mode-alist
-;       (append auto-mode-alist
-;             (list
-;              '("\\.sh$" . ksh-mode)
-;              '("\\.ksh$" . ksh-mode)
-;              '("\\.kshrc$" . ksh-mode)
-;                '("\\.bat" . ksh-mode)
-;                '("\\..*profile" . ksh-mode)
-;              )
-;             ))
-
-; (add-hook 'ksh-mode-hook
-;         (function
-;          (lambda ()
-;            (setq
-;             ksh-indent 2
-;             ksh-case-indent 4
-;             ksh-case-item-offset 2
-;             ksh-group-offset -2
-;             ksh-brace-offset 0
-;             ksh-multiline-offset 4
-;             ksh-tab-always-indent t
-;             ksh-match-and-tell t
-;             ksh-align-to-keyword t
-;             )
-;            (fset 'my-ksh-comment
-;                  [15 escape 49 48 35 tab return 35 tab return
-;                      escape 49 48 35 tab 16 32 32])
-;            (fset 'my-ksh-comment2
-;                  [15 35 tab return 35 tab return 35 tab 16 32 32])
-;            (local-set-key "\C-cc" 'my-ksh-comment)
-;            (local-set-key "\C-cv" 'my-ksh-comment2)
-;            )))
 
 ;;;;;;;;;;
 ;;;  mail mode
@@ -536,10 +443,6 @@
           (function my-lisp-mode-hook))
 (add-hook 'lisp-mode-hook
           (function my-lisp-mode-hook))
-(setq auto-mode-alist (append '(("\\.el$" . emacs-lisp-mode)
-                                ("\\.cl$" . lisp-mode)
-                                ("\\.lisp$" . lisp-mode))
-                              auto-mode-alist))
 
 ;;;;;;;;;;
 ;;;  outline mode
@@ -553,12 +456,6 @@
 ;;;;;;;;;;
 ;;;  hideshow mode
 ;;;;;;;;;;
-; (defun hs-my-show-level ()
-;   "Show next level, hiding nested levels."
-;   (interactive)
-;   (hs-show-block)
-;   (hs-hide-level 1))
-
 (add-hook 'hs-minor-mode-hook
           (function
            (lambda ()
@@ -578,14 +475,6 @@
                    [15 escape 49 48 59 return 59 59 59 return escape
                        49 48 59 16 32 32])
              (local-set-key "\C-cc" 'my-scheme-comment)
-             )))
-
-;;;;;;;;;;
-;;;  texinfo mode
-;;;;;;;;;;
-(add-hook 'texinfo-mode-hook
-          (function
-           (lambda ()
              )))
 
 ;;;;;;;;;;
@@ -636,9 +525,9 @@
 (defvar my-column-ruler
   (concat
    "        10        20        30        40"
-   "        50        60        70        80\n"
-   "    +    |    +    |    +    |    +    |"
-   "    +    |    +    |    +    |    +    |\n")
+   "        50        60        70        80        90       100\n"
+   "    +    |    +    |    +    |    +    |\n"
+   "    +    |    +    |    +    |    +    |    +    |    +    |\n")
   "*String displayed above current line by \\[my-column-ruler].")
 
 (defun my-column-ruler ()
