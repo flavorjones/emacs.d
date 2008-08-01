@@ -59,6 +59,8 @@
 (menu-bar-enable-clipboard)
 (ido-mode)
 (set-fill-column 100) ;; yay widescreen
+(auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
+
 (setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
 (setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
 
