@@ -798,6 +798,16 @@ The key typed is executed unless it is SPC."
 (add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
 
 ;;;
+;;;  org-mode
+;;;
+(add-hook 'org-mode-hook
+          '(lambda ()
+             ; set the org-mode-map to override any and all minor modes, because there are
+             ; critical collisions with camelCase mode (M-right, M-left).
+             (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
+             ))
+
+;;;
 ;;;  customize!
 ;;;
 (custom-set-variables
