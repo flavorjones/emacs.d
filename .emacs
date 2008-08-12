@@ -152,7 +152,7 @@
 (global-set-key "\C-c\C-fd" 'delete-frame)
 (global-set-key "\C-c\C-fs" 'speedbar)
 
-(global-set-key "\C-c;" 'comment-region)
+(global-set-key "\C-c;" 'comment-or-uncomment-region)
 
 ;;;
 ;;;  these so we can resize buffer windows using the mouse
@@ -291,6 +291,8 @@
 		   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
+             (setq case-fold-search t)
+             (setq ruby-electric-expand-delimiters-list nil)
              )))
 
 ;;;;;;;;;;
@@ -695,12 +697,19 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  org-mode
 ;;;
+(global-set-key "\C-ca" 'org-agenda)
 (add-hook 'org-mode-hook
           '(lambda ()
              ; set the org-mode-map to override any and all minor modes, because there are
              ; critical collisions with camelCase mode (M-right, M-left).
              (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
              ))
+
+;;;
+;;;  let's get ansi color support in shell
+;;;
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;;;
 ;;;  customize!
@@ -714,10 +723,13 @@ The key typed is executed unless it is SPC."
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
+ '(org-agenda-files (quote ("~/docs/notes/todo.org" "~/docs/notes/deep_data.org")))
+ '(org-drawers (quote ("PROPERTIES" "CLOCK" "CODE")))
  '(org-hide-leading-stars t)
  '(org-log-done (quote time))
  '(org-odd-levels-only t)
- '(org-startup-folded (quote content)))
+ '(org-startup-folded (quote content))
+ '(org-todo-keywords (quote ((sequence "TODO" "NEXT" "WAITING" "SOMEDAY" "DONE")))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
