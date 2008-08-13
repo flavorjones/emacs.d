@@ -305,7 +305,8 @@
 		   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
-             (setq case-fold-search t)
+             (setq case-fold-search t) ;; this should be in ruby-mode, imho.
+             (local-set-key "\t" 'indent-for-tab-command) ;; this should be in ruby-mode, imho.
              (setq ruby-electric-expand-delimiters-list nil)
 
              ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
