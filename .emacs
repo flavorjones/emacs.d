@@ -77,6 +77,7 @@
                                 ("\\.css$" . css-mode)
                                 ("\\.xml$" . xml-mode)
                                 ("\\.markdown$" . markdown-mode)
+                                ("\\.mdml$" . markdown-mode)
                                 ("\\.as$" . java-mode)) ; actionscript
                               auto-mode-alist))
 (setq auto-mode-alist
@@ -197,8 +198,8 @@
 ;;; shall we use tabs or spaces? t is tabs, nil is spaces.
              (setq indent-tabs-mode nil) ;;; nil forces spaces always
 ;;; set tabbing convention and display
-             (setq tab-width 4)
              (c-set-style "stroustrup")
+             (setq c-basic-offset 2)
 ;;; make inline function definitions indent like i want
              (let ((CELL (assq 'inline-open c-offsets-alist)))
                (cond ((consp CELL) (setcdr CELL 0))
@@ -731,6 +732,19 @@ The key typed is executed unless it is SPC."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;;;
+;;;  git support
+;;;
+;; (setq load-path (cons (expand-file-name "/usr/share/doc/git-core/contrib/emacs") load-path))
+;; (require 'vc-git)
+;; (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
+;; (require 'git)
+;; (autoload 'git-blame-mode "git-blame"
+;;   "Minor mode for incremental blame for Git." t)
+
+;;; "she bangs, she bangs." -William Hung
+(require 'shebang)
+
+;;;
 ;;;  customize!
 ;;;
 (custom-set-variables
@@ -738,12 +752,18 @@ The key typed is executed unless it is SPC."
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(ido-case-fold nil)
  '(ido-confirm-unique-completion t)
+ '(ido-enable-dot-prefix t)
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
+ '(js2-enter-indents-newline nil)
+ '(js2-mirror-mode nil)
+ '(js2-mode-indent-ignore-first-tab t)
  '(org-agenda-files (quote ("~/docs/notes/todo.org" "~/docs/notes/deep_data.org")))
  '(org-drawers (quote ("PROPERTIES" "CLOCK" "CODE")))
+ '(org-file-apps (quote (("txt" . emacs) ("tex" . emacs) ("ltx" . emacs) ("org" . emacs) ("el" . emacs) ("bib" . emacs) ("pdf" . "evince '%s'"))))
  '(org-hide-leading-stars t)
  '(org-log-done (quote time))
  '(org-odd-levels-only t)
@@ -755,3 +775,5 @@ The key typed is executed unless it is SPC."
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+(put 'narrow-to-region 'disabled nil)
