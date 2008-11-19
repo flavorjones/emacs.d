@@ -744,6 +744,12 @@ The key typed is executed unless it is SPC."
 ;;; "she bangs, she bangs." -William Hung
 (require 'shebang)
 
+;;;  i loves me some emacs server.
+(server-start)
+
+;;;  let's try global-auto-revert in case i need to pair program
+(global-auto-revert-mode 1)
+
 ;;;
 ;;;  customize!
 ;;;
