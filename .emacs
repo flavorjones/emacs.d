@@ -12,7 +12,7 @@
 ;;;
 ;;;  local emacs stuff (if any)
 ;;;
-(setq load-path (append '("~/.elisp") load-path))
+(setq load-path (append '("~/.emacs.d") load-path))
 (load "mylocal")
 
 ;;;;;;;;;;
@@ -713,6 +713,70 @@ The key typed is executed unless it is SPC."
 ;;;
 (autoload 'camelCase-mode "camelCase-mode" nil t)
 (add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
+
+;;;
+;;;  emacs ruby on rails mode
+;;;
+;; (setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
+;; (require 'rails)
+;; (add-hook 'ruby-mode-hook '(lambda () (menu-bar-mode 1)))
+
+;;;  latest ruby-mode
+(add-to-list 'load-path "~/.emacs.d/ruby-mode")
+(require 'ruby-mode)
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+
+;;;  rinari
+(add-to-list 'load-path "~/.emacs.d/rinari")
+(require 'rinari)
+(global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
+(setq rinari-tags-file-name "TAGS")
+
+;;; rhtml
+(add-to-list 'load-path "~/.emacs.d/rhtml")
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook
+     	  (lambda () (rinari-launch)))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
+
+;;; nxml (HTML ERB template support)
+;; (load "~/.emacs.d/nxhtml/autostart.el")
+     
+;; (setq
+;;  nxhtml-global-minor-mode t
+;;  mumamo-chunk-coloring 'submode-colored
+;;  nxhtml-skip-welcome t
+;;  indent-region-mode t
+;;  rng-nxml-auto-validate-flag nil
+;;  nxml-degraded t)
+;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
+
+;;; yasnippet
+(require 'yasnippet-bundle)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
+
+;;;
+;;;  yegge's js2 mode
+;;;
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook
+          (function
+           (lambda ()
+             (fset 'my-cpp-comment-wide
+                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
+                          return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
+             (fset 'my-cpp-comment
+                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
+                          ?\C-p ?  ? ])
+             (local-set-key "\C-cc" 'my-cpp-comment-wide)
+             (local-set-key "\C-cv" 'my-cpp-comment)
+             )))
+
+;;; pastie
+(load "pastie.el")
 
 ;;;
 ;;;  org-mode
