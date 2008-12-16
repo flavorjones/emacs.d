@@ -135,8 +135,13 @@ file symlink_name => symlink_target do
 end
 
 
-desc "remove all traces of the installation"
+desc "remove ~/.emacs"
 task :clean do
+  FileUtils.rm symlink_name if File.exists? symlink_name
+end
+
+desc "remove all external package files"
+task 'clean:all' do
   targets = INSTALL_TARGETS.select {|f| f.is_a?(String) && File.exists?(f) }
   files = targets.select {|f| ! File.directory?(f)}
   dirs = targets.select {|f| File.directory?(f)}
