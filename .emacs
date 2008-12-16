@@ -10,10 +10,9 @@
 
 
 ;;;
-;;;  local emacs stuff (if any)
+;;;  our external resources
 ;;;
 (setq load-path (append '("~/.emacs.d") load-path))
-(load "mylocal")
 
 ;;;;;;;;;;
 ;;;  color themes and font-lock mode setup
