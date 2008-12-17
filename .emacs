@@ -55,7 +55,7 @@
 ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
 (set-scroll-bar-mode 'right)
 (global-font-lock-mode t)
-(menu-bar-enable-clipboard)
+(if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
 (ido-mode)
 (set-fill-column 100) ;; yay widescreen
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
@@ -67,6 +67,9 @@
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
 ;; is used by git, svn, etc.)
 (when window-system (desktop-save-mode 1))
+
+(setq mike:i-am-a-mac (boundp 'mac-command-modifier))
+(if mike:i-am-a-mac (setq mac-command-modifier 'meta))
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -123,8 +126,7 @@
 ;;;;;;;;;;
 ;;;  minibuffer resizes dynamically
 ;;;;;;;;;;
-(autoload 'resize-minibuffer-mode "rsz-mini" nil t)
-(resize-minibuffer-mode)
+(if (load "rsz-mini" t) (resize-minibuffer-mode))
 
 ;;;;;;;;;;
 ;;; key bindings
@@ -700,7 +702,9 @@ The key typed is executed unless it is SPC."
                            (global-set-key [?\C-+] 'mike:increase-font-size)
                            (global-set-key [?\C--] 'mike:decrease-font-size)
     
-                           (mike:set-font-size 10)
+                           (if mike:i-am-a-mac
+                               (mike:set-font-size 16)
+                               (mike:set-font-size 10))
                            (mike:set-font-face "Bitstream Vera Sans Mono")
 ;;;                            (mike:set-font-size 9)
 ;;;                            (mike:set-font-face "Bitstream Vera Sans")
