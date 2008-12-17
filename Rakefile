@@ -137,7 +137,10 @@ end
 
 desc "remove ~/.emacs"
 task :clean do
-  FileUtils.rm symlink_name if File.exists? symlink_name
+  if File.exists? symlink_name
+    puts "deleting file #{symlink_name}"
+    FileUtils.rm symlink_name 
+  end    
 end
 
 desc "remove all external package files"
