@@ -761,6 +761,12 @@ The key typed is executed unless it is SPC."
 (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
 
 ;;;
+;;;  rspec-mode (minor)
+;;;
+(add-to-list 'load-path "~/.emacs.d/rspec")
+(load "rspec-mode")
+
+;;;
 ;;;  yegge's js2 mode
 ;;;
 (autoload 'js2-mode "js2" nil t)
