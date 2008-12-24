@@ -105,6 +105,9 @@ INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
 file rinari_dir do
   puts "* checking out rinari ..."
   puts %x(git clone git://github.com/mdalessio/rinari.git rinari)
+  Dir.chdir("rinari") do
+    puts %x(git checkout -b local-mods origin/local-mods)
+  end
   Rake::Task[:update_rinari_submodules].invoke
 end
 task :update_rinari_submodules do
