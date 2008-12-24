@@ -764,7 +764,14 @@ The key typed is executed unless it is SPC."
 ;;;  rspec-mode (minor)
 ;;;
 (add-to-list 'load-path "~/.emacs.d/rspec")
-(load "rspec-mode")
+(if (load "rspec-mode" t)
+    (add-hook 'ruby-mode-hook
+              (function
+               (lambda ()
+                 (local-set-key "\C-x\C-t" 'run-specs)
+                 (local-set-key "\C-xt" 'run-focused-spec)
+                 )))
+  )
 
 ;;;
 ;;;  yegge's js2 mode
