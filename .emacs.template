@@ -728,16 +728,6 @@ The key typed is executed unless it is SPC."
 (add-to-list 'load-path "~/.emacs.d/ruby-mode")
 (require 'ruby-mode)
 (require 'ruby-electric)
-;; working around rinari's ruby-compilation keymaps in rspec mode
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (ruby-electric-mode t)
-                             (local-set-key "\C-x\C-t" 'ruby-compilation-this-test)
-                             (local-set-key "\C-xt" 'ruby-compilation-this-buffer)
-                             ))
-(add-hook 'ruby-electric-mode-hook '(lambda ()
-                                      (local-unset-key "\C-x\C-t")
-                                      (local-unset-key "\C-xt")
-                                      ))
 
 ;;;  rinari
 (add-to-list 'load-path "~/.emacs.d/rinari")
@@ -768,18 +758,6 @@ The key typed is executed unless it is SPC."
 (require 'yasnippet-bundle)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
-
-;;;
-;;;  rspec-mode (minor)
-;;;
-(add-to-list 'load-path "~/.emacs.d/rspec")
-(load "rspec-mode")
-(add-hook 'rspec-mode-hook
-          (function
-           (lambda ()
-             (local-set-key "\C-xt" 'run-specs)
-             (local-set-key "\C-x\C-t" 'run-focused-spec)
-             )))
 
 ;;;
 ;;;  yegge's js2 mode

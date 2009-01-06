@@ -59,10 +59,6 @@ end
 # ruby-mode
 svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
 
-# rspec-mode
-wget_target "rspec/rspec-mode.el", "http://github.com/pat-maddox/myconfig/raw/master/dot.emacs.d/rspec-mode.el"
-wget_target "rspec/linkify.el", "http://github.com/pat-maddox/myconfig/raw/master/dot.emacs.d/site-lisp/linkify.el"
-
 # js2-mode
 svn_target "js2", "http://js2-mode.googlecode.com/svn/trunk" do
   Dir.chdir "js2" do
