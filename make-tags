@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+if which ctags-exuberant > /dev/null ; then
+    TAGS=ctags-exuberant
+elif which xctags > /dev/null ; then
+    TAGS=xctags
+else
+    echo "ERROR: could not find a ctag program"
+    exit 1
+fi
+
+find . -name '*.rb' | xargs $TAGS --extra=+f
