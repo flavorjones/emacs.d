@@ -8,4 +8,4 @@ else
     exit 1
 fi
 
-find . -name '*.rb' | xargs $TAGS --extra=+f
+find . -name '*.rb' | xargs $TAGS --extra=+f -e
