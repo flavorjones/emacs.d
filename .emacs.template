@@ -845,6 +845,7 @@ The key typed is executed unless it is SPC."
   ;; If there is more than one, they won't work right.
  '(ido-case-fold nil)
  '(ido-confirm-unique-completion t)
+ '(ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
  '(ido-enable-dot-prefix t)
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
