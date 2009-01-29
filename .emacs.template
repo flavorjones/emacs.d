@@ -192,6 +192,14 @@
              (local-set-key "\C-c\C-l" 'longlines-mode)
              )))
 
+;;;
+;;;  css-mode
+;;;
+(add-hook 'css-mode-hook
+          '(lambda ()
+             (setq css-indent-offset 2)
+             ))
+
 ;;;;;;;;;;
 ;;;  common c modes
 ;;;;;;;;;;
@@ -740,7 +748,9 @@ The key typed is executed unless it is SPC."
 (setq rinari-tags-file-name "TAGS")
 
 ;;; cucumber
-(require 'cucumber)
+(add-to-list 'load-path "~/.emacs.d/cucumber")
+(load "cucumber-mode")
+(require 'cucumber-mode-compilation)
 
 ;;; rhtml
 (add-to-list 'load-path "~/.emacs.d/rhtml")
