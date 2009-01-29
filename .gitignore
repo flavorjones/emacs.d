@@ -6,3 +6,4 @@ ruby-mode
 yasnippets-rails
 .emacs
 rspec
+cucumber

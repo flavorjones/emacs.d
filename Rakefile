@@ -120,6 +120,9 @@ git_target "rhtml", "git://github.com/eschulte/rhtml.git"
 # yasnippets for rails
 git_target "yasnippets-rails", "git://github.com/mdalessio/yasnippets-rails.git"
 
+# cucumber
+git_target "cucumber", "git://github.com/michaelklishin/cucumber.el.git"
+
 # generate ~/.emacs from template
 dotemacs_target = File.join(@target_path, ".emacs")
 INSTALL_TARGETS << dotemacs_target
