@@ -38,6 +38,9 @@
 ;;;;;;;;;;
 ;;; general variables, functions
 ;;;;;;;;;;
+(setq mike:i-am-a-mac (boundp 'mac-command-modifier))
+(if mike:i-am-a-mac (setq mac-command-modifier 'meta))
+
 (line-number-mode t)
 (transient-mark-mode t)
 (setq default-major-mode 'text-mode)
@@ -51,7 +54,9 @@
   (mwheel-install))
 ;;; turn off all the decorations and gui-helpful bullshit
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (and (fboundp 'menu-bar-mode)
+         (not mike:i-am-a-mac))
+    (menu-bar-mode -1))
 ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
 (set-scroll-bar-mode 'right)
 (global-font-lock-mode t)
@@ -67,9 +72,6 @@
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
 ;; is used by git, svn, etc.)
 (when window-system (desktop-save-mode 1))
-
-(setq mike:i-am-a-mac (boundp 'mac-command-modifier))
-(if mike:i-am-a-mac (setq mac-command-modifier 'meta))
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
