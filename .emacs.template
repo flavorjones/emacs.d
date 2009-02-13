@@ -674,70 +674,72 @@ The key typed is executed unless it is SPC."
 ;;;;;;;;;;
 ;;;  some nice font shit
 ;;;;;;;;;;
-(defun what-font ()
-  (interactive)
-  (message (frame-parameter nil 'font)))
+(cond (window-system
+       (defun what-font ()
+         (interactive)
+         (message (frame-parameter nil 'font)))
 
-(requires-emacs-version 23
-                        '(lambda ()
-                           (setq mike:font-face nil)
-                           (setq mike:font-size nil)
-                           (setq mike:font-bold-p nil)
+       (requires-emacs-version 23
+                               '(lambda ()
+                                  (setq mike:font-face nil)
+                                  (setq mike:font-size nil)
+                                  (setq mike:font-bold-p nil)
 
-                           (defun mike:set-font-face (face)
-                             (interactive)
-                             (setq mike:font-face face)
-                             (mike:enact-font))
+                                  (defun mike:set-font-face (face)
+                                    (interactive)
+                                    (setq mike:font-face face)
+                                    (mike:enact-font))
 
-                           (defun mike:set-font-size (size)
-                             (interactive)
-                             (setq mike:font-size size)
-                             (mike:enact-font))
+                                  (defun mike:set-font-size (size)
+                                    (interactive)
+                                    (setq mike:font-size size)
+                                    (mike:enact-font))
 
-                           (defun mike:set-font-bold (boldp)
-                             (interactive)
-                             (setq mike:font-bold-p boldp)
-                             (mike:enact-font))
+                                  (defun mike:set-font-bold (boldp)
+                                    (interactive)
+                                    (setq mike:font-bold-p boldp)
+                                    (mike:enact-font))
 
-                           (defun mike:enact-font ()
-                             (if (and mike:font-face mike:font-size)
-                                 (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
-                                   (if mike:font-bold-p
-                                       (setq font (concat font ":bold")))
-                                   (set-default-font font)
-                                   (prin1 font))))
+                                  (defun mike:enact-font ()
+                                    (if (and mike:font-face mike:font-size)
+                                        (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
+                                          (if mike:font-bold-p
+                                              (setq font (concat font ":bold")))
+                                          (set-default-font font)
+                                          (prin1 font))))
 
-                           (defun mike:modify-font-size (increment)
-                             (setq mike:font-size (+ mike:font-size increment))
-                             (mike:enact-font))
+                                  (defun mike:modify-font-size (increment)
+                                    (setq mike:font-size (+ mike:font-size increment))
+                                    (mike:enact-font))
 
-                           (defun mike:increase-font-size ()
-                             (interactive)
-                             (mike:modify-font-size 1))
+                                  (defun mike:increase-font-size ()
+                                    (interactive)
+                                    (mike:modify-font-size 1))
     
-                           (defun mike:decrease-font-size ()
-                             (interactive)
-                             (mike:modify-font-size -1))
+                                  (defun mike:decrease-font-size ()
+                                    (interactive)
+                                    (mike:modify-font-size -1))
     
-                           (defun mike:toggle-font-bold ()
-                             (interactive)
-                             (if mike:font-bold-p
-                                 (mike:set-font-bold nil)
-                                 (mike:set-font-bold t)))
+                                  (defun mike:toggle-font-bold ()
+                                    (interactive)
+                                    (if mike:font-bold-p
+                                        (mike:set-font-bold nil)
+                                      (mike:set-font-bold t)))
 
-                           (global-set-key [?\C-=] 'mike:increase-font-size)
-                           (global-set-key [?\C-+] 'mike:increase-font-size)
-                           (global-set-key [?\C--] 'mike:decrease-font-size)
-                           (global-set-key [?\C-_] 'mike:toggle-font-bold)
+                                  (global-set-key [?\C-=] 'mike:increase-font-size)
+                                  (global-set-key [?\C-+] 'mike:increase-font-size)
+                                  (global-set-key [?\C--] 'mike:decrease-font-size)
+                                  (global-set-key [?\C-_] 'mike:toggle-font-bold)
     
-                           (if mike:i-am-a-mac
-                               (mike:set-font-size 16)
-                               (mike:set-font-size 10))
-                           (mike:set-font-face "Bitstream Vera Sans Mono")
+                                  (if mike:i-am-a-mac
+                                      (mike:set-font-size 16)
+                                    (mike:set-font-size 10))
+                                  (mike:set-font-face "Bitstream Vera Sans Mono")
 ;;;                            (mike:set-font-size 9)
 ;;;                            (mike:set-font-face "Bitstream Vera Sans")
 
-                           ))
+                                  ))
+       ))
 
 ;;;
 ;;;  camelCase
