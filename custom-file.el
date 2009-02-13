@@ -20,7 +20,8 @@
  '(org-log-done (quote time))
  '(org-odd-levels-only t)
  '(org-startup-folded (quote content))
- '(org-todo-keywords (quote ((sequence "TODO" "NEXT" "WAITING" "SOMEDAY" "DONE")))))
+ '(org-todo-keywords (quote ((sequence "TODO" "NEXT" "WAITING" "SOMEDAY" "DONE"))))
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
