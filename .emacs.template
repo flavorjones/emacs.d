@@ -76,13 +76,16 @@
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
 ;;;;;;;;;;
-(setq auto-mode-alist (append '(("\\.mxml$" . xml-mode)
+(setq auto-mode-alist (append '(
+                                ("\\.mxml$" . xml-mode)
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
                                 ("\\.xml$" . xml-mode)
                                 ("\\.markdown$" . markdown-mode)
                                 ("\\.mdml$" . markdown-mode)
-                                ("\\.as$" . java-mode)) ; actionscript
+                                ("\\.as$" . java-mode) ; actionscript
+                                ("\\.m$" . matlab-mode) ; actionscript
+                                )
                               auto-mode-alist))
 (setq auto-mode-alist
       (append '(("\\.c$"  . c-mode)     ; to edit C code
@@ -750,10 +753,6 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  emacs ruby on rails mode
 ;;;
-;; (setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
-;; (require 'rails)
-;; (add-hook 'ruby-mode-hook '(lambda () (menu-bar-mode 1)))
-
 ;;;  latest ruby-mode
 (add-to-list 'load-path "~/.emacs.d/ruby-mode")
 (require 'ruby-mode)
@@ -761,10 +760,10 @@ The key typed is executed unless it is SPC."
 
 ;;;  rinari
 (add-to-list 'load-path "~/.emacs.d/rinari")
+(setq rinari-minor-mode-prefixes (list "'"))
 (require 'rinari)
 (require 'ruby-compilation-rspec)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
-(setq rinari-tags-file-name "TAGS")
 
 ;;; cucumber
 (add-to-list 'load-path "~/.emacs.d/cucumber")
@@ -777,18 +776,6 @@ The key typed is executed unless it is SPC."
 (add-hook 'rhtml-mode-hook
      	  (lambda () (rinari-launch)))
 (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
-
-;;; nxml (HTML ERB template support)
-;; (load "~/.emacs.d/nxhtml/autostart.el")
-     
-;; (setq
-;;  nxhtml-global-minor-mode t
-;;  mumamo-chunk-coloring 'submode-colored
-;;  nxhtml-skip-welcome t
-;;  indent-region-mode t
-;;  rng-nxml-auto-validate-flag nil
-;;  nxml-degraded t)
-;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;; yasnippet
 (require 'yasnippet-bundle)
@@ -847,7 +834,7 @@ The key typed is executed unless it is SPC."
 (require 'shebang)
 
 ;;;  i loves me some emacs server.
-(server-start)
+(cond (window-system (server-start)))
 
 ;;;  let's try global-auto-revert in case i need to pair program
 (global-auto-revert-mode 1)
