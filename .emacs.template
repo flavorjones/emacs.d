@@ -678,6 +678,9 @@ The key typed is executed unless it is SPC."
 ;;;  some nice font shit
 ;;;;;;;;;;
 (cond (window-system
+       (cond (mike:i-am-a-mac
+              (set-frame-parameter nil 'alpha '(85 50)) ))
+
        (defun what-font ()
          (interactive)
          (message (frame-parameter nil 'font)))
@@ -735,7 +738,7 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
     
                                   (if mike:i-am-a-mac
-                                      (mike:set-font-size 16)
+                                      (mike:set-font-size 14)
                                     (mike:set-font-size 10))
                                   (mike:set-font-face "Bitstream Vera Sans Mono")
 ;;;                            (mike:set-font-size 9)
