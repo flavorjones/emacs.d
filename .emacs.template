@@ -85,6 +85,7 @@
                                 ("\\.xml$" . xml-mode)
                                 ("\\.markdown$" . markdown-mode)
                                 ("\\.mdml$" . markdown-mode)
+                                ("\\.md$" . markdown-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
                                 )
@@ -111,7 +112,8 @@
       (append
        '(("\\.rb$" . ruby-mode)
          ("\\.cap$" . ruby-mode)
-         ("\\.rake$" . ruby-mode))
+         ("\\.rake$" . ruby-mode)
+         ("Rakefile" . ruby-mode))
        auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.hf$" . fortran-mode) auto-mode-alist))
