@@ -170,8 +170,15 @@ task 'clean:all' do
 end
 
 desc "install external emacs packages"
-task :default => INSTALL_TARGETS
+task :external => INSTALL_TARGETS
 
 desc "update external emacs packages"
 task :update => UPDATE_TARGETS
 
+desc "byte-compile .el files in root directory"
+task :compile do
+  `emacs -batch -q -f batch-byte-compile *.el`
+end
+
+desc "install external packages, byte-compile local files, and install ~/.emacs"
+task :default => [:external, :compile, :install]

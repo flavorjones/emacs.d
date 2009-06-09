@@ -1,5 +1,5 @@
 js2
-js2.elc
+*.elc
 rhtml
 rinari
 ruby-mode
