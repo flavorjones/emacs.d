@@ -195,6 +195,7 @@
 ;;;
 ;;;  markdown-mode
 ;;;
+(autoload 'markdown-mode "markdown-mode" nil t)
 (add-hook 'markdown-mode-hook
           (function
            (lambda ()
