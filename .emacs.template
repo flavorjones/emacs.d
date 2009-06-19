@@ -113,7 +113,10 @@
        '(("\\.rb$" . ruby-mode)
          ("\\.cap$" . ruby-mode)
          ("\\.rake$" . ruby-mode)
-         ("Rakefile" . ruby-mode))
+         ("Rakefile" . ruby-mode)
+         ("Thorfile" . ruby-mode)
+         ("\\.thor$" . ruby-mode)
+         )
        auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.hf$" . fortran-mode) auto-mode-alist))
@@ -845,7 +848,10 @@ The key typed is executed unless it is SPC."
 (cond (window-system (server-start)))
 
 ;;;  let's try global-auto-revert in case i need to pair program
+;;;  also more better auto-save behavior
 (global-auto-revert-mode 1)
+(setq auto-save-timeout 5)
+(setq auto-save-visited-file-name t)
 
 ;; move autosave files somewhere out of the directory path
 ;; http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
