@@ -78,6 +78,7 @@
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
 ;;;;;;;;;;
+(load "rnc-mode") ;;;  relax-ng compact mode
 (setq auto-mode-alist (append '(
                                 ("\\.mxml$" . xml-mode)
                                 ("\\.html$" . html-mode)
@@ -88,6 +89,7 @@
                                 ("\\.md$" . markdown-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
+                                ("\\.rnc$" . rnc-mode) ; relax-ng compact
                                 )
                               auto-mode-alist))
 (setq auto-mode-alist
@@ -686,8 +688,10 @@ The key typed is executed unless it is SPC."
 ;;;  some nice font shit
 ;;;;;;;;;;
 (cond (window-system
-       (cond (mike:i-am-a-mac
-              (set-frame-parameter nil 'alpha '(85 50)) ))
+;;;        (cond (mike:i-am-a-mac
+;;;               (set-frame-parameter nil 'alpha '(85 50)) ))
+       (if (not mike:i-am-a-mac)
+           (set-frame-parameter nil 'font-backend '(xft x)))
 
        (defun what-font ()
          (interactive)
@@ -748,10 +752,11 @@ The key typed is executed unless it is SPC."
                                   (if mike:i-am-a-mac
                                       (mike:set-font-size 14)
                                     (mike:set-font-size 10))
-                                  (mike:set-font-face "Bitstream Vera Sans Mono")
-;;;                            (mike:set-font-size 9)
-;;;                            (mike:set-font-face "Bitstream Vera Sans")
 
+                                  (if mike:i-am-a-mac
+                                      (mike:set-font-face "Bitstream Vera Sans Mono")
+                                    ;; how ironic.
+                                    (mike:set-font-face "Menlo"))
                                   ))
        ))
 
@@ -850,8 +855,10 @@ The key typed is executed unless it is SPC."
 ;;;  let's try global-auto-revert in case i need to pair program
 ;;;  also more better auto-save behavior
 (global-auto-revert-mode 1)
-(setq auto-save-timeout 5)
-(setq auto-save-visited-file-name t)
+(when mike:i-am-a-mac
+  (setq auto-save-timeout 5)
+  (setq auto-save-visited-file-name t)
+  )
 
 ;; move autosave files somewhere out of the directory path
 ;; http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
