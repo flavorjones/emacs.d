@@ -690,8 +690,6 @@ The key typed is executed unless it is SPC."
 (cond (window-system
 ;;;        (cond (mike:i-am-a-mac
 ;;;               (set-frame-parameter nil 'alpha '(85 50)) ))
-       (if (not mike:i-am-a-mac)
-           (set-frame-parameter nil 'font-backend '(xft x)))
 
        (defun what-font ()
          (interactive)
