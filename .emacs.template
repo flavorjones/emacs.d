@@ -796,12 +796,16 @@ The key typed is executed unless it is SPC."
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
 
-;;;
 ;;;  yegge's js2 mode
-;;;
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-hook 'js2-mode-hook
+;; (autoload 'js2-mode "js2" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;;  espresso js mode
+(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
+(setq espresso-indent-level 2)
+(add-hook 'espresso-mode-hook
           (function
            (lambda ()
              (fset 'my-cpp-comment-wide

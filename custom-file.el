@@ -7,6 +7,7 @@
  '(ido-confirm-unique-completion nil)
  '(ido-enable-dot-prefix t)
  '(ido-enable-flex-matching t)
+ '(ido-enter-matching-directory (quote first))
  '(ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
