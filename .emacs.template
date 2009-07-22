@@ -702,12 +702,12 @@ The key typed is executed unless it is SPC."
                                   (setq mike:font-bold-p nil)
 
                                   (defun mike:set-font-face (face)
-                                    (interactive)
+                                    (interactive "MFont name: ")
                                     (setq mike:font-face face)
                                     (mike:enact-font))
 
                                   (defun mike:set-font-size (size)
-                                    (interactive)
+                                    (interactive "nFont size: ")
                                     (setq mike:font-size size)
                                     (mike:enact-font))
 
@@ -781,7 +781,7 @@ The key typed is executed unless it is SPC."
 
 ;;; cucumber
 (add-to-list 'load-path "~/.emacs.d/cucumber")
-(load "cucumber-mode")
+(load "feature-mode")
 (require 'cucumber-mode-compilation)
 
 ;;; rhtml
