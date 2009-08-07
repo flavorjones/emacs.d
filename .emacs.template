@@ -157,8 +157,6 @@
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'toggle-read-only)
 (global-set-key "\C-co" 'my-find-other-file)
-(global-set-key [\C-tab] 'yic-next-buffer)
-(global-set-key [\S-tab] 'yic-prev-buffer)
 
 ;;;  binding for opening a new line below point without splitting the line
 (global-set-key [\C-return] [?\C-a ?\C-n ?\C-o tab])
@@ -683,6 +681,8 @@ The key typed is executed unless it is SPC."
   (bury-buffer (current-buffer))
   (yic-next (buffer-list)))
 
+;; (global-set-key [\C-tab] 'yic-next-buffer)
+;; (global-set-key [\S-tab] 'yic-prev-buffer)
 
 ;;;;;;;;;;
 ;;;  some nice font shit
