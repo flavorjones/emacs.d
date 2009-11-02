@@ -80,16 +80,13 @@
 ;;;;;;;;;;
 (load "rnc-mode") ;;;  relax-ng compact mode
 (setq auto-mode-alist (append '(
+                                ("\\.xml$" . xml-mode)
                                 ("\\.mxml$" . xml-mode)
+                                ("\\.rnc$" . rnc-mode)
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
-                                ("\\.xml$" . xml-mode)
-                                ("\\.markdown$" . markdown-mode)
-                                ("\\.mdml$" . markdown-mode)
-                                ("\\.md$" . markdown-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
-                                ("\\.rnc$" . rnc-mode) ; relax-ng compact
                                 )
                               auto-mode-alist))
 (setq auto-mode-alist
@@ -199,6 +196,10 @@
 ;;;  markdown-mode
 ;;;
 (autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.markdown$"  . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mdml$"      . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$"        . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.slidedown$" . markdown-mode))
 (add-hook 'markdown-mode-hook
           (function
            (lambda ()

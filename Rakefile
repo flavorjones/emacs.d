@@ -60,21 +60,21 @@ end
 svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
 
 # js2-mode
-svn_target "js2", "http://js2-mode.googlecode.com/svn/trunk" do
-  Dir.chdir "js2" do
-    puts "* compiling yegge's awesome j2 mode ..."
-    puts %x(make)
-    FileUtils.mv File.join(@target_path, "js2", "build", "js2.elc"), @js2_elc
-  end
-end
+# svn_target "js2", "http://js2-mode.googlecode.com/svn/trunk" do
+#   Dir.chdir "js2" do
+#     puts "* compiling yegge's awesome j2 mode ..."
+#     puts %x(make)
+#     FileUtils.mv File.join(@target_path, "js2", "build", "js2.elc"), @js2_elc
+#   end
+# end
 
-INSTALL_TARGETS << @js2_elc = File.join(@target_path, "js2.elc")
-js2_el = File.join(@target_path, "js2", "build", "js2.el")
+# INSTALL_TARGETS << @js2_elc = File.join(@target_path, "js2.elc")
+# js2_el = File.join(@target_path, "js2", "build", "js2.el")
 
-file @js2_elc => js2_el
-file js2_el do
-  Rake::Task[:update_js2].invoke
-end
+# file @js2_elc => js2_el
+# file js2_el do
+#   Rake::Task[:update_js2].invoke
+# end
 
 
 # exuberant ctags
