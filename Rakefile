@@ -100,7 +100,7 @@ INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
 
 file rinari_dir do
   puts "* checking out rinari ..."
-  puts %x(git clone git://github.com/mdalessio/rinari.git rinari)
+  puts %x(git clone git://github.com/flavorjones/rinari.git rinari)
   Rake::Task[:update_rinari_submodules].invoke
 end
 task :update_rinari_submodules do
@@ -118,7 +118,7 @@ end
 git_target "rhtml", "git://github.com/eschulte/rhtml.git"
 
 # yasnippets for rails
-git_target "yasnippets-rails", "git://github.com/mdalessio/yasnippets-rails.git"
+git_target "yasnippets-rails", "git://github.com/flavorjones/yasnippets-rails.git"
 
 # cucumber
 git_target "cucumber", "git://github.com/michaelklishin/cucumber.el.git"
