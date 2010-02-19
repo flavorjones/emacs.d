@@ -749,14 +749,15 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
     
                                   (if mike:i-am-a-mac
-                                      (mike:set-font-size 14)
-                                    (mike:set-font-size 10))
-
-                                  (if mike:i-am-a-mac
-                                      (mike:set-font-face "Bitstream Vera Sans Mono")
-                                    ;; how ironic.
-                                    (mike:set-font-face "Menlo"))
-                                  ))
+                                      (progn()(
+                                               (mike:set-font-size 14)
+                                               (mike:set-font-face "Bitstream Vera Sans Mono")
+                                               ))
+                                    (mike:set-font-size 11)
+                                    (mike:set-font-face "Menlo")
+                                    (mike:set-font-bold t)
+                                    ))
+                               )
        ))
 
 ;;;
