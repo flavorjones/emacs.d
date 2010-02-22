@@ -30,7 +30,7 @@ def git_target name, giturl
   dir_path = File.join(@target_path, name)
   INSTALL_TARGETS << dir_path
   file dir_path do
-    puts "* checking out latest #{name} ..."
+    puts "* checking out latest #{name} from #{giturl} ..."
     puts %x(git clone #{giturl} #{name})
   end
   add_task_to_git_update name
@@ -113,6 +113,9 @@ end
 add_task_to_git_update "rinari" do
   Rake::Task[:update_rinari_submodules].invoke
 end
+
+# clojure-mode
+git_target "clojure", "git://github.com/jochu/clojure-mode"
 
 # rhtml-mode
 git_target "rhtml", "git://github.com/eschulte/rhtml.git"
