@@ -114,9 +114,6 @@ add_task_to_git_update "rinari" do
   Rake::Task[:update_rinari_submodules].invoke
 end
 
-# clojure-mode
-git_target "clojure", "git://github.com/jochu/clojure-mode"
-
 # rhtml-mode
 git_target "rhtml", "git://github.com/eschulte/rhtml.git"
 
