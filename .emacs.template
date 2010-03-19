@@ -42,7 +42,7 @@
 (if mike:i-am-a-mac (setq mac-command-modifier 'meta))
 
 (line-number-mode t)
-(if mike:i-am-a-mac (global-linum-mode t))
+(global-linum-mode t)
 
 (transient-mark-mode t)
 (setq default-major-mode 'text-mode)
@@ -51,16 +51,13 @@
 (display-time)
 (set-input-mode nil nil t)       ; so we can use ALT as a META key (?)
 (setq-default indent-tabs-mode nil)
-(when window-system
-  ;; enable wheelmouse support by default
-  (mwheel-install))
+(when window-system (mwheel-install)) ;; enable wheelmouse support by default
+
 ;;; turn off all the decorations and gui-helpful bullshit
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (and (fboundp 'menu-bar-mode)
-         (not mike:i-am-a-mac))
-    (menu-bar-mode -1))
-;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
-(set-scroll-bar-mode 'right)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(set-scroll-bar-mode 'right) ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
+
 (global-font-lock-mode t)
 (if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
 (ido-mode)
@@ -91,10 +88,10 @@
                               auto-mode-alist))
 (setq auto-mode-alist
       (append '(("\\.c$"  . c-mode)     ; to edit C code
-		("\\.h$"  . c-mode)     ; to edit C code
-		("\\.ec$" . c-mode)
-		("\\.php$" . c-mode)
-		) auto-mode-alist))
+                ("\\.h$"  . c-mode)     ; to edit C code
+                ("\\.ec$" . c-mode)
+                ("\\.php$" . c-mode)
+                ) auto-mode-alist))
 (setq auto-mode-alist
       (append
        '(("\\.cpp\\'" . c++-mode))
@@ -239,21 +236,21 @@
 
              ;; c++-style comments
              (fset 'my-cpp-comment-wide
-		   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
+                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
                           return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
              (fset 'my-cpp-comment
-		   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
+                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
                           ?\C-p ?  ? ])
              ;; c-style comments
              (fset 'my-c-comment-wide
-		   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
+                   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
                           return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
              (fset 'my-c-comment
-		   [?\C-o tab ?/ ?* return ?* tab return ?* ?/
+                   [?\C-o tab ?/ ?* return ?* tab return ?* ?/
                           ?\C-p ?  ? ])
 
              (fset 'my-c-dox-comment
-		   [?\C-o tab ?/ ?* ?* return ?* tab return ?*
+                   [?\C-o tab ?/ ?* ?* return ?* tab return ?*
                           ?/ ?\C-p ?  ? ])
              (local-set-key "\C-c\C-v" 'my-c-dox-comment)
 
@@ -296,10 +293,10 @@
              (modify-syntax-entry ?_  "_" )
 
              (fset 'my-perl-comment
-		   [15 32 escape 49 48 35 tab return 32 35 tab return
+                   [15 32 escape 49 48 35 tab return 32 35 tab return
                        32 escape 49 48 35 tab 16 32 32])
              (fset 'my-perl-comment2
-		   (read-kbd-macro
+                   (read-kbd-macro
                     "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
              (local-set-key "\C-cc" 'my-perl-comment)
              (local-set-key "\C-cv" 'my-perl-comment2)
@@ -327,9 +324,9 @@
           (function
            (lambda ()
              (fset 'my-ruby-comment
-		   [?\C-o tab escape ?1 ?0 ?# return tab ?# ?  ?  return tab escape ?1 ?0 ?# ?\C-p])
+                   [?\C-o tab escape ?1 ?0 ?# return tab ?# ?  ?  return tab escape ?1 ?0 ?# ?\C-p])
              (fset 'my-ruby-comment2
-		   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
+                   [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
              (setq case-fold-search t) ;; this should be in ruby-mode, imho.
@@ -348,9 +345,9 @@
           (function
            (lambda ()
              (fset 'my-sql-comment
-		   [?\C-o tab escape ?1 ?0 ?- return tab ?- ?- ?- ?  ?  return tab escape ?1 ?0 ?- ?\C-p])
+                   [?\C-o tab escape ?1 ?0 ?- return tab ?- ?- ?- ?  ?  return tab escape ?1 ?0 ?- ?\C-p])
              (fset 'my-sql-comment2
-		   [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
+                   [?\C-o tab ?- ?- ?- return tab ?- ?- ?- ?  ?  return tab ?- ?- ?- ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-sql-comment)
              (local-set-key "\C-cv" 'my-sql-comment2)
              )))
@@ -386,10 +383,10 @@
                [67 32 32 32 67 104 111 119 32 114 117 108 101 115 return 42 tab escape 49 48 42])
          (fset 'my-fortran-comment1
                [15 escape 49 48 42 return 42 return escape 49 48 42 16
-		   32 32])
+                   32 32])
          (fset 'my-fortran-comment2
                [15 42 32 escape 49 48 42 tab return 42 32 42 tab
-		   return 42 32 escape 49 48 42 tab 16 32 32])
+                   return 42 32 escape 49 48 42 tab 16 32 32])
          (local-set-key "\C-cp" 'fortranchow)
          (local-set-key "\C-cc" 'my-fortran-comment1)
          (local-set-key "\C-cv" 'my-fortran-comment2)
@@ -425,10 +422,10 @@
               perl-label-offset 0
               )
              (fset 'my-perl-comment
-		   [15 32 escape 49 48 35 tab return 32 35 tab return
+                   [15 32 escape 49 48 35 tab return 32 35 tab return
                        32 escape 49 48 35 tab 16 32 32])
              (fset 'my-perl-comment2
-		   (read-kbd-macro
+                   (read-kbd-macro
                     "C-o TAB # RET TAB # RET TAB # C-p C-e 2*SPC"))
              (local-set-key "\C-cc" 'my-perl-comment)
              (local-set-key "\C-cv" 'my-perl-comment2)
@@ -441,7 +438,7 @@
           (function
            (lambda ()
              (fset 'my-sh-comment
-		   [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
+                   [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
              (local-set-key "\C-cv" 'my-sh-comment)
              )))
 
@@ -689,9 +686,6 @@ The key typed is executed unless it is SPC."
 ;;;  some nice font shit
 ;;;;;;;;;;
 (cond (window-system
-;;;        (cond (mike:i-am-a-mac
-;;;               (set-frame-parameter nil 'alpha '(85 50)) ))
-
        (defun what-font ()
          (interactive)
          (message (frame-parameter nil 'font)))
@@ -732,11 +726,11 @@ The key typed is executed unless it is SPC."
                                   (defun mike:increase-font-size ()
                                     (interactive)
                                     (mike:modify-font-size 1))
-    
+
                                   (defun mike:decrease-font-size ()
                                     (interactive)
                                     (mike:modify-font-size -1))
-    
+
                                   (defun mike:toggle-font-bold ()
                                     (interactive)
                                     (if mike:font-bold-p
@@ -747,16 +741,11 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C-+] 'mike:increase-font-size)
                                   (global-set-key [?\C--] 'mike:decrease-font-size)
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
-    
-                                  (if mike:i-am-a-mac
-                                      (progn()(
-                                               (mike:set-font-size 14)
-                                               (mike:set-font-face "Bitstream Vera Sans Mono")
-                                               ))
-                                    (mike:set-font-size 11)
-                                    (mike:set-font-face "Menlo")
-                                    (mike:set-font-bold t)
-                                    ))
+
+                                  (mike:set-font-size 12)
+                                  (mike:set-font-face "Menlo")
+                                  (mike:set-font-bold t)
+                                  )
                                )
        ))
 
@@ -790,7 +779,7 @@ The key typed is executed unless it is SPC."
 (add-to-list 'load-path "~/.emacs.d/rhtml")
 (require 'rhtml-mode)
 (add-hook 'rhtml-mode-hook
-     	  (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))
 (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
 
 ;;; yasnippet
@@ -876,7 +865,7 @@ The key typed is executed unless it is SPC."
   (setq auto-save-file-name-transforms
         `((".*" ,user-temporary-file-directory t)))
   )
-  
+
 ;;;
 ;;;  customize!
 ;;;
