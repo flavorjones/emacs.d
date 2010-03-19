@@ -742,7 +742,7 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C--] 'mike:decrease-font-size)
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
 
-                                  (mike:set-font-size 12)
+                                  (mike:set-font-size 11)
                                   (mike:set-font-face "Menlo")
                                   (mike:set-font-bold t)
                                   )
@@ -851,20 +851,18 @@ The key typed is executed unless it is SPC."
 (setq auto-save-timeout 1)
 (setq auto-save-visited-file-name t)
 
-;; move autosave files somewhere out of the directory path
-;; http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
+;;  move autosave files somewhere out of the directory path
+;;  http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
 (defvar user-temporary-file-directory "~/.emacs.d/auto-save")
-(when mike:i-am-a-mac
-  (make-directory user-temporary-file-directory t)
-  (setq backup-by-copying t)
-  (setq backup-directory-alist
-        `(("." . ,user-temporary-file-directory)
-          (,tramp-file-name-regexp nil)))
-  (setq auto-save-list-file-prefix
-        (concat user-temporary-file-directory ".auto-saves-"))
-  (setq auto-save-file-name-transforms
-        `((".*" ,user-temporary-file-directory t)))
-  )
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `(("." . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms
+      `((".*" ,user-temporary-file-directory t)))
 
 ;;;
 ;;;  customize!
