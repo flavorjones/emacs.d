@@ -73,7 +73,10 @@
 ;; save desktop only when in windowing mode, to avoid getting prompted for
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
 ;; is used by git, svn, etc.)
-(when window-system (desktop-save-mode 1))
+(when window-system
+  (desktop-save-mode 1)
+  (run-with-idle-timer 30 t (lambda () (desktop-save-in-desktop-dir)))
+  )
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
