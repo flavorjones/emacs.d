@@ -88,6 +88,7 @@
                                 ("\\.rnc$" . rnc-mode)
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
+                                ("\\.sass$" . sass-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
                                 )
