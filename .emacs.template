@@ -119,6 +119,8 @@
          ("Rakefile" . ruby-mode)
          ("Thorfile" . ruby-mode)
          ("\\.thor$" . ruby-mode)
+         ("Gemfile$" . ruby-mode)
+         ("Capfile$" . ruby-mode)
          )
        auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
