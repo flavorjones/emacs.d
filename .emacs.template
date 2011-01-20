@@ -89,6 +89,7 @@
                                 ("\\.html$" . html-mode)
                                 ("\\.css$" . css-mode)
                                 ("\\.sass$" . sass-mode)
+                                ("\\.scss$" . sass-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
                                 )
@@ -751,7 +752,7 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C--] 'mike:decrease-font-size)
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
 
-                                  (mike:set-font-size 10)
+                                  (mike:set-font-size 9)
                                   (mike:set-font-face "Menlo")
                                   (mike:set-font-bold t)
                                   )
