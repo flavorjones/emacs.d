@@ -125,7 +125,7 @@ git_target "yasnippets-rails", "https://github.com/flavorjones/yasnippets-rails.
 git_target "cucumber", "https://github.com/michaelklishin/cucumber.el.git"
 
 # solarized color theme
-git_target "solarized", "https://github.com/sellout/emacs-color-theme-solarized.git"
+git_target "solarized", "https://github.com/flavorjones/emacs-color-theme-solarized.git"
 
 # generate ~/.emacs from template
 dotemacs_target = File.join(@target_path, ".emacs")
