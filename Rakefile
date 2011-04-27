@@ -29,6 +29,7 @@ end
 def git_target name, giturl
   dir_path = File.join(@target_path, name)
   INSTALL_TARGETS << dir_path
+  desc "clone #{name}"
   file dir_path do
     puts "* checking out latest #{name} from #{giturl} ..."
     puts %x(git clone #{giturl} #{name})
@@ -100,7 +101,7 @@ INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
 
 file rinari_dir do
   puts "* checking out rinari ..."
-  puts %x(git clone git://github.com/flavorjones/rinari.git rinari)
+  puts %x(git clone https://github.com/flavorjones/rinari.git rinari)
   Rake::Task[:update_rinari_submodules].invoke
 end
 task :update_rinari_submodules do
@@ -115,13 +116,16 @@ add_task_to_git_update "rinari" do
 end
 
 # rhtml-mode
-git_target "rhtml", "git://github.com/eschulte/rhtml.git"
+git_target "rhtml", "https://github.com/eschulte/rhtml.git"
 
 # yasnippets for rails
-git_target "yasnippets-rails", "git://github.com/flavorjones/yasnippets-rails.git"
+git_target "yasnippets-rails", "https://github.com/flavorjones/yasnippets-rails.git"
 
 # cucumber
-git_target "cucumber", "git://github.com/michaelklishin/cucumber.el.git"
+git_target "cucumber", "https://github.com/michaelklishin/cucumber.el.git"
+
+# solarized color theme
+git_target "solarized", "https://github.com/sellout/emacs-color-theme-solarized.git"
 
 # generate ~/.emacs from template
 dotemacs_target = File.join(@target_path, ".emacs")

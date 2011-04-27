@@ -19,8 +19,12 @@
 ;;;;;;;;;;
 (cond (window-system
        (require 'color-theme)
-       (load "color-theme-vivid-chalk")
-       (color-theme-vivid-chalk)
+       ;; (load "color-theme-vivid-chalk")
+       ;; (color-theme-vivid-chalk)
+
+       (add-to-list 'load-path "~/.emacs.d/solarized")
+       (require 'color-theme-solarized)
+       (color-theme-solarized-dark)
        ))
 
  (add-hook 'font-lock-mode-hook
