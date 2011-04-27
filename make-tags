@@ -1,2 +1,2 @@
 #! /bin/bash
-find . \( -name '*.rb' -or -name '*.c' -or -name '*.clj' -or -name '*.java' \) -print0 | xargs -0 ctags --extra=+f -e
+find . \( -name '*.rb' -or -name '*.c' -or -name '*.clj' -or -name '*.java' -or -name '*.js' \) -print0 | xargs -0 ctags --extra=+f -e
