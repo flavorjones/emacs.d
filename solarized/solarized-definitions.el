@@ -42,7 +42,7 @@ to test the approximate color values for accuracy."
     (magenta "#d33682" "#c61b6e" "#af005f")
     (violet  "#6c71c4" "#5859b7" "#5f5faf")
     (blue    "#268bd2" "#2075c7" "#0087ff")
-    (cyan    "#2aa198" "#259185" "#00afaf")
+    (cyan    "#2aa198" "#2591aa" "#00afaf")
     (green   "#859900" "#728a05" "#5f8700"))
   "This is a table of all the colors used by the Solarized color theme. Each
    column is a different set, one of which will be chosen based on term
