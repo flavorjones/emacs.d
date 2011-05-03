@@ -42,7 +42,7 @@ to test the approximate color values for accuracy."
     (magenta "#d33682" "#c61b6e" "#af005f")
     (violet  "#6c71c4" "#5859b7" "#5f5faf")
     (blue    "#268bd2" "#2075c7" "#0087ff")
-    (cyan    "#2aa198" "#2591aa" "#00afaf")
+    (cyan    "#2aa1bb" "#2591aa" "#00afaf")
     (green   "#859900" "#728a05" "#5f8700"))
   "This is a table of all the colors used by the Solarized color theme. Each
    column is a different set, one of which will be chosen based on term
@@ -53,7 +53,7 @@ to test the approximate color values for accuracy."
            (let ((index (if (or (<= (display-color-cells) 256)
                                 solarized-degrade)
                             3
-                          2)))
+                          1)))
              (nth index (assoc name solarized-colors)))))
     (let ((base03    (find-color 'base03))
           (base02    (find-color 'base02))
