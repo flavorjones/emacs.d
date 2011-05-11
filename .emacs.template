@@ -19,12 +19,10 @@
 ;;;;;;;;;;
 (cond (window-system
        (require 'color-theme)
-       ;; (load "color-theme-vivid-chalk")
-       ;; (color-theme-vivid-chalk)
+       (load "color-theme-vivid-chalk")
 
        (add-to-list 'load-path "~/.emacs.d/solarized")
        (require 'color-theme-solarized)
-       (color-theme-solarized-dark)
        ))
 
  (add-hook 'font-lock-mode-hook
@@ -703,7 +701,6 @@ The key typed is executed unless it is SPC."
                                   (setq mike:font-face nil)
                                   (setq mike:font-size nil)
                                   (setq mike:font-bold-p nil)
-                                  (setq mike:light-background-p nil)
 
                                   (defun mike:set-font-face (face)
                                     (interactive "MFont name: ")
@@ -746,19 +743,24 @@ The key typed is executed unless it is SPC."
                                         (mike:set-font-bold nil)
                                       (mike:set-font-bold t)))
 
-                                  (defun mike:toggle-background-lightness ()
-                                    (interactive)
-                                    (if mike:light-background-p
-                                        (progn (color-theme-solarized-dark)
-                                               (setq mike:light-background-p nil))
-                                      (progn (color-theme-solarized-light)
-                                             (setq mike:light-background-p t))))
+                                  (defun mike:set-theme (theme)
+                                    (funcall theme)
+                                    (setq mike:theme theme))
 
-                                  (global-set-key [?\C-=] 'mike:toggle-background-lightness)
+                                  (defun mike:next-color-theme ()
+                                    (interactive)
+                                    (if (eq mike:theme 'color-theme-solarized-dark)
+                                        (mike:set-theme 'color-theme-solarized-light)
+                                      (if (eq mike:theme 'color-theme-solarized-light)
+                                          (mike:set-theme 'color-theme-vivid-chalk)
+                                        (mike:set-theme 'color-theme-solarized-dark))))
+
+                                  (global-set-key [?\C-=] 'mike:next-color-theme)
                                   (global-set-key [?\C-+] 'mike:increase-font-size)
                                   (global-set-key [?\C--] 'mike:decrease-font-size)
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
 
+                                  (mike:set-theme 'color-theme-solarized-dark)
                                   (mike:set-font-size 9)
                                   (mike:set-font-face "Menlo")
                                   (mike:set-font-bold t)
