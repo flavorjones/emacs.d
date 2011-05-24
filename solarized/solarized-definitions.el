@@ -148,7 +148,7 @@ to test the approximate color values for accuracy."
          (font-lock-string-face ((t (:foreground ,cyan))))
          (font-lock-type-face ((t (:foreground ,yellow))))
          (font-lock-variable-name-face ((t (:foreground ,blue))))
-         (font-lock-warning-face ((t (:foreground ,red :weight ,bold))))
+         (font-lock-warning-face ((t (:background ,red :foreground ,base03 :weight ,bold))))
          (font-lock-doc-face ((t (:foreground ,cyan :slant ,italic))))
          (font-lock-color-constant-face ((t (:foreground ,green))))
          (font-lock-comment-delimiter-face
