@@ -152,6 +152,7 @@
 ;;;;;;;;;;
 ;;; key bindings
 ;;;;;;;;;;
+(global-set-key "\C-c\C-k" 'copy-region-as-kill)
 (global-set-key "\C-x\C-w" 'kill-rectangle)
 (global-set-key "\C-x\C-y" 'yank-rectangle)
 (global-set-key "\C-cg" 'goto-line)
