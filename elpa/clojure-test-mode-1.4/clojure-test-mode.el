@@ -1,12 +1,12 @@
 ;;; clojure-test-mode.el --- Minor mode for Clojure tests
 
-;; Copyright (C) 2009 Phil Hagelberg
+;; Copyright (C) 2009-2010 Phil Hagelberg
 
 ;; Author: Phil Hagelberg <technomancy@gmail.com>
 ;; URL: http://emacswiki.org/cgi-bin/wiki/ClojureTestMode
-;; Version: 1.3
-;; Keywords: languages, lisp
-;; Package-Requires: ((swank-clojure "1.0"))
+;; Version: 1.4
+;; Keywords: languages, lisp, test
+;; Package-Requires: ((slime "20091016") (clojure-mode "1.7"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -73,6 +73,13 @@
 ;;  * Update to use clojure.test instead of clojure.contrib.test-is.
 ;;  * Fix bug suppressing test report output in repl.
 
+;; 1.4: 2010-05-13
+;;  * Fix jump-to-test
+;;  * Update to work with Clojure 1.2.
+;;  * Added next/prev problem.
+;;  * Depend upon slime, not swank-clojure.
+;;  * Don't move the mark when activating.
+
 ;;; TODO:
 
 ;; * Implement next-problem command
@@ -85,7 +92,6 @@
 (require 'clojure-mode)
 (require 'cl)
 (require 'slime)
-(require 'swank-clojure)
 (require 'which-func)
 
 ;; Faces
@@ -136,7 +142,7 @@
     (defn report [event]
      (if-let [current-test (last *testing-vars*)]
              (alter-meta! current-test
-                          assoc :status (conj (:status ^current-test)
+                          assoc :status (conj (:status (meta current-test))
                                           [(:type event) (:message event)
                                            (str (:expected event))
                                            (str (:actual event))
@@ -173,27 +179,62 @@
             (incf clojure-test-error-count)
             (clojure-test-highlight-problem line event actual)))))))
 
+	
 (defun clojure-test-highlight-problem (line event message)
   (save-excursion
     (goto-line line)
-    (set-mark-command nil)
-    (end-of-line)
-    (let ((overlay (make-overlay (mark) (point))))
-      (overlay-put overlay 'face (if (equal event :fail)
-                                     'clojure-test-failure-face
-                                   'clojure-test-error-face))
-      (overlay-put overlay 'message message))))
+    (let ((beg (point)))
+      (end-of-line)
+      (let ((overlay (make-overlay beg (point))))
+        (overlay-put overlay 'face (if (equal event :fail)
+                                       'clojure-test-failure-face
+                                     'clojure-test-error-face))
+        (overlay-put overlay 'message message)))))
+
+;; Problem navigation
+(defun clojure-test-find-next-problem (here)
+  "Go to the next position with an overlay message.
+Retuns the problem overlay if such a position is found, otherwise nil."
+  (let ((current-overlays (overlays-at here))
+	(next-overlays (next-overlay-change here)))
+    (while (and (not (equal next-overlays (point-max)))
+		(or
+		 (not (overlays-at next-overlays))
+		 (equal (overlays-at next-overlays)
+			current-overlays)))
+      (setq next-overlays (next-overlay-change next-overlays)))
+    (if (not (equal next-overlays (point-max)))
+	(overlay-start (car (overlays-at next-overlays))))))
+
+(defun clojure-test-find-previous-problem (here)
+  "Go to the next position with the `clojure-test-problem' text property.
+Retuns the problem overlay if such a position is found, otherwise nil."
+  (let ((current-overlays (overlays-at here))
+	(previous-overlays (previous-overlay-change here)))
+    (while (and (not (equal previous-overlays (point-min)))
+		(or
+		 (not (overlays-at previous-overlays))
+		 (equal (overlays-at previous-overlays)
+			current-overlays)))
+      (setq previous-overlays (previous-overlay-change previous-overlays)))
+    (if (not (equal previous-overlays (point-min)))
+	(overlay-start (car (overlays-at previous-overlays))))))
 
 ;; File navigation
 
+(defun clojure-test-underscores-for-hyphens (namespace)
+  (replace-regexp-in-string "-" "_" namespace))
+
 (defun clojure-test-implementation-for (namespace)
-  (let* ((segments (split-string namespace "\\."))
+  (let* ((namespace (clojure-test-underscores-for-hyphens namespace))
+         (segments (split-string namespace "\\."))
          (common-segments (butlast segments 2))
          (impl-segments (append common-segments (last segments))))
     (mapconcat 'identity impl-segments "/")))
 
 (defun clojure-test-test-for (namespace)
-  (let* ((segments (split-string namespace "\\."))
+  (let* ((namespace (clojure-test-underscores-for-hyphens namespace))
+         (segments (split-string namespace "\\."))
          (common-segments (butlast segments))
          (test-segments (append common-segments '("test")))
          (test-segments (append test-segments (last segments))))
@@ -205,6 +246,7 @@
   "Run all the tests in the current namespace."
   (interactive)
   (save-some-buffers nil (lambda () (equal major-mode 'clojure-mode)))
+  (message "Testing...")
   (clojure-test-clear
    (lambda (&rest args)
      (clojure-test-eval (format "(load-file \"%s\")"
@@ -221,16 +263,17 @@
   (save-some-buffers nil (lambda () (equal major-mode 'clojure-mode)))
   (clojure-test-clear
    (lambda (&rest args)
-     (let ((test-name (first (which-function))))
+     (let* ((f (which-function))
+	    (test-name (if (listp f) (first f) f)))
        (slime-eval-async
         `(swank:interactive-eval
           ,(format "(do (load-file \"%s\")
-                      (when (:test ^#'%s) (%s) (cons nil (:status ^#'%s))))"
-                   (buffer-file-name) test-name test-name test-name))
+                      (when (:test (meta (var %s))) (%s) (cons (:name (meta (var %s))) (:status (meta (var %s))))))"
+                   (buffer-file-name) test-name test-name test-name test-name))
         (lambda (result-str)
           (let ((result (read result-str)))
             (if (cdr result)
-                (clojure-test-extract-result result)
+		(clojure-test-extract-result result)
               (message "Not in a test.")))))))))
 
 (defun clojure-test-show-result ()
@@ -255,6 +298,30 @@
       (alter-meta! t assoc :test nil))"
    callback))
 
+
+(defun clojure-test-next-problem ()
+  "Go to and describe the next test problem in the buffer."
+  (interactive)
+  (let* ((here (point))
+	 (problem (clojure-test-find-next-problem here)))
+    (if problem
+        (goto-char problem)
+      (goto-char here)
+      (message "No next problem."))))
+
+(defun clojure-test-previous-problem ()
+  "Go to and describe the previous compiler problem in the buffer."
+  (interactive)
+  (let* ((here (point))
+	 (problem (clojure-test-find-previous-problem here)))
+    (if problem
+        (goto-char problem)
+      (goto-char here)
+      (message "No previous problem."))))
+
+
+
+
 (defun clojure-test-jump-to-implementation ()
   "Jump from test file to implementation."
   (interactive)
@@ -278,6 +345,8 @@
     (define-key map (kbd "C-c '")   'clojure-test-show-result)
     (define-key map (kbd "C-c k")   'clojure-test-clear)
     (define-key map (kbd "C-c t")   'clojure-test-jump-to-implementation)
+    (define-key map (kbd "M-p")     'clojure-test-previous-problem)
+    (define-key map (kbd "M-n")     'clojure-test-next-problem)
     map)
   "Keymap for Clojure test mode.")
 
@@ -298,11 +367,10 @@
     "Enable clojure-test-mode if the current buffer contains Clojure tests.
 Also will enable it if the file is in a test directory."
     (save-excursion
-      (goto-char (point-min))
-      (if (or (search-forward "(deftest" nil t)
-              (search-forward "(with-test" nil t)
-              (string-match "/test/$" default-directory))
-          (clojure-test-mode t))))
+      (save-window-excursion
+        (goto-char (point-min))
+        (when (search-forward "clojure.test" nil t)
+            (clojure-test-mode t)))))
   (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable))
 
 (provide 'clojure-test-mode)

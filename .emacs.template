@@ -124,6 +124,7 @@
          ("\\.thor$" . ruby-mode)
          ("Gemfile$" . ruby-mode)
          ("Capfile$" . ruby-mode)
+         ("\\.gemspec$" . ruby-mode)
          )
        auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
@@ -776,14 +777,8 @@ The key typed is executed unless it is SPC."
 (add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
 
 ;;;
-;;;  emacs ruby on rails mode
+;;;  rinari - emacs ruby on rails mode
 ;;;
-;;;  latest ruby-mode
-(add-to-list 'load-path "~/.emacs.d/ruby-mode")
-(require 'ruby-mode)
-(require 'ruby-electric)
-
-;;;  rinari
 (add-to-list 'load-path "~/.emacs.d/rinari")
 (setq rinari-minor-mode-prefixes (list "'"))
 (require 'rinari)

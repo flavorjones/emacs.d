@@ -7,7 +7,7 @@
 ;; Michael Ivey
 ;; Phil Hagelberg
 ;; Dan McKinley
-;; Version: 0.4
+;; Version: 0.5
 ;; Created: 21 Jul 2008
 ;; Keywords: gist git github paste pastie pastebin
 
@@ -84,6 +84,14 @@ posted.")
 
 
 
+(defmacro github-with-auth-info (login token &rest body)
+  "Binds the github authentication credentials to `login' and `token'.
+The credentials are retrieved at most once within the body of this macro."
+  (declare (indent 2))
+  `(let ((*github-auth-info* (github-auth-info)))
+     (destructuring-bind (,login . ,token) *github-auth-info*
+       ,@body)))
+
 (defun* gist-request (url callback &optional params)
   "Makes a request to `url' asynchronously, notifying `callback' when
 complete. The github parameters are included in the request. Optionally
@@ -92,7 +100,7 @@ accepts additional POST `params' as a list of (key . value) conses."
     (let ((url-request-data (gist-make-query-string
                              `(("login" . ,login)
                                ("token" . ,token) ,@params)))
-          (url-max-redirecton 5)
+          (url-max-redirecton -1)
           (url-request-method "POST"))
       (url-retrieve url callback))))
 
@@ -180,14 +188,6 @@ for the info then sets it to the git config."
         (github-set-config "token" token))
 
       (cons user token))))
-
-(defmacro github-with-auth-info (login token &rest body)
-  "Binds the github authentication credentials to `login' and `token'.
-The credentials are retrieved at most once within the body of this macro."
-  (declare (indent 2))
-  `(let ((*github-auth-info* (github-auth-info)))
-     (destructuring-bind (,login . ,token) *github-auth-info*
-       ,@body)))
 
 ;;;###autoload
 (defun gist-buffer (&optional private)

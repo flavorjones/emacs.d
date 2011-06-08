@@ -58,7 +58,7 @@ def svn_target name, svnurl, &block
 end
 
 # ruby-mode
-svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
+# svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
 
 # js2-mode
 # svn_target "js2", "http://js2-mode.googlecode.com/svn/trunk" do
