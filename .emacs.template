@@ -796,6 +796,7 @@ The key typed is executed unless it is SPC."
 (add-hook 'rhtml-mode-hook
           (lambda () (rinari-launch)))
 (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\.erb$" . rhtml-mode))
 
 ;;; yasnippet
 (require 'yasnippet-bundle)
