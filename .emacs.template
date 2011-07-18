@@ -894,6 +894,21 @@ The key typed is executed unless it is SPC."
 
 (put 'narrow-to-region 'disabled nil)
 
+;;;
+;;;  edit-server for my chrome extension
+;;;
+(if (locate-library "edit-server")
+    (progn
+      (require 'edit-server)
+      (setq edit-server-new-frame nil)
+      (edit-server-start)
+      (add-hook 'edit-server-start-hook
+                (lambda ()
+                  (if (string-match "github.com" (buffer-name))
+                      (markdown-mode))))
+      ))
+
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
