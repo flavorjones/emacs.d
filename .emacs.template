@@ -205,6 +205,12 @@
              )))
 
 ;;;
+;;;  treetop-mode
+;;;
+(autoload 'treetop-mode "treetop" "Treetop mode." t)
+(add-to-list 'auto-mode-alist '("\\.treetop$"  . treetop-mode))
+
+;;;
 ;;;  markdown-mode
 ;;;
 (autoload 'markdown-mode "markdown-mode" nil t)
