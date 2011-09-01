@@ -804,11 +804,6 @@ The key typed is executed unless it is SPC."
 (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.text\\.erb$" . rhtml-mode))
 
-;;; yasnippet
-(require 'yasnippet-bundle)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
-
 ;;;  yegge's js2 mode
 ;; (autoload 'js2-mode "js2" nil t)
 ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -928,3 +923,8 @@ The key typed is executed unless it is SPC."
 ;;; yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;;; yasnippet
+;; (require 'yasnippet-bundle)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
