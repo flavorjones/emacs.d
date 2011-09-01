@@ -67,7 +67,11 @@ end
 svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs"
 
 # ensime (scala)
-git_target "ensime", "https://github.com/aemoncannon/ensime"
+wget_target "ensime.tar.gz", "https://github.com/downloads/aemoncannon/ensime/ensime_2.9.0-1-0.6.1.tar.gz" do
+  `rm -rf ensime`
+  `tar -xvf ensime.tar.gz`
+  `mv ensime_2.9.0-1-0.6.1 ensime`
+end
 
 # ruby-mode
 # svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
