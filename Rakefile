@@ -34,6 +34,7 @@ def git_target name, giturl
   file dir_path do
     puts "* checking out latest #{name} from #{giturl} ..."
     puts %x(git clone #{giturl} #{name})
+    block.call if block
   end
   add_task_to_git_update name
 end
@@ -56,6 +57,7 @@ def svn_target name, svnurl, &block
   file dir_path do
     puts "* checking out latest #{name} ..."
     puts %x(svn checkout #{svnurl} #{name})
+    block.call if block
   end
   add_task_to_update name, "svn update", &block
 end
