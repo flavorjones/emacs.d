@@ -60,6 +60,13 @@ def svn_target name, svnurl, &block
   add_task_to_update name, "svn update", &block
 end
 
+# scala-mode
+svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs" do
+  Dir.chdir "scala-mode" do
+    `find . -name '*.el' | xargs emacs -batch -q -f batch-byte-compile`
+  end
+end
+
 # ruby-mode
 # svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
 

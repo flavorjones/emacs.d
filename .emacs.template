@@ -843,8 +843,9 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  scala-mode
 ;;;
-;; (autoload 'scala-mode "scala-mode" nil t)
-;; (setq auto-mode-alist (cons '("\\.scala$" . scala-mode) auto-mode-alist))
+(add-to-list 'load-path "~/.emacs.d/scala-mode")
+(autoload 'scala-mode "scala-mode" nil t)
+(setq auto-mode-alist (cons '("\\.scala$" . scala-mode) auto-mode-alist))
 
 ;;;
 ;;;  let's get ansi color support in shell
