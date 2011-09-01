@@ -11,3 +11,4 @@ clojure
 auto-save
 url
 scala-mode
+ensime

@@ -69,6 +69,9 @@ svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-supp
   end
 end
 
+# ensime (scala)
+git_target "ensime", "https://github.com/aemoncannon/ensime"
+
 # ruby-mode
 # svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
 
