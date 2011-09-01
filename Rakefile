@@ -194,9 +194,17 @@ task :external => INSTALL_TARGETS
 desc "update external emacs packages"
 task :update => UPDATE_TARGETS
 
-desc "byte-compile .el files in root directory"
+desc "byte-compile .el files"
 task :compile do
-  `emacs -batch -q -f batch-byte-compile *.el`
+  Dir["**/*.el"].each do |el|
+    elc = el.gsub(/\.el$/, ".elc")
+    if !File.exists?(elc) || (File.stat(elc).mtime < File.stat(el).mtime)      
+      puts "compiling #{el} ..."
+      Dir.chdir File.dirname(el) do
+        `emacs -batch -q -f batch-byte-compile #{File.basename el}`
+      end
+    end
+  end
 end
 
 desc "install external packages, byte-compile local files, and install ~/.emacs"
