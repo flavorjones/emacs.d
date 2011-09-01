@@ -27,7 +27,7 @@ def add_task_to_git_update subdir, &block
   add_task_to_update subdir, "git pull origin", &block
 end
 
-def git_target name, giturl
+def git_target name, giturl, &block
   dir_path = File.join(@target_path, name)
   INSTALL_TARGETS << dir_path
   desc "clone git repo #{name}"
@@ -36,10 +36,10 @@ def git_target name, giturl
     puts %x(git clone #{giturl} #{name})
     block.call if block
   end
-  add_task_to_git_update name
+  add_task_to_git_update name, &block
 end
 
-def wget_target name, url
+def wget_target name, url, &block
   file_path = File.join(@target_path, name)
   INSTALL_TARGETS << file_path
   desc "wget #{name}"
@@ -47,6 +47,7 @@ def wget_target name, url
     FileUtils.mkdir_p File.dirname(file_path)
     puts "* pulling latest #{name} ..."
     puts %x(wget #{url} -O #{file_path})
+    block.call if block
   end
 end
 
