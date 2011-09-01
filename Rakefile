@@ -63,11 +63,7 @@ def svn_target name, svnurl, &block
 end
 
 # scala-mode
-svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs" do
-  Dir.chdir "scala-mode" do
-    `find . -name '*.el' | xargs emacs -batch -q -f batch-byte-compile`
-  end
-end
+svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs"
 
 # ensime (scala)
 git_target "ensime", "https://github.com/aemoncannon/ensime"
@@ -196,15 +192,15 @@ task :update => UPDATE_TARGETS
 
 desc "byte-compile .el files"
 task :compile do
-  Dir["**/*.el"].each do |el|
-    elc = el.gsub(/\.el$/, ".elc")
-    if !File.exists?(elc) || (File.stat(elc).mtime < File.stat(el).mtime)      
-      puts "compiling #{el} ..."
-      Dir.chdir File.dirname(el) do
-        `emacs -batch -q -f batch-byte-compile #{File.basename el}`
-      end
-    end
-  end
+  # Dir["**/*.el"].each do |el|
+  #   elc = el.gsub(/\.el$/, ".elc")
+  #   if !File.exists?(elc) || (File.stat(elc).mtime < File.stat(el).mtime)      
+  #     puts "compiling #{el} ..."
+  #     Dir.chdir File.dirname(el) do
+  #       `emacs -batch -q -f batch-byte-compile #{File.basename el}`
+  #     end
+  #   end
+  # end
 end
 
 desc "install external packages, byte-compile local files, and install ~/.emacs"
