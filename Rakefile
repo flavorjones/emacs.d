@@ -13,6 +13,7 @@ UPDATE_TARGETS = []
 def add_task_to_update subdir, command, &block
   taskname = "update_#{subdir}".to_sym
   UPDATE_TARGETS << taskname
+  desc "update #{subdir}"
   task taskname do
     puts "* updating #{subdir} ..."
     Dir.chdir subdir do
@@ -29,7 +30,7 @@ end
 def git_target name, giturl
   dir_path = File.join(@target_path, name)
   INSTALL_TARGETS << dir_path
-  desc "clone #{name}"
+  desc "clone git repo #{name}"
   file dir_path do
     puts "* checking out latest #{name} from #{giturl} ..."
     puts %x(git clone #{giturl} #{name})
@@ -40,6 +41,7 @@ end
 def wget_target name, url
   file_path = File.join(@target_path, name)
   INSTALL_TARGETS << file_path
+  desc "wget #{name}"
   file file_path do
     FileUtils.mkdir_p File.dirname(file_path)
     puts "* pulling latest #{name} ..."
@@ -50,6 +52,7 @@ end
 def svn_target name, svnurl, &block
   dir_path = File.join(@target_path, name)
   INSTALL_TARGETS << dir_path
+  desc "get svn report #{name}"
   file dir_path do
     puts "* checking out latest #{name} ..."
     puts %x(svn checkout #{svnurl} #{name})
