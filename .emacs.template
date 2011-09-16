@@ -906,6 +906,8 @@ The key typed is executed unless it is SPC."
     (progn
       (require 'edit-server)
       (setq edit-server-new-frame nil)
+      (define-key edit-server-edit-mode-map
+        (kbd "C-x C-s") nil); This keystroke is a habit, it doesn't mean I'm done editing.
       (edit-server-start)
       (add-hook 'edit-server-start-hook
                 (lambda ()
