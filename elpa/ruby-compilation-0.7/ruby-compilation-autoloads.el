@@ -6,7 +6,7 @@
 ;;;### (autoloads (ruby-compilation-this-buffer ruby-compilation-cap
 ;;;;;;  ruby-compilation-rake ruby-compilation-run pcomplete/cap
 ;;;;;;  pcomplete/rake) "ruby-compilation" "ruby-compilation.el"
-;;;;;;  (19951 24110))
+;;;;;;  (20239 21769))
 ;;; Generated autoloads from ruby-compilation.el
 
 (autoload 'pcomplete/rake "ruby-compilation" "\
@@ -41,8 +41,8 @@ Run the current buffer through Ruby compilation.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ruby-compilation-pkg.el") (19951 24110
-;;;;;;  697740))
+;;;### (autoloads nil nil ("ruby-compilation-pkg.el") (20239 21769
+;;;;;;  762630))
 
 ;;;***
 
