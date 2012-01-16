@@ -793,6 +793,7 @@ The key typed is executed unless it is SPC."
 
 ;;; cucumber
 (add-to-list 'load-path "~/.emacs.d/cucumber")
+
 (load "feature-mode")
 (require 'cucumber-mode-compilation)
 
@@ -914,6 +915,12 @@ The key typed is executed unless it is SPC."
                   (if (string-match "github.com" (buffer-name))
                       (markdown-mode))))
       ))
+
+
+;;; showoff-mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/showoff-mode")
+(require 'showoff-mode)
+(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
 
 
 ;;; This was installed by package-install.el.
