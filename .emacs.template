@@ -776,6 +776,15 @@ The key typed is executed unless it is SPC."
                                )
        ))
 
+
+;;;
+;;;  dos whisperer
+;;;
+(defun omg-this-is-a-dos-file ()
+  (interactive)
+  (revert-buffer-with-coding-system 'us-ascii-dos))
+
+
 ;;;
 ;;;  camelCase
 ;;;
