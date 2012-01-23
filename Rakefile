@@ -46,7 +46,7 @@ def wget_target name, url, &block
   file file_path do
     FileUtils.mkdir_p File.dirname(file_path)
     puts "* pulling latest #{name} ..."
-    puts %x(wget #{url} -O #{file_path})
+    puts %x(wget #{url} -O #{file_path} --no-check-certificate)
     block.call if block
   end
 end
@@ -67,10 +67,10 @@ end
 svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs"
 
 # ensime (scala)
-wget_target "ensime.tar.gz", "https://github.com/downloads/aemoncannon/ensime/ensime_2.9.0-1-0.6.1.tar.gz" do
+wget_target "ensime.tar.gz", "https://github.com/downloads/aemoncannon/ensime/ensime_2.9.2-SNAPSHOT-0.9.3.RC2.tar.gz" do
   `rm -rf ensime`
   `tar -xvf ensime.tar.gz`
-  `mv ensime_2.9.0-1-0.6.1 ensime`
+  `mv ensime_2.9.2-SNAPSHOT-0.9.3.RC2 ensime`
 end
 
 # ruby-mode
