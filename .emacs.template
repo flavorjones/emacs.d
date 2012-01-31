@@ -791,20 +791,19 @@ The key typed is executed unless it is SPC."
 (autoload 'camelCase-mode "camelCase-mode" nil t)
 (add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
 
+
 ;;;
 ;;;  rinari - emacs ruby on rails mode
 ;;;
 (add-to-list 'load-path "~/.emacs.d/rinari")
 (setq rinari-minor-mode-prefixes (list "'"))
 (require 'rinari)
-(require 'ruby-compilation-rspec)
+; (require 'ruby-compilation-rspec)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
+; (add-to-list 'load-path "~/.emacs.d/cucumber")
+; (load "feature-mode")
+; (require 'cucumber-mode-compilation)
 
-;;; cucumber
-(add-to-list 'load-path "~/.emacs.d/cucumber")
-
-(load "feature-mode")
-(require 'cucumber-mode-compilation)
 
 ;;; rhtml
 (add-to-list 'load-path "~/.emacs.d/rhtml")
@@ -813,6 +812,7 @@ The key typed is executed unless it is SPC."
           (lambda () (rinari-launch)))
 (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.text\\.erb$" . rhtml-mode))
+
 
 ;;;  yegge's js2 mode
 ;; (autoload 'js2-mode "js2" nil t)
@@ -836,8 +836,10 @@ The key typed is executed unless it is SPC."
              (local-set-key "\C-cv" 'my-cpp-comment)
              )))
 
+
 ;;; pastie
 (load "pastie.el")
+
 
 ;;;
 ;;;  org-mode
@@ -850,6 +852,7 @@ The key typed is executed unless it is SPC."
              (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
              ))
 
+
 ;;;
 ;;;  scala-mode and ensime
 ;;;
@@ -859,6 +862,7 @@ The key typed is executed unless it is SPC."
 (add-to-list 'load-path "~/.emacs.d/ensime/elisp")
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
 
 ;;;
 ;;;  let's get ansi color support in shell
@@ -876,17 +880,21 @@ The key typed is executed unless it is SPC."
 ;; (autoload 'git-blame-mode "git-blame"
 ;;   "Minor mode for incremental blame for Git." t)
 
+
 ;;; "she bangs, she bangs." -William Hung
 (require 'shebang)
 
+
 ;;;  i loves me some emacs server.
 (cond (window-system (server-start)))
+
 
 ;;;  let's try global-auto-revert in case i need to pair program
 ;;;  also mo'better auto-save behavior
 (global-auto-revert-mode 1)
 (setq auto-save-timeout 1)
 (setq auto-save-visited-file-name t)
+
 
 ;;  move autosave files somewhere out of the directory path
 ;;  http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
@@ -906,8 +914,8 @@ The key typed is executed unless it is SPC."
 ;;;
 (setq custom-file "~/.emacs.d/custom-file.el")
 (load custom-file)
-
 (put 'narrow-to-region 'disabled nil)
+
 
 ;;;
 ;;;  edit-server for my chrome extension
@@ -942,9 +950,11 @@ The key typed is executed unless it is SPC."
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+
 ;;; yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 
 ;;; yasnippet
 ;; (require 'yasnippet-bundle)
