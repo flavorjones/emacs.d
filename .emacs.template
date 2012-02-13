@@ -770,7 +770,8 @@ The key typed is executed unless it is SPC."
 
                                   (mike:set-theme 'color-theme-solarized-dark)
                                   (mike:set-font-size 9)
-                                  (mike:set-font-face "Menlo")
+;;                                  (mike:set-font-face "Menlo")
+                                  (mike:set-font-face "Ubuntu Mono")
                                   (mike:set-font-bold t)
                                   )
                                )
