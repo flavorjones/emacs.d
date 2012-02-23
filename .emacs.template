@@ -171,15 +171,17 @@
 (global-set-key "\C-cr" 'replace-regexp)
 (global-set-key "\er" 'query-replace-regexp)
 (global-set-key "\C-c\C-a" 'auto-fill-mode)
-                                        ; (global-set-key "\C-cd" 'spell-buffer)
-                                        ; (global-set-key "\C-cj" 'justify-current-line)
+;; (global-set-key "\C-cd" 'spell-buffer)
+;; (global-set-key "\C-cj" 'justify-current-line)
 (global-set-key "\C-cj" 'join-line)
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'toggle-read-only)
 (global-set-key "\C-co" 'my-find-other-file)
+(global-set-key "\C-xg" 'magit-status)
 
-;;;  binding for opening a new line below point without splitting the line
-(global-set-key [\C-return] [?\C-a ?\C-n ?\C-o tab])
+(global-set-key [\C-return] [?\C-a ?\C-n ?\C-o tab]) ; open a new line below point without splitting the line
+(global-set-key "\C-c;" 'comment-or-uncomment-region)
+
 
 ;;;
 ;;; frame-related bindings
@@ -188,8 +190,6 @@
 (global-set-key "\C-c\C-fn" 'new-frame)
 (global-set-key "\C-c\C-fd" 'delete-frame)
 (global-set-key "\C-c\C-fs" 'speedbar)
-
-(global-set-key "\C-c;" 'comment-or-uncomment-region)
 
 ;;;
 ;;;  these so we can resize buffer windows using the mouse
