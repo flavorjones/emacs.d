@@ -3,12 +3,6 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(ido-case-fold nil)
- '(ido-confirm-unique-completion nil)
- '(ido-enable-dot-prefix t)
- '(ido-enable-flex-matching t)
- '(ido-enter-matching-directory (quote first))
- '(ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
  '(js2-enter-indents-newline nil)

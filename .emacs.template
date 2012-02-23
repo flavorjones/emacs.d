@@ -62,9 +62,20 @@
 
 (global-font-lock-mode t)
 (if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
-(ido-mode)
 (set-fill-column 100) ;; yay widescreen
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
+
+;;;
+;;;  ido-mode
+;;;
+(setq ido-everywhere t)
+(setq ido-case-fold nil)
+(setq ido-confirm-unique-completion nil)
+(setq ido-enable-dot-prefix t)
+(setq ido-enable-flex-matching t)
+(setq ido-enter-matching-directory (quote first))
+(setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
+(ido-mode)
 
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
