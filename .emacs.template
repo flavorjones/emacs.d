@@ -253,8 +253,8 @@
 ;;; shall we use tabs or spaces? t is tabs, nil is spaces.
              (setq indent-tabs-mode nil) ;;; nil forces spaces always
 ;;; set tabbing convention and display
-             (c-set-style "stroustrup")
-             (setq c-basic-offset 2)
+             (c-set-style "k&r")
+             (setq c-basic-offset 4)
 ;;; make inline function definitions indent like i want
              (let ((CELL (assq 'inline-open c-offsets-alist)))
                (cond ((consp CELL) (setcdr CELL 0))
