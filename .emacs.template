@@ -254,7 +254,7 @@
              (setq indent-tabs-mode nil) ;;; nil forces spaces always
 ;;; set tabbing convention and display
              (c-set-style "k&r")
-             (setq c-basic-offset 4)
+             (setq c-basic-offset 2) ;; or 4
 ;;; make inline function definitions indent like i want
              (let ((CELL (assq 'inline-open c-offsets-alist)))
                (cond ((consp CELL) (setcdr CELL 0))
