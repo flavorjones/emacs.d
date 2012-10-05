@@ -62,8 +62,11 @@
 
 (global-font-lock-mode t)
 (if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
-(set-fill-column 100) ;; yay widescreen
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
+
+;;;  longlines
+(setq fill-column 100) ;; yay widescreen
+;; (setq longlines-show-hard-newlines t)
 
 ;;;
 ;;;  ido-mode
