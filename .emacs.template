@@ -98,7 +98,7 @@
 
 ;; let's let gnome make the decision on how emacs should open URLs
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program  "gnome-open")
+      browse-url-generic-program  (if mike:i-am-a-mac "open" "gnome-open"))
 
 ;;;;;;;;;;
 ;;;  miscellaneous file types linked to modes
@@ -789,9 +789,11 @@ The key typed is executed unless it is SPC."
                                   (global-set-key [?\C-_] 'mike:toggle-font-bold)
 
                                   (mike:set-theme 'color-theme-solarized-dark)
-                                  (mike:set-font-size 9)
-                                  (if mike:i-am-a-mac
-                                      (mike:set-font-face "Menlo")
+                                  (when mike:i-am-a-mac
+                                    (mike:set-font-size 12)
+                                    (mike:set-font-face "Menlo"))
+                                  (when (not mike:i-am-a-mac)
+                                    (mike:set-font-size 10)
                                     (mike:set-font-face "Ubuntu Mono"))
                                   (mike:set-font-bold t)
                                   )
