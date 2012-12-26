@@ -80,8 +80,10 @@
 (setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
 (ido-mode)
 
-(setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+(when mike:i-am-a-mac
+  (setq x-select-enable-clipboard t)
+  (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+  )
 
 (setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
 (setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
@@ -788,8 +790,9 @@ The key typed is executed unless it is SPC."
 
                                   (mike:set-theme 'color-theme-solarized-dark)
                                   (mike:set-font-size 9)
-;;                                  (mike:set-font-face "Menlo")
-                                  (mike:set-font-face "Ubuntu Mono")
+                                  (if mike:i-am-a-mac
+                                      (mike:set-font-face "Menlo")
+                                    (mike:set-font-face "Ubuntu Mono"))
                                   (mike:set-font-bold t)
                                   )
                                )
