@@ -80,7 +80,7 @@
 (setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
 (ido-mode)
 
-(when mike:i-am-a-mac
+(when (not mike:i-am-a-mac)
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
   )
