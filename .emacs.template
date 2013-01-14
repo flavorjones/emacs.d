@@ -77,7 +77,7 @@
 (setq ido-enable-dot-prefix t)
 (setq ido-enable-flex-matching t)
 (setq ido-enter-matching-directory (quote first))
-(setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$")))
+;; (setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$"))) // TODO *shell*
 (ido-mode)
 
 (when (not mike:i-am-a-mac)
@@ -347,6 +347,10 @@
 ;;;;;;;;;;
 ;;;  ruby-mode
 ;;;;;;;;;;
+;; Setting rbenv path
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
+
 ;;;
 ;;;  http://www.emacswiki.org/cgi-bin/wiki/FlymakeRuby
 ;;;
@@ -792,11 +796,11 @@ The key typed is executed unless it is SPC."
                                   (when mike:i-am-a-mac
                                     (mike:set-font-size 12)
                                     (mike:set-font-face "Menlo")
-                                    (mike:set-font-bold t)
                                     )
                                   (when (not mike:i-am-a-mac)
                                     (mike:set-font-size 10)
                                     (mike:set-font-face "Ubuntu Mono")
+                                    (mike:set-font-bold t)
                                     )
                                   )
                                )
