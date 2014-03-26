@@ -999,3 +999,9 @@ The key typed is executed unless it is SPC."
 ;; (require 'yasnippet-bundle)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
+
+
+;;; rvm!
+(add-to-list 'load-path "~/.emacs.d/rvm")
+(require 'rvm)
+(rvm-use-default) ;; use rvm's default ruby for the current Emacs session

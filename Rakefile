@@ -131,6 +131,9 @@ add_task_to_git_update "rinari" do
   Rake::Task[:update_rinari_submodules].invoke
 end
 
+# rvm.el
+git_target "rvm", "https://github.com/senny/rvm.el"
+
 # rhtml-mode
 git_target "rhtml", "https://github.com/eschulte/rhtml.git"
 
