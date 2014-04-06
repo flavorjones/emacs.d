@@ -1005,3 +1005,8 @@ The key typed is executed unless it is SPC."
 (add-to-list 'load-path "~/.emacs.d/rvm")
 (require 'rvm)
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
+
+;;;
+;;;  rdoc-mode
+;;;
+(autoload 'rdoc-mode "rdoc-mode" "Treetop mode." t)
