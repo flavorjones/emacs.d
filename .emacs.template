@@ -53,6 +53,7 @@
 (display-time)
 (set-input-mode nil nil t)       ; so we can use ALT as a META key (?)
 (setq-default indent-tabs-mode nil)
+(setq default-tab-width 2)
 (when window-system (mwheel-install)) ;; enable wheelmouse support by default
 
 ;;; turn off all the decorations and gui-helpful bullshit
@@ -1010,3 +1011,6 @@ The key typed is executed unless it is SPC."
 ;;;  rdoc-mode
 ;;;
 (autoload 'rdoc-mode "rdoc-mode" "Treetop mode." t)
+
+;;; golang
+(require 'go-mode)
