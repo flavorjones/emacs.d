@@ -980,6 +980,10 @@ The key typed is executed unless it is SPC."
 (add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
 
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -998,8 +1002,8 @@ The key typed is executed unless it is SPC."
 
 ;;; yasnippet
 ;; (require 'yasnippet-bundle)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
+;; (yas/initialize)
+;; (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
 
 
 ;;; rvm!
