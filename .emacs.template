@@ -224,9 +224,24 @@
   (yank)
   (open-line 1)
   (next-line 1)
-  (yank)
-)
+  (yank))
 (global-set-key (kbd "s-d") 'duplicate-line)
+
+;; based on thansmann's diary stuff
+(defun mark-datetime (arg) "insert a unique string and the date as a subject break"
+  (interactive "*p")
+  (move-beginning-of-line 1) (next-line 1)
+  (open-line 1) (next-line 1)
+  (open-line 1)
+  (insert "@#---------\n")
+  (insert   (format-time-string "%F %T %Z %a" (current-time)))
+  (insert " // ")
+  (insert   (format-time-string "%F %T %Z" (current-time)  'universal))
+  (open-line 1) (next-line 1)
+  (open-line 1) (next-line 1)
+  (open-line 1)
+  )
+(define-key global-map [C-f2] 'mark-datetime)
 
 ;;;;;;;;;;
 ;;;  text-mode
