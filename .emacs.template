@@ -216,6 +216,18 @@
     (cond ((consp CELL) (setcdr CELL val))
           ((push '(key . val) assoc)))))
 
+;; thansmann's copy-line-as-kill
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+(global-set-key (kbd "s-d") 'duplicate-line)
+
 ;;;;;;;;;;
 ;;;  text-mode
 ;;;;;;;;;;
