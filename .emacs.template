@@ -823,10 +823,10 @@ The key typed is executed unless it is SPC."
                                   (mike:set-theme 'color-theme-solarized-dark)
                                   (mike:set-font-size 12)
                                   (mike:set-font-face "Menlo")
-                                  ;; (if (not mike:i-am-a-mac)
-                                  ;;     (mike:set-font-bold t))
-                                  )
-                               )
+
+                                  (if mike:i-am-a-mac
+                                      (mike:set-font-size 18))
+                                  ))
        ))
 
 
