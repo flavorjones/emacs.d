@@ -1,0 +1,7 @@
+[ ] look into making shebang files executable
+- http://www.emacswiki.org/emacs/MakingScriptsExecutableOnSave
+- formerly shebang.el in this repo
+
+[ ] clean up auto-mode-alist stuff
+
+
