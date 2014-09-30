@@ -14,28 +14,14 @@
 ;;;
 (setq load-path (append '("~/.emacs.d") load-path))
 
-;;;;;;;;;;
-;;;  color themes and font-lock mode setup
-;;;;;;;;;;
-(cond (window-system
-       (require 'color-theme)
-       (load "color-theme-vivid-chalk")
-
-       (add-to-list 'load-path "~/.emacs.d/solarized")
-       (require 'color-theme-solarized)
-       ))
-
- (add-hook 'font-lock-mode-hook
-           '(lambda ()
-              (unless (string-equal "org-mode" major-mode)
-                ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
-                ;; then one-line 'TODO ...'
-                (font-lock-add-keywords
-                 nil ;; mode name
-                 '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
- ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
-                    0 font-lock-warning-face t)))
-              )))
+;;;
+;;; package managers
+;;;
+(require 'package)
+(custom-set-variables '(package-user-dir "~/.emacs.d/elpa"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 
 ;;;;;;;;;;
 ;;; general variables, functions
@@ -101,10 +87,9 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program  (if mike:i-am-a-mac "open" "gnome-open"))
 
-;;;;;;;;;;
+;;;
 ;;;  miscellaneous file types linked to modes
-;;;;;;;;;;
-(load "rnc-mode") ;;;  relax-ng compact mode
+;;;
 (setq auto-mode-alist (append '(
                                 ("\\.xml$" . xml-mode)
                                 ("\\.mxml$" . xml-mode)
@@ -125,15 +110,15 @@
                 ) auto-mode-alist))
 (setq auto-mode-alist
       (append
-       '(("\\.cpp\\'" . c++-mode))
-       '(("\\.h\\'" . c++-mode))
-       '(("\\.inl\\'" . c++-mode))
-       '(("\\.dox\\'" . c++-mode))
+       '(("\\.cpp$" . c++-mode))
+       '(("\\.h$" . c++-mode))
+       '(("\\.inl$" . c++-mode))
+       '(("\\.dox$" . c++-mode))
        auto-mode-alist))
 (setq auto-mode-alist
       (append
-       '(("\\.cmake\\'" . cmake-mode))
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
+       '(("\\.cmake$" . cmake-mode))
+       '(("CMakeLists\\.txt$" . cmake-mode))
        auto-mode-alist))
 (setq auto-mode-alist
       (append
@@ -151,7 +136,7 @@
 (setq auto-mode-alist (cons '("\\.F$" . fortran-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.hf$" . fortran-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.inc$" . fortran-mode) auto-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.gob\\'" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.gob$" . c-mode))
 (setq auto-mode-alist (append (list (cons "\\.pl$" 'perl-mode))
                               auto-mode-alist))
 (setq auto-mode-alist (append '(("\\.el$" . emacs-lisp-mode)
@@ -201,13 +186,10 @@
 (global-set-key "\C-c\C-fd" 'delete-frame)
 (global-set-key "\C-c\C-fs" 'speedbar)
 
-;;;
 ;;;  these so we can resize buffer windows using the mouse
-;;;
-(require 'mldrag)
-(global-set-key [mode-line down-mouse-1] 'mldrag-drag-mode-line)
-(global-set-key [vertical-line down-mouse-1] 'mldrag-drag-vertical-line)
-(global-set-key [vertical-scroll-bar S-down-mouse-1] 'mldrag-drag-vertical-line)
+(global-set-key [mode-line down-mouse-1] 'mouse-drag-mode-line)
+(global-set-key [vertical-line down-mouse-1] 'mouse-drag-vertical-line)
+(global-set-key [vertical-scroll-bar S-down-mouse-1] 'mouse-drag-vertical-line)
 
 ;;  prepend or replace a cons cell with given key
 (defun my-unique-prepend (key val assoc)
@@ -748,9 +730,193 @@ The key typed is executed unless it is SPC."
 ;; (global-set-key [\C-tab] 'yic-next-buffer)
 ;; (global-set-key [\S-tab] 'yic-prev-buffer)
 
-;;;;;;;;;;
-;;;  some nice font shit
-;;;;;;;;;;
+;;;
+;;;  dos whisperer
+;;;
+(defun omg-this-is-a-dos-file ()
+  (interactive)
+  (revert-buffer-with-coding-system 'us-ascii-dos))
+
+
+;;;
+;;;  @jvshahid's magic hide-show / folding hack. seriously awesome.
+;;;
+(defun toggle-magic-code-folding (&optional delta)
+  "Trigger selective display to hide lines that have more indentation than the current line. If DELTA was provided it will be added to the current line's indentation."
+  (interactive "P")
+  (let ((indentation (current-indentation)))
+    (if selective-display
+        (set-selective-display nil)
+      (set-selective-display (+ indentation 1
+                                (if delta delta 0))))))
+(define-key global-map (kbd "C-c C-h") 'toggle-magic-code-folding)
+
+
+;;;
+;;;  camelCase
+;;;
+(autoload 'camelCase-mode "camelCase-mode" nil t)
+(add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
+
+
+;;;
+;;;  rinari - emacs ruby on rails mode
+;;;
+(require 'rinari)
+(setq rinari-minor-mode-prefixes (list "'"))
+; (require 'ruby-compilation-rspec)
+(global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
+; (add-to-list 'load-path "~/.emacs.d/cucumber")
+; (load "feature-mode")
+; (require 'cucumber-mode-compilation)
+
+
+;;; rhtml
+(add-to-list 'load-path "~/.emacs.d/rhtml")
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook
+          (lambda () (rinari-launch)))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\.erb$" . rhtml-mode))
+
+
+;;;  js mode
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(setq js-indent-level 2)
+(add-hook 'js-mode-hook
+          (function
+           (lambda ()
+             (fset 'my-cpp-comment-wide
+                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
+                          return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
+             (fset 'my-cpp-comment
+                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
+                          ?\C-p ?  ? ])
+             (local-set-key "\C-cc" 'my-cpp-comment-wide)
+             (local-set-key "\C-cv" 'my-cpp-comment)
+             )))
+
+
+;;;
+;;;  org-mode
+;;;
+(global-set-key "\C-ca" 'org-agenda)
+(add-hook 'org-mode-hook
+          '(lambda ()
+             ; set the org-mode-map to override any and all minor modes, because there are
+             ; critical collisions with camelCase mode (M-right, M-left).
+             (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
+             ))
+
+
+;;;
+;;;  scala-mode and ensime
+;;;
+;; (add-to-list 'load-path "~/.emacs.d/scala-mode")
+;; (autoload 'scala-mode "scala-mode" nil t)
+;; (setq auto-mode-alist (cons '("\\.scala$" . scala-mode) auto-mode-alist))
+;; (add-to-list 'load-path "~/.emacs.d/ensime/elisp")
+;; (require 'ensime)
+;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+
+;;;
+;;;  let's get ansi color support in shell
+;;;
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;;;
+;;;  git support
+;;;
+;; (setq load-path (cons (expand-file-name "/usr/share/doc/git-core/contrib/emacs") load-path))
+;; (require 'vc-git)
+;; (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
+;; (require 'git)
+;; (autoload 'git-blame-mode "git-blame"
+;;   "Minor mode for incremental blame for Git." t)
+
+
+;;;  i loves me some emacs server.
+(cond (window-system (server-start)))
+
+
+;;;  let's try global-auto-revert in case i need to pair program
+;;;  also mo'better auto-save behavior
+(global-auto-revert-mode 1)
+(setq auto-save-timeout 1)
+(setq auto-save-visited-file-name t)
+
+
+;;  move autosave files somewhere out of the directory path
+;;  http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
+(defvar user-temporary-file-directory "~/.emacs.d/auto-save")
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `(("." . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms
+      `((".*" ,user-temporary-file-directory t)))
+
+;;;
+;;;  customize!
+;;;
+(setq custom-file "~/.emacs.d/custom-file.el")
+(load custom-file)
+(put 'narrow-to-region 'disabled nil)
+
+
+;;;
+;;;  edit-server for my chrome extension
+;;;
+(if (locate-library "edit-server")
+    (progn
+      (edit-server-start)
+      ))
+
+
+;;; showoff-mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/showoff-mode")
+(require 'showoff-mode)
+(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
+
+
+;;;
+;;;  rdoc-mode
+;;;
+(autoload 'rdoc-mode "rdoc-mode" "Treetop mode." t)
+
+
+;;; yaml
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;;; yasnippet
+(add-to-list 'load-path "~/.emacs.d/yasnippets-rails")
+
+;;; rvm!
+(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
+
+;;;  font-lock mode setup
+(add-hook 'font-lock-mode-hook
+          '(lambda ()
+             (unless (string-equal "org-mode" major-mode)
+               ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
+               ;; then one-line 'TODO ...'
+               (font-lock-add-keywords
+                nil ;; mode name
+                '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
+ ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
+                   0 font-lock-warning-face t)))
+               )))
+
+;;;
+;;;  personal font and theme stuff
+;;;
+(require 'color-theme)
 (cond (window-system
        (defun what-font ()
          (interactive)
@@ -811,9 +977,7 @@ The key typed is executed unless it is SPC."
                                     (interactive)
                                     (if (eq mike:theme 'color-theme-solarized-dark)
                                         (mike:set-theme 'color-theme-solarized-light)
-                                      (if (eq mike:theme 'color-theme-solarized-light)
-                                          (mike:set-theme 'color-theme-vivid-chalk)
-                                        (mike:set-theme 'color-theme-solarized-dark))))
+                                      (mike:set-theme 'color-theme-solarized-dark)))
 
                                   (global-set-key [?\C-=] 'mike:next-color-theme)
                                   (global-set-key [?\C-+] 'mike:increase-font-size)
@@ -828,220 +992,3 @@ The key typed is executed unless it is SPC."
                                       (mike:set-font-size 18))
                                   ))
        ))
-
-
-;;;
-;;;  dos whisperer
-;;;
-(defun omg-this-is-a-dos-file ()
-  (interactive)
-  (revert-buffer-with-coding-system 'us-ascii-dos))
-
-
-;;;
-;;;  @jvshahid's magic hide-show / folding hack. seriously awesome.
-;;;
-(defun toggle-magic-code-folding (&optional delta)
-  "Trigger selective display to hide lines that have more indentation than the current line. If DELTA was provided it will be added to the current line's indentation."
-  (interactive "P")
-  (let ((indentation (current-indentation)))
-    (if selective-display
-        (set-selective-display nil)
-      (set-selective-display (+ indentation 1
-                                (if delta delta 0))))))
-(define-key global-map (kbd "C-c C-h") 'toggle-magic-code-folding)
-
-
-;;;
-;;;  camelCase
-;;;
-(autoload 'camelCase-mode "camelCase-mode" nil t)
-(add-hook 'find-file-hook '(lambda () (camelCase-mode 1))) ; all files. (all buffers?)
-
-
-;;;
-;;;  rinari - emacs ruby on rails mode
-;;;
-(add-to-list 'load-path "~/.emacs.d/rinari")
-(setq rinari-minor-mode-prefixes (list "'"))
-(require 'rinari)
-; (require 'ruby-compilation-rspec)
-(global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
-; (add-to-list 'load-path "~/.emacs.d/cucumber")
-; (load "feature-mode")
-; (require 'cucumber-mode-compilation)
-
-
-;;; rhtml
-(add-to-list 'load-path "~/.emacs.d/rhtml")
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook
-          (lambda () (rinari-launch)))
-(add-to-list 'auto-mode-alist '("\\.html\\.erb$" . rhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.text\\.erb$" . rhtml-mode))
-
-
-;;;  yegge's js2 mode
-;; (autoload 'js2-mode "js2" nil t)
-;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-;;;  espresso js mode
-(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
-(setq espresso-indent-level 2)
-(add-hook 'espresso-mode-hook
-          (function
-           (lambda ()
-             (fset 'my-cpp-comment-wide
-                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
-                          return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
-             (fset 'my-cpp-comment
-                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
-                          ?\C-p ?  ? ])
-             (local-set-key "\C-cc" 'my-cpp-comment-wide)
-             (local-set-key "\C-cv" 'my-cpp-comment)
-             )))
-
-
-;;; pastie
-(load "pastie.el")
-
-
-;;;
-;;;  org-mode
-;;;
-(global-set-key "\C-ca" 'org-agenda)
-(add-hook 'org-mode-hook
-          '(lambda ()
-             ; set the org-mode-map to override any and all minor modes, because there are
-             ; critical collisions with camelCase mode (M-right, M-left).
-             (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
-             ))
-
-
-;;;
-;;;  scala-mode and ensime
-;;;
-(add-to-list 'load-path "~/.emacs.d/scala-mode")
-(autoload 'scala-mode "scala-mode" nil t)
-(setq auto-mode-alist (cons '("\\.scala$" . scala-mode) auto-mode-alist))
-(add-to-list 'load-path "~/.emacs.d/ensime/elisp")
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-
-;;;
-;;;  let's get ansi color support in shell
-;;;
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-;;;
-;;;  git support
-;;;
-;; (setq load-path (cons (expand-file-name "/usr/share/doc/git-core/contrib/emacs") load-path))
-;; (require 'vc-git)
-;; (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
-;; (require 'git)
-;; (autoload 'git-blame-mode "git-blame"
-;;   "Minor mode for incremental blame for Git." t)
-
-
-;;; "she bangs, she bangs." -William Hung
-(require 'shebang)
-
-
-;;;  i loves me some emacs server.
-(cond (window-system (server-start)))
-
-
-;;;  let's try global-auto-revert in case i need to pair program
-;;;  also mo'better auto-save behavior
-(global-auto-revert-mode 1)
-(setq auto-save-timeout 1)
-(setq auto-save-visited-file-name t)
-
-
-;;  move autosave files somewhere out of the directory path
-;;  http://amitp.blogspot.com/2007/03/emacs-move-autosave-and-backup-files.html
-(defvar user-temporary-file-directory "~/.emacs.d/auto-save")
-(make-directory user-temporary-file-directory t)
-(setq backup-by-copying t)
-(setq backup-directory-alist
-      `(("." . ,user-temporary-file-directory)
-        (,tramp-file-name-regexp nil)))
-(setq auto-save-list-file-prefix
-      (concat user-temporary-file-directory ".auto-saves-"))
-(setq auto-save-file-name-transforms
-      `((".*" ,user-temporary-file-directory t)))
-
-;;;
-;;;  customize!
-;;;
-(setq custom-file "~/.emacs.d/custom-file.el")
-(load custom-file)
-(put 'narrow-to-region 'disabled nil)
-
-
-;;;
-;;;  edit-server for my chrome extension
-;;;
-(if (locate-library "edit-server")
-    (progn
-      (require 'edit-server)
-      (setq edit-server-new-frame nil)
-      (define-key edit-server-edit-mode-map
-        (kbd "C-x C-s") nil); This keystroke is a habit, it doesn't mean I'm done editing.
-      (edit-server-start)
-      (add-hook 'edit-server-start-hook
-                (lambda ()
-                  (if (string-match "github.com" (buffer-name))
-                      (markdown-mode))))
-      ))
-
-
-;;; showoff-mode
-(add-to-list 'load-path "~/.emacs.d/site-lisp/showoff-mode")
-(require 'showoff-mode)
-(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
-
-
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
-
-
-;;; yaml
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-
-;;; yasnippet
-;; (require 'yasnippet-bundle)
-;; (yas/initialize)
-;; (yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
-
-
-;;; rvm!
-(add-to-list 'load-path "~/.emacs.d/rvm")
-(require 'rvm)
-(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
-
-;;;
-;;;  rdoc-mode
-;;;
-(autoload 'rdoc-mode "rdoc-mode" "Treetop mode." t)
-
-;;; golang
-(require 'go-mode)

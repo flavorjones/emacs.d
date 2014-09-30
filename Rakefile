@@ -63,15 +63,15 @@ def svn_target name, svnurl, &block
   add_task_to_update name, "svn update", &block
 end
 
-# scala-mode
-svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs"
+# # scala-mode
+# svn_target "scala-mode", "http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/emacs"
 
-# ensime (scala)
-wget_target "ensime.tar.gz", "https://github.com/downloads/aemoncannon/ensime/ensime_2.9.2-SNAPSHOT-0.9.3.RC2.tar.gz" do
-  `rm -rf ensime`
-  `tar -xvf ensime.tar.gz`
-  `mv ensime_2.9.2-SNAPSHOT-0.9.3.RC2 ensime`
-end
+# # ensime (scala)
+# wget_target "ensime.tar.gz", "https://github.com/downloads/aemoncannon/ensime/ensime_2.9.2-SNAPSHOT-0.9.3.RC2.tar.gz" do
+#   `rm -rf ensime`
+#   `tar -xvf ensime.tar.gz`
+#   `mv ensime_2.9.2-SNAPSHOT-0.9.3.RC2 ensime`
+# end
 
 # ruby-mode
 # svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
@@ -112,39 +112,39 @@ task :ctags do
 end
 
 
-# rinari
-INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
+# # rinari
+# INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
 
-file rinari_dir do
-  puts "* checking out rinari ..."
-  puts %x(git clone https://github.com/flavorjones/rinari.git rinari)
-  Rake::Task[:update_rinari_submodules].invoke
-end
-task :update_rinari_submodules do
-  puts "* updating rinari submodules ..."
-  Dir.chdir("rinari") do
-    puts %x(git submodule init)
-    puts %x(git submodule update)
-  end
-end
-add_task_to_git_update "rinari" do
-  Rake::Task[:update_rinari_submodules].invoke
-end
+# file rinari_dir do
+#   puts "* checking out rinari ..."
+#   puts %x(git clone https://github.com/flavorjones/rinari.git rinari)
+#   Rake::Task[:update_rinari_submodules].invoke
+# end
+# task :update_rinari_submodules do
+#   puts "* updating rinari submodules ..."
+#   Dir.chdir("rinari") do
+#     puts %x(git submodule init)
+#     puts %x(git submodule update)
+#   end
+# end
+# add_task_to_git_update "rinari" do
+#   Rake::Task[:update_rinari_submodules].invoke
+# end
 
-# rvm.el
-git_target "rvm", "https://github.com/senny/rvm.el"
+# # rvm.el
+# git_target "rvm", "https://github.com/senny/rvm.el"
 
-# rhtml-mode
-git_target "rhtml", "https://github.com/eschulte/rhtml.git"
+# # rhtml-mode
+# git_target "rhtml", "https://github.com/eschulte/rhtml.git"
 
-# yasnippets for rails
-git_target "yasnippets-rails", "https://github.com/flavorjones/yasnippets-rails.git"
+# # yasnippets for rails
+# git_target "yasnippets-rails", "https://github.com/flavorjones/yasnippets-rails.git"
 
 # cucumber
 git_target "cucumber", "https://github.com/michaelklishin/cucumber.el.git"
 
-# solarized color theme
-git_target "solarized", "https://github.com/flavorjones/emacs-color-theme-solarized.git"
+# # solarized color theme
+# git_target "solarized", "https://github.com/flavorjones/emacs-color-theme-solarized.git"
 
 # generate ~/.emacs from template
 dotemacs_target = File.join(@target_path, ".emacs")

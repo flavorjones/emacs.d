@@ -15,6 +15,7 @@
  '(org-log-done (quote time))
  '(org-odd-levels-only t)
  '(org-startup-folded (quote content))
+ '(package-user-dir "/Users/pivotal/.emacs.d.mike/elpa")
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
