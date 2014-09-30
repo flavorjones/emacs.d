@@ -175,10 +175,8 @@ task :install => dotemacs_symlink
 
 desc "remove ~/.emacs"
 task :clean do
-  if File.exists? dotemacs_symlink
-    puts "deleting file #{dotemacs_symlink}"
-    FileUtils.rm dotemacs_symlink 
-  end    
+  FileUtils.rm_f dotemacs_symlink, :verbose => true 
+  FileUtils.rm_f dotemacs_target, :verbose => true
 end
 
 desc "remove all external package files"
