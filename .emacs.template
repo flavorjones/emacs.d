@@ -18,7 +18,7 @@
 ;;; package managers
 ;;;
 (require 'package)
-(custom-set-variables '(package-user-dir "~/.emacs.d/elpa"))
+(setq package-user-dir "~/.emacs.d/elpa")
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
