@@ -129,6 +129,7 @@
          ("Thorfile" . ruby-mode)
          ("\\.thor$" . ruby-mode)
          ("Gemfile$" . ruby-mode)
+         ("Vagrantfile$" . ruby-mode)
          ("Capfile$" . ruby-mode)
          ("\\.gemspec$" . ruby-mode)
          )
