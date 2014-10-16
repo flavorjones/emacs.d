@@ -12,6 +12,7 @@ rspec
 ruby-mode
 rvm
 scala-mode
+session.*
 solarized
 url
 yasnippets-rails
