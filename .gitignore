@@ -1,4 +1,5 @@
 *.elc
+*~
 .emacs
 auto-save
 clojure
