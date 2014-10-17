@@ -770,14 +770,8 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  rinari - emacs ruby on rails mode
 ;;;
-(require 'rinari)
-(setq rinari-minor-mode-prefixes (list "'"))
-; (require 'ruby-compilation-rspec)
-(global-set-key (kbd "C-x C-M-f") 'find-file-in-project) ;; optional
-; (add-to-list 'load-path "~/.emacs.d/cucumber")
-; (load "feature-mode")
-; (require 'cucumber-mode-compilation)
-
+(setq rinari-minor-mode-prefixes (list "'")) ; because rinari thinks ";" is a good prefix.
+(global-rinari-mode)
 
 ;;; rhtml
 (add-to-list 'load-path "~/.emacs.d/rhtml")
