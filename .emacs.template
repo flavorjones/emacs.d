@@ -881,7 +881,6 @@ The key typed is executed unless it is SPC."
 
 
 ;;; showoff-mode
-(add-to-list 'load-path "~/.emacs.d/site-lisp/showoff-mode")
 (require 'showoff-mode)
 (add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
 
@@ -889,14 +888,11 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  rdoc-mode
 ;;;
-(autoload 'rdoc-mode "rdoc-mode" "Treetop mode." t)
+(autoload 'rdoc-mode "rdoc-mode" "RDoc mode." t)
 
 
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-;;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/yasnippets-rails")
 
 ;;; rvm!
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
