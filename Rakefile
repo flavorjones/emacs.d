@@ -73,27 +73,6 @@ end
 #   `mv ensime_2.9.2-SNAPSHOT-0.9.3.RC2 ensime`
 # end
 
-# ruby-mode
-# svn_target "ruby-mode", "http://svn.ruby-lang.org/repos/ruby/trunk/misc"
-
-# js2-mode
-# svn_target "js2", "http://js2-mode.googlecode.com/svn/trunk" do
-#   Dir.chdir "js2" do
-#     puts "* compiling yegge's awesome j2 mode ..."
-#     puts %x(make)
-#     FileUtils.mv File.join(@target_path, "js2", "build", "js2.elc"), @js2_elc
-#   end
-# end
-
-# INSTALL_TARGETS << @js2_elc = File.join(@target_path, "js2.elc")
-# js2_el = File.join(@target_path, "js2", "build", "js2.el")
-
-# file @js2_elc => js2_el
-# file js2_el do
-#   Rake::Task[:update_js2].invoke
-# end
-
-
 # exuberant ctags
 INSTALL_TARGETS << :ctags
 
@@ -110,41 +89,6 @@ task :ctags do
     end
   end
 end
-
-
-# # rinari
-# INSTALL_TARGETS << rinari_dir = File.join(@target_path, "rinari")
-
-# file rinari_dir do
-#   puts "* checking out rinari ..."
-#   puts %x(git clone https://github.com/flavorjones/rinari.git rinari)
-#   Rake::Task[:update_rinari_submodules].invoke
-# end
-# task :update_rinari_submodules do
-#   puts "* updating rinari submodules ..."
-#   Dir.chdir("rinari") do
-#     puts %x(git submodule init)
-#     puts %x(git submodule update)
-#   end
-# end
-# add_task_to_git_update "rinari" do
-#   Rake::Task[:update_rinari_submodules].invoke
-# end
-
-# # rvm.el
-# git_target "rvm", "https://github.com/senny/rvm.el"
-
-# # rhtml-mode
-# git_target "rhtml", "https://github.com/eschulte/rhtml.git"
-
-# # yasnippets for rails
-# git_target "yasnippets-rails", "https://github.com/flavorjones/yasnippets-rails.git"
-
-# cucumber
-git_target "cucumber", "https://github.com/michaelklishin/cucumber.el.git"
-
-# # solarized color theme
-# git_target "solarized", "https://github.com/flavorjones/emacs-color-theme-solarized.git"
 
 # generate ~/.emacs from template
 dotemacs_target = File.join(@target_path, ".emacs")
@@ -196,18 +140,5 @@ task :external => INSTALL_TARGETS
 desc "update external emacs packages"
 task :update => UPDATE_TARGETS
 
-desc "byte-compile .el files"
-task :compile do
-  # Dir["**/*.el"].each do |el|
-  #   elc = el.gsub(/\.el$/, ".elc")
-  #   if !File.exists?(elc) || (File.stat(elc).mtime < File.stat(el).mtime)      
-  #     puts "compiling #{el} ..."
-  #     Dir.chdir File.dirname(el) do
-  #       `emacs -batch -q -f batch-byte-compile #{File.basename el}`
-  #     end
-  #   end
-  # end
-end
-
-desc "install external packages, byte-compile local files, and install ~/.emacs"
-task :default => [:external, :compile, :install]
+desc "install external packages and install ~/.emacs"
+task :default => [:external, :install]
