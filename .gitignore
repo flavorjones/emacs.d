@@ -16,3 +16,5 @@ session.*
 solarized
 url
 yasnippets-rails
+elpa/*.txt
+
