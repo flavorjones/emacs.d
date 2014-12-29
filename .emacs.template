@@ -28,6 +28,7 @@
 (auto-compile-on-load-mode 1)
 ; (auto-compile-on-save-mode 1)
 
+
 ;;;;;;;;;;
 ;;; general variables, functions
 ;;;;;;;;;;
@@ -36,6 +37,9 @@
 
 (line-number-mode t)
 (global-linum-mode t)
+
+(require 'git-gutter-fringe)
+(global-git-gutter-mode t)
 
 (transient-mark-mode t)
 (setq default-major-mode 'text-mode)
