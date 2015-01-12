@@ -279,48 +279,37 @@
 (add-hook 'c-mode-common-hook
           (function
            (lambda ()
-
-;;; shall we use tabs or spaces? t is tabs, nil is spaces.
-             (setq indent-tabs-mode nil) ;;; nil forces spaces always
-;;; set tabbing convention and display
+             (setq indent-tabs-mode nil)
              (c-set-style "k&r")
-             (setq c-basic-offset 2) ;; or 4
-;;; make inline function definitions indent like i want
-             (let ((CELL (assq 'inline-open c-offsets-alist)))
-               (cond ((consp CELL) (setcdr CELL 0))
-                     ((push '(inline-open . 0) c-offsets-alist))))
-             (let ((CELL (assq 'inher-intro c-offsets-alist)))
-               (cond ((consp CELL) (setcdr CELL 0))
-                     ((push '(inher-intro . 0) c-offsets-alist))))
+             (setq c-basic-offset 2)
+             (google-set-c-style)
+
+             ;;; make inline function definitions indent like i want
+             ;; (let ((CELL (assq 'inline-open c-offsets-alist)))
+             ;;   (cond ((consp CELL) (setcdr CELL 0))
+             ;;         ((push '(inline-open . 0) c-offsets-alist))))
+             ;; (let ((CELL (assq 'inher-intro c-offsets-alist)))
+             ;;   (cond ((consp CELL) (setcdr CELL 0))
+             ;;         ((push '(inher-intro . 0) c-offsets-alist))))
 
              (auto-fill-mode)
              (set-fill-column 80)
 
-             ;; c++-style comments
              (fset 'my-cpp-comment-wide
-                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/
-                          return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
+                   [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/ return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
              (fset 'my-cpp-comment
-                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/
-                          ?\C-p ?  ? ])
-             ;; c-style comments
+                   [?\C-o tab ?/ ?/ return tab ?/ ?/ return tab ?/ ?/ ?\C-p ?  ? ])
              (fset 'my-c-comment-wide
-                   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab
-                          return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
+                   [?\C-o tab ?/ escape ?1 ?0 ?* return ?* tab return escape ?1 ?0 ?* ?/ ?\C-p ?  ? ])
              (fset 'my-c-comment
-                   [?\C-o tab ?/ ?* return ?* tab return ?* ?/
-                          ?\C-p ?  ? ])
-
+                   [?\C-o tab ?/ ?* return ?* tab return ?* ?/ ?\C-p ?  ? ])
              (fset 'my-c-dox-comment
-                   [?\C-o tab ?/ ?* ?* return ?* tab return ?*
-                          ?/ ?\C-p ?  ? ])
+                   [?\C-o tab ?/ ?* ?* return ?* tab return ?* ?/ ?\C-p ?  ? ])
+
              (local-set-key "\C-c\C-v" 'my-c-dox-comment)
 
-;;; to override c-electric-star
+             ;;; override c-electric-star
              (local-set-key "*" 'self-insert-command )
-
-             (hs-minor-mode 1)
-
              )))
 
 ;;;;;;;;;;
