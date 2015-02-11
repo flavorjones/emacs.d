@@ -255,10 +255,12 @@
 ;;;  markdown-mode
 ;;;
 (autoload 'markdown-mode "markdown-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.markdown$"  . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.mdml$"      . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md$"        . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.slidedown$" . markdown-mode))
+(setq auto-mode-alist (append '(("\\.markdown$"  . markdown-mode)
+                                ("\\.mdml$"      . markdown-mode)
+                                ("\\.md$"        . markdown-mode)
+                                ("\\.slidedown$" . markdown-mode)
+                                ("\\.prolific$"  . markdown-mode)) auto-mode-alist
+                                ))
 (add-hook 'markdown-mode-hook
           (function
            (lambda ()
