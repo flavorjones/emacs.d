@@ -336,6 +336,15 @@
 
 
 ;;;;;;;;;;
+;;;  csharp-mode
+;;;;;;;;;;
+(add-hook 'csharp-mode-hook
+          (function
+           (lambda ()
+             (setq c-basic-offset 4)
+             )))
+
+;;;;;;;;;;
 ;;;  cmake-mode
 ;;;;;;;;;;
 (add-hook 'cmake-mode-hook
