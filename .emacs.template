@@ -284,7 +284,9 @@
              (setq indent-tabs-mode nil)
              (c-set-style "k&r")
              (setq c-basic-offset 2)
-             (google-set-c-style)
+
+;;             (c-set-offset 'arglist-intro 4)
+;;             (c-set-offset 'arglist-close 2)
 
              ;;; make inline function definitions indent like i want
              ;; (let ((CELL (assq 'inline-open c-offsets-alist)))
