@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(create-lockfiles nil)
+ '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
  '(js2-enter-indents-newline nil)
@@ -17,7 +18,9 @@
  '(org-odd-levels-only t)
  '(org-startup-folded (quote content))
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
- '(sh-basic-offset 2))
+ '(sh-basic-offset 2)
+ '(undo-tree-visualizer-diff t)
+ '(undo-tree-visualizer-timestamps t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
