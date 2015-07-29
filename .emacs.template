@@ -64,6 +64,9 @@
 (setq fill-column 100) ;; yay widescreen
 ;; (setq longlines-show-hard-newlines t)
 
+(global-undo-tree-mode)
+
+
 ;;;
 ;;;  ido-mode
 ;;;
@@ -88,6 +91,7 @@
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
 ;; is used by git, svn, etc.)
 (when window-system
+  (setq desktop-dirname "~/.emacs.d")
   (desktop-save-mode 1)
   (run-with-idle-timer 30 t (lambda () (desktop-save-in-desktop-dir)))
   )
