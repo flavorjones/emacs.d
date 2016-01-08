@@ -278,6 +278,8 @@
              )))
 (setq markdown-command "marked")
 (setq markdown-css-path "~/.emacs.d/github.css")
+(setq markdown-xhtml-header-content
+      "<meta http-equiv=\"refresh\" content=\".5\">")
 
 ;; ;;; showoff-mode
 ;; (require 'showoff-mode)
