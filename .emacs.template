@@ -269,6 +269,12 @@
           (function
            (lambda ()
              (local-set-key "\C-c\C-l" 'longlines-mode)
+             (add-hook 'after-save-hook
+                       'markdown-export
+                       nil t) ;; the t is for making the hook local to buffer
+             (add-hook 'auto-save-hook
+                       'markdown-export
+                       nil t) ;; the t is for making the hook local to buffer
              )))
 (setq markdown-command "marked")
 (setq markdown-css-path "~/.emacs.d/github.css")
