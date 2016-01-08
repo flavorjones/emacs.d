@@ -256,20 +256,27 @@
 (add-to-list 'auto-mode-alist '("\\.treetop$"  . treetop-mode))
 
 ;;;
-;;;  markdown-mode
+;;;  markdown
 ;;;
-(autoload 'markdown-mode "markdown-mode" nil t)
-(setq auto-mode-alist (append '(("\\.markdown$"  . markdown-mode)
-                                ("\\.mdml$"      . markdown-mode)
-                                ("\\.md$"        . markdown-mode)
-                                ("\\.slidedown$" . markdown-mode)
-                                ("\\.prolific$"  . markdown-mode)) auto-mode-alist
+;(autoload 'gfm-mode "gfm-mode" nil t)
+(setq auto-mode-alist (append '(("\\.markdown$"  . gfm-mode)
+                                ("\\.mdml$"      . gfm-mode)
+                                ("\\.md$"        . gfm-mode)
+                                ("\\.slidedown$" . gfm-mode)
+                                ("\\.prolific$"  . gfm-mode)) auto-mode-alist
                                 ))
 (add-hook 'markdown-mode-hook
           (function
            (lambda ()
              (local-set-key "\C-c\C-l" 'longlines-mode)
              )))
+(setq markdown-command "marked")
+(setq markdown-css-path "~/.emacs.d/github.css")
+
+;; ;;; showoff-mode
+;; (require 'showoff-mode)
+;; (add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
+
 
 ;;;
 ;;;  css-mode
@@ -894,11 +901,6 @@ The key typed is executed unless it is SPC."
     (progn
       (edit-server-start)
       ))
-
-
-;;; showoff-mode
-(require 'showoff-mode)
-(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
 
 
 ;;;
