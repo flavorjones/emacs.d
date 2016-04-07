@@ -17,7 +17,7 @@
  '(org-log-done (quote time))
  '(org-odd-levels-only t)
  '(org-startup-folded (quote content))
- '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
+ '(safe-local-variable-values (quote ((require-final-newline . t) (mangle-whitespace . t) (encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(sh-basic-offset 2)
  '(undo-tree-visualizer-diff t)
  '(undo-tree-visualizer-timestamps t))
