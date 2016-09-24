@@ -10,6 +10,7 @@
  '(js2-enter-indents-newline nil)
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
+ '(neo-keymap-style (quote concise))
  '(neo-smart-open t)
  '(org-agenda-files (quote ("~/docs/notes/todo.org")))
  '(org-file-apps (quote (("txt" . emacs) ("tex" . emacs) ("ltx" . emacs) ("org" . emacs) ("el" . emacs) ("bib" . emacs) ("pdf" . "evince '%s'"))))

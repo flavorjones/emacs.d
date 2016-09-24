@@ -200,7 +200,7 @@
 (global-set-key "\C-c\C-fn" 'new-frame)
 (global-set-key "\C-c\C-fd" 'delete-frame)
 ;; (global-set-key "\C-c\C-fs" 'speedbar)
-(define-key global-map [C-f12] 'neotree)
+(define-key global-map [C-f12] 'neotree-toggle)
 
 ;;;  these so we can resize buffer windows using the mouse
 (global-set-key [mode-line down-mouse-1] 'mouse-drag-mode-line)
