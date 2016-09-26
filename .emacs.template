@@ -193,14 +193,14 @@
 (global-set-key "\C-c;" 'comment-or-uncomment-region)
 
 
-;;;
 ;;; frame-related bindings
-;;;
 (global-set-key "\C-c\C-fo" 'other-frame)
 (global-set-key "\C-c\C-fn" 'new-frame)
 (global-set-key "\C-c\C-fd" 'delete-frame)
+
+;;; hipsters say i need a tree
 ;; (global-set-key "\C-c\C-fs" 'speedbar)
-(define-key global-map [C-f12] 'neotree-toggle)
+(define-key global-map [C-f12] 'neotree)
 
 ;;;  these so we can resize buffer windows using the mouse
 (global-set-key [mode-line down-mouse-1] 'mouse-drag-mode-line)
@@ -535,7 +535,8 @@
              (fset 'my-sh-comment
                    [?# return ?# return ?# return ?\C-p ?\C-p ?\C-e ?  ? ])
              (local-set-key "\C-cv" 'my-sh-comment)
-             )))
+             (setq sh-basic-offset 2
+                   sh-indentation 2))))
 
 
 ;;;;;;;;;;
