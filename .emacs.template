@@ -278,7 +278,7 @@
              ;;           nil t) ;; the t is for making the hook local to buffer
              )))
 (setq markdown-command "marked")
-(setq markdown-css-path "~/.emacs.d/github.css")
+(setq markdown-css-paths '("~/.emacs.d/github.css"))
 ;; (setq markdown-xhtml-header-content
 ;;       "<meta http-equiv=\"refresh\" content=\"5\">")
 
