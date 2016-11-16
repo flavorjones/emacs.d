@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(create-lockfiles nil)
+ '(fringe-mode (quote (1 . 1)) nil (fringe))
  '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
  '(js2-auto-indent-flag nil)
