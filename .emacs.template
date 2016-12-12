@@ -919,6 +919,18 @@ The key typed is executed unless it is SPC."
 (autoload 'rdoc-mode "rdoc-mode" "RDoc mode." t)
 
 
+;;;
+;;;  go-mode
+;;;
+(add-hook 'go-mode-hook
+          (function
+           (lambda ()
+;;;             (electric-pair-mode) ;;; ugh this sucks, I need snippets
+             (local-set-key "\C-cc" 'my-cpp-comment-wide)
+             (local-set-key "\C-cv" 'my-cpp-comment)
+             )))
+
+
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
