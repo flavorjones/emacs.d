@@ -395,21 +395,7 @@
 ;; Setting rbenv path
 (setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
 (setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
-
-;;;
-;;;  http://www.emacswiki.org/cgi-bin/wiki/FlymakeRuby
-;;;
-(require 'flymake)
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 (add-hook 'ruby-mode-hook
           (function
@@ -925,10 +911,11 @@ The key typed is executed unless it is SPC."
 (add-hook 'go-mode-hook
           (function
            (lambda ()
-;;;             (electric-pair-mode) ;;; ugh this sucks, I need snippets
              (local-set-key "\C-cc" 'my-cpp-comment-wide)
              (local-set-key "\C-cv" 'my-cpp-comment)
              )))
+;; (eval-after-load "go-mode"
+;;   '(require 'flymake-go))
 
 
 ;;; yaml
