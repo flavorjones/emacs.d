@@ -36,7 +36,7 @@
 ;;;;;;;;;;
 ;;; general variables, functions
 ;;;;;;;;;;
-(yas-global-mode 1)
+(yas-global-mode t)
 
 (setq mike:i-am-a-mac (boundp 'mac-command-modifier))
 (if mike:i-am-a-mac (setq mac-command-modifier 'meta))
