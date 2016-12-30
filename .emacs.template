@@ -10,8 +10,12 @@
 
 
 ;;;
-;;;  our external resources
+;;;  our external resources.
 ;;;
+;;;  note that "~/.emacs.d" will get replaced by the rake task at
+;;;  installation.
+;;;
+(setq user-emacs-directory "~/.emacs.d")
 (setq load-path (append '("~/.emacs.d") load-path))
 
 ;;;

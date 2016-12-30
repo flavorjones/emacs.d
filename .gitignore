@@ -17,4 +17,5 @@ solarized
 url
 yasnippets-rails
 elpa/*.txt
-
+ido.last
+.emacs.desktop*
