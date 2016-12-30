@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: context
+# key: context
+# --
+Context("${1:description}", func() {
+	$0
+})
