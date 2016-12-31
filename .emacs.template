@@ -396,11 +396,7 @@
 ;;;;;;;;;;
 ;;;  ruby-mode
 ;;;;;;;;;;
-(require 'ruby-end)
-
-;; Setting rbenv path
-(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
-(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
+(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
 
@@ -422,6 +418,9 @@
              (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
                  (flymake-mode))
              )))
+
+(eval-after-load 'rspec-mode '(rspec-install-snippets))
+
 
 ;;;;;;;;;;
 ;;;  sql-mode
@@ -927,9 +926,6 @@ The key typed is executed unless it is SPC."
 
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-;;; rvm!
-(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 
 ;;;  font-lock mode setup
 (add-hook 'font-lock-mode-hook
