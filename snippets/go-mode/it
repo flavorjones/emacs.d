@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: it
+# name: It
 # key: it
 # --
 It("${1:description}", func() {

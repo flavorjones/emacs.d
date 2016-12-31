@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: expect
-# key: expect
+# name: Expect
+# key: exp
 # --
 Expect(${1:actual}).To($0)

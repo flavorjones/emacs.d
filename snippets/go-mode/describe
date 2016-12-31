@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: describe
-# key: describe
+# name: Describe
+# key: desc
 # --
 Describe("${1:description}", func() {
 	$0
