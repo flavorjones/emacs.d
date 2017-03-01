@@ -11,6 +11,10 @@
  '(js2-enter-indents-newline nil)
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
+ '(longlines-show-effect "⏎
+")
+ '(longlines-show-hard-newlines t)
+ '(longlines-wrap-follows-window-size t)
  '(neo-keymap-style (quote concise))
  '(neo-smart-open t)
  '(org-agenda-files (quote ("~/docs/notes/todo.org")))
@@ -46,4 +50,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(escape-glyph ((t (:foreground "dim gray")))))
