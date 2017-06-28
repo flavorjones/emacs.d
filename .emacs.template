@@ -926,6 +926,7 @@ The key typed is executed unless it is SPC."
 
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml.erb$" . yaml-mode))
 
 ;;;  font-lock mode setup
 (add-hook 'font-lock-mode-hook
