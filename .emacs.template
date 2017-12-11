@@ -288,10 +288,6 @@
 ;; (setq markdown-xhtml-header-content
 ;;       "<meta http-equiv=\"refresh\" content=\"5\">")
 
-;; ;;; showoff-mode
-;; (require 'showoff-mode)
-;; (add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
-
 
 ;;;
 ;;;  css-mode
@@ -838,32 +834,10 @@ The key typed is executed unless it is SPC."
 
 
 ;;;
-;;;  scala-mode and ensime
-;;;
-;; (add-to-list 'load-path "~/.emacs.d/scala-mode")
-;; (autoload 'scala-mode "scala-mode" nil t)
-;; (setq auto-mode-alist (cons '("\\.scala$" . scala-mode) auto-mode-alist))
-;; (add-to-list 'load-path "~/.emacs.d/ensime/elisp")
-;; (require 'ensime)
-;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-
-;;;
 ;;;  let's get ansi color support in shell
 ;;;
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-;;;
-;;;  git support
-;;;
-;; (setq load-path (cons (expand-file-name "/usr/share/doc/git-core/contrib/emacs") load-path))
-;; (require 'vc-git)
-;; (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
-;; (require 'git)
-;; (autoload 'git-blame-mode "git-blame"
-;;   "Minor mode for incremental blame for Git." t)
-
 
 ;;;  i loves me some emacs server.
 (cond (window-system (server-start)))
@@ -946,6 +920,7 @@ The key typed is executed unless it is SPC."
 (with-eval-after-load 'go-mode
    (require 'go-autocomplete))
 (require 'go-guru)
+(require 'go-flycheck)
 
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
