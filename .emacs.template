@@ -72,6 +72,7 @@
 ;; (setq longlines-show-hard-newlines t)
 
 (global-undo-tree-mode)
+(direnv-mode)
 
 
 ;;;
