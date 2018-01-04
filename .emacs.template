@@ -258,6 +258,7 @@
           (function
            (lambda ()
              (local-set-key "\C-c\C-l" 'longlines-mode)
+             (flyspell-mode)
              )))
 
 ;;;
