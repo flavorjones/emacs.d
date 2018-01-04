@@ -13,10 +13,6 @@
  '(js2-enter-indents-newline nil)
  '(js2-mirror-mode nil)
  '(js2-mode-indent-ignore-first-tab t)
- '(longlines-show-effect "⏎
-")
- '(longlines-show-hard-newlines t)
- '(longlines-wrap-follows-window-size t)
  '(neo-keymap-style (quote concise))
  '(neo-smart-open t)
  '(org-agenda-files (quote ("~/docs/notes/todo.org")))
@@ -46,7 +42,8 @@
      (ruby-compilation-executable . "jruby"))))
  '(sh-basic-offset 2)
  '(undo-tree-visualizer-diff t)
- '(undo-tree-visualizer-timestamps t))
+ '(undo-tree-visualizer-timestamps t)
+ '(visual-line-fringe-indicators (quote (nil right-curly-arrow))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -68,9 +68,7 @@
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
 (unicode-fonts-setup)
 
-;;;  longlines
 (setq fill-column 100) ;; yay widescreen
-;; (setq longlines-show-hard-newlines t)
 
 (global-undo-tree-mode)
 (direnv-mode)
@@ -170,13 +168,6 @@
                               auto-mode-alist))
 
 ;;;;;;;;;;
-;;;  some random stuff.
-;;;;;;;;;;
-(autoload 'ediff "ediff" nil t)         ;  cool diff mode
-;;(autoload 'flame "flame" nil t)         ;  automated flaming
-(autoload 'longlines-mode "longlines" nil t)
-
-;;;;;;;;;;
 ;;;  minibuffer resizes dynamically
 ;;;;;;;;;;
 (if (load "rsz-mini" t) (resize-minibuffer-mode))
@@ -191,8 +182,6 @@
 (global-set-key "\C-cr" 'replace-regexp)
 (global-set-key "\er" 'query-replace-regexp)
 (global-set-key "\C-c\C-a" 'auto-fill-mode)
-;; (global-set-key "\C-cd" 'spell-buffer)
-;; (global-set-key "\C-cj" 'justify-current-line)
 (global-set-key "\C-cj" 'join-line)
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'read-only-mode)
@@ -257,7 +246,6 @@
 (add-hook 'text-mode-hook
           (function
            (lambda ()
-             (local-set-key "\C-c\C-l" 'longlines-mode)
              (flyspell-mode)
              )))
 
@@ -280,7 +268,6 @@
 (add-hook 'gfm-mode-hook
           (function
            (lambda ()
-             (local-set-key "\C-c\C-l" 'longlines-mode)
              ;; (add-hook 'after-save-hook
              ;;           'markdown-export
              ;;           nil t) ;; the t is for making the hook local to buffer
