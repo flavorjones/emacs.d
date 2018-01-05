@@ -836,10 +836,11 @@ The key typed is executed unless it is SPC."
 
 
 ;;;  let's try global-auto-revert in case i need to pair program
-;;;  also mo'better auto-save behavior
 (global-auto-revert-mode 1)
-; (setq auto-save-timeout 1)
-; (setq auto-save-visited-file-name t)
+
+;;;  also mo'better auto-save behavior
+(setq auto-save-timeout 600) ; long enough it won't happen during editing, only if I forget
+(setq auto-save-visited-file-name t)
 
 
 ;;  move autosave files somewhere out of the directory path
