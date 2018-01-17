@@ -9,6 +9,10 @@
  '(fringe-mode nil nil (fringe))
  '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
+ '(initial-major-mode (quote gfm-mode))
+ '(initial-scratch-message "# scratch buffer
+
+")
  '(js2-auto-indent-flag nil)
  '(js2-enter-indents-newline nil)
  '(js2-mirror-mode nil)
