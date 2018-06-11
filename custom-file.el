@@ -10,8 +10,10 @@
  '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
  '(initial-major-mode (quote gfm-mode))
- '(initial-scratch-message "# scratch buffer
-
+ '(initial-scratch-message "<meta charset='utf-8'>
+<head><style> code { font-size: smaller ; } </style>
+<body style=\"font-size: 10pt; font-family: 'Arial'\">
+# scratch buffer
 ")
  '(js2-auto-indent-flag nil)
  '(js2-enter-indents-newline nil)
