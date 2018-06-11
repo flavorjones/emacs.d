@@ -74,7 +74,8 @@
 (direnv-mode)
 
 ;; i've finally come around
-(electric-pair-mode 1)
+;; no I haven't
+;; (electric-pair-mode 1)
 
 ;;;
 ;;;  ido-mode
@@ -273,6 +274,7 @@
              ;; (add-hook 'auto-save-hook
              ;;           'markdown-export
              ;;           nil t) ;; the t is for making the hook local to buffer
+             (electric-pair-mode 0)
              )))
 (setq markdown-command "marked")
 (setq markdown-css-paths '("~/.emacs.d/github.css"))
