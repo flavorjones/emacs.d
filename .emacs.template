@@ -49,7 +49,7 @@
 (global-git-gutter-mode t)
 
 (transient-mark-mode t)
-(setq default-major-mode 'text-mode)
+(setq default-major-mode 'gfm-mode)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (display-time)
