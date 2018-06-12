@@ -830,7 +830,7 @@ The key typed is executed unless it is SPC."
 (global-auto-revert-mode 1)
 
 ;;;  also mo'better auto-save behavior
-(setq auto-save-timeout 600) ; long enough it won't happen during editing, only if I forget
+(setq auto-save-timeout 10) ; long enough it won't happen during editing, only if I forget
 (setq auto-save-visited-file-name t)
 
 
