@@ -38,7 +38,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (pcache persistent-soft yaml-mode unicode-fonts undo-tree toml-mode swank-clojure slim-mode sass-mode rvm rustfmt ruby-refactor ruby-hash-syntax ruby-end ruby-additional rspec-mode rnc-mode rinari rhtml-mode rake powershell paradox org neotree minimap markdown-toc markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-push-remote magit-log-edit magit-gitflow magit-find-file lua-mode ham-mode google-c-style golint go-snippets go-mode go-autocomplete gitignore-mode gitconfig-mode gitconfig gitattributes-mode git-link git-gutter-fringe git-commit-mode git-blame gist flymake-ruby flycheck find-file-in-project feature-mode exec-path-from-shell erlang eproject elm-mode edit-server direnv css-mode csharp-mode crystal-mode color-theme-solarized clojure-test-mode cargo auto-highlight-symbol auto-compile)))
+    (pcache persistent-soft yaml-mode unicode-fonts undo-tree toml-mode swank-clojure slim-mode sass-mode rvm rustfmt ruby-refactor ruby-hash-syntax ruby-end ruby-additional rspec-mode rnc-mode rinari rhtml-mode rake powershell paradox org neotree minimap markdown-toc markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-push-remote magit-gitflow magit-find-file lua-mode ham-mode google-c-style golint go-snippets go-mode go-autocomplete gitignore-mode gitconfig-mode gitconfig gitattributes-mode git-link git-gutter-fringe git-blame gist flymake-ruby flycheck find-file-in-project feature-mode exec-path-from-shell erlang eproject elm-mode edit-server direnv css-mode csharp-mode crystal-mode color-theme-solarized clojure-test-mode cargo auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
