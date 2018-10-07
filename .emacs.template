@@ -242,6 +242,7 @@
 ;;;;;;;;;;
 ;;;  text-mode
 ;;;;;;;;;;
+(setq auto-mode-alist (append '(("COMMIT_EDITMSG" . text-mode)) auto-mode-alist))
 (add-hook 'text-mode-hook
           (function
            (lambda ()
