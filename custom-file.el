@@ -59,4 +59,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(escape-glyph ((t (:foreground "dim gray")))))
+ '(escape-glyph ((t (:foreground "dim gray"))))
+ '(outline-1 ((t (:foreground "#1e90ff" :weight bold))))
+ '(outline-2 ((t (:foreground "#1ea2ee" :weight bold))))
+ '(outline-3 ((t (:foreground "#1eb4dd" :weight bold))))
+ '(outline-4 ((t (:foreground "#1ec6cc" :weight bold))))
+ '(outline-5 ((t (:foreground "#1ed8bb" :weight bold))))
+ '(outline-6 ((t (:foreground "#1eeaaa" :weight bold))))
+ '(outline-7 ((t (:foreground "#1efb99" :weight bold))))
+ '(outline-8 ((t (:foreground "#1eff88" :weight bold)))))
