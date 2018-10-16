@@ -72,6 +72,9 @@
 (global-undo-tree-mode)
 (direnv-mode)
 
+;; enable narrowing via C-x n n and C-x n w
+(put 'narrow-to-region 'disabled nil)
+
 ;; i've finally come around
 ;; no I haven't
 ;; (electric-pair-mode 1)
@@ -850,13 +853,6 @@ The key typed is executed unless it is SPC."
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
 
-;;;
-;;;  customize!
-;;;
-(setq custom-file "~/.emacs.d/custom-file.el")
-(load custom-file)
-(put 'narrow-to-region 'disabled nil)
-
 
 ;;;
 ;;;  edit-server for my chrome extension
@@ -1008,3 +1004,9 @@ The key typed is executed unless it is SPC."
                                       (mike:set-font-size 18))
                                   ))
        ))
+
+;;;
+;;;  customize!
+;;;
+(setq custom-file "~/.emacs.d/custom-file.el")
+(load custom-file)
