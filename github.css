@@ -633,3 +633,8 @@ tbody {
     vertical-align: middle;
     border-color: inherit;
 }
+
+/* overrides added by flavorjones below here */
+body {
+  font-size: 10pt !important;
+}
