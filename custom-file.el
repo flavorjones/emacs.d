@@ -10,8 +10,7 @@
  '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
  '(initial-major-mode (quote gfm-mode))
- '(initial-scratch-message
-   "# scratch buffer
+ '(initial-scratch-message "# scratch buffer
 ")
  '(js2-auto-indent-flag nil)
  '(js2-enter-indents-newline nil)
@@ -35,7 +34,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (go-mode neotree pcache persistent-soft yaml-mode unicode-fonts undo-tree toml-mode swank-clojure slim-mode sass-mode rvm rustfmt ruby-refactor ruby-hash-syntax ruby-end ruby-additional rspec-mode rnc-mode rinari rhtml-mode rake powershell paradox org minimap markdown-toc markdown-mode+ magit-tramp magit-topgit magit-svn magit-stgit magit-push-remote magit-gitflow magit-find-file lua-mode ham-mode google-c-style golint go-snippets go-autocomplete gitignore-mode gitconfig-mode gitconfig gitattributes-mode git-link git-gutter-fringe git-blame gist flymake-ruby flycheck find-file-in-project feature-mode exec-path-from-shell erlang eproject elm-mode edit-server direnv css-mode csharp-mode crystal-mode color-theme-solarized clojure-test-mode cargo auto-highlight-symbol auto-compile)))
+    (go-mode neotree undo-tree swank-clojure rustfmt rnc-mode powershell org minimap magit-tramp magit-push-remote git-blame flycheck find-file-in-project erlang edit-server css-mode csharp-mode clojure-test-mode cargo auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
