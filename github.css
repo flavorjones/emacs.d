@@ -638,3 +638,28 @@ tbody {
 body {
   font-size: 10pt !important;
 }
+
+body h1 {
+  font-size: 20pt;
+  font-weight: normal;
+}
+
+body h2 {
+  font-size: 16pt;
+  font-weight: normal;
+}
+
+body h3 {
+  font-size: 14pt;
+  font-weight: normal;
+}
+
+body h4 {
+  font-size: 12pt;
+  font-weight: normal;
+}
+
+body h5 {
+  font-size: 10pt;
+  font-weight: bold;
+}
