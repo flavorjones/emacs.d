@@ -37,6 +37,7 @@
 ;;;;;;;;;;
 ;;; general variables, functions
 ;;;;;;;;;;
+(global-magit-file-mode 1)
 (yas-global-mode t)
 
 (setq mike:i-am-a-mac (boundp 'mac-command-modifier))
