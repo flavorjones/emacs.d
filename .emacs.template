@@ -47,6 +47,7 @@
 (global-linum-mode t)
 
 (global-diff-hl-mode)
+(global-hl-todo-mode)
 
 (transient-mark-mode t)
 (setq default-major-mode 'gfm-mode)
@@ -63,7 +64,6 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (set-scroll-bar-mode 'right) ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
 
-(global-font-lock-mode t)
 (if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
 
@@ -898,19 +898,6 @@ The key typed is executed unless it is SPC."
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml.erb$" . yaml-mode))
-
-;;;  font-lock mode setup
-(add-hook 'font-lock-mode-hook
-          '(lambda ()
-             (unless (string-equal "org-mode" major-mode)
-               ;; in order, match one-line '[TODO ... ]', two-line '[TODO ...\n ... ]'
-               ;; then one-line 'TODO ...'
-               (font-lock-add-keywords
-                nil ;; mode name
-                '(("\\[\\(XXX\\|TODO\\|FIXME\\).*\\]\\|\\[\\(XXX\\|TODO\\|FIXME\\).*
- ?.*\\]\\|\\(XXX\\|TODO\\|FIXME\\).*$"
-                   0 font-lock-warning-face t)))
-               )))
 
 ;;;
 ;;;  customize!
