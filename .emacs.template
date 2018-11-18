@@ -914,9 +914,15 @@ The key typed is executed unless it is SPC."
                )))
 
 ;;;
+;;;  customize!
+;;;
+(setq custom-file "~/.emacs.d/custom-file.el")
+(load custom-file)
+
+
+;;;
 ;;;  personal font and theme stuff
 ;;;
-(require 'color-theme)
 (cond (window-system
        (defun what-font ()
          (interactive)
@@ -924,32 +930,20 @@ The key typed is executed unless it is SPC."
 
        (requires-emacs-version 23
                                '(lambda ()
-                                  (setq mike:font-face nil)
-                                  (setq mike:font-size nil)
-                                  (setq mike:font-bold-p nil)
-
                                   (defun mike:set-font-face (face)
-                                    (interactive "MFont name: ")
+                                    (interactive "Font name: ")
                                     (setq mike:font-face face)
                                     (mike:enact-font))
 
                                   (defun mike:set-font-size (size)
-                                    (interactive "nFont size: ")
+                                    (interactive "Font size: ")
                                     (setq mike:font-size size)
                                     (mike:enact-font))
 
-                                  (defun mike:set-font-bold (boldp)
-                                    (interactive)
-                                    (setq mike:font-bold-p boldp)
-                                    (mike:enact-font))
-
                                   (defun mike:enact-font ()
-                                    (if (and mike:font-face mike:font-size)
-                                        (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
-                                          (if mike:font-bold-p
-                                              (setq font (concat font ":bold")))
-                                          (set-default-font font)
-                                          (prin1 font))))
+                                    (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
+                                      (set-default-font font)
+                                      (prin1 font)))
 
                                   (defun mike:modify-font-size (increment)
                                     (setq mike:font-size (+ mike:font-size increment))
@@ -963,38 +957,25 @@ The key typed is executed unless it is SPC."
                                     (interactive)
                                     (mike:modify-font-size -1))
 
-                                  (defun mike:toggle-font-bold ()
-                                    (interactive)
-                                    (if mike:font-bold-p
-                                        (mike:set-font-bold nil)
-                                      (mike:set-font-bold t)))
-
                                   (defun mike:set-theme (theme)
-                                    (funcall theme)
+                                    (load-theme theme)
                                     (setq mike:theme theme))
 
                                   (defun mike:next-color-theme ()
                                     (interactive)
-                                    (if (eq mike:theme 'color-theme-solarized-dark)
-                                        (mike:set-theme 'color-theme-solarized-light)
-                                      (mike:set-theme 'color-theme-solarized-dark)))
+                                    (if (eq mike:theme 'solarized-dark)
+                                        (mike:set-theme 'solarized-light)
+                                      (mike:set-theme 'solarized-dark)))
+
+                                  (setq mike:font-face "Menlo")
+                                  (setq mike:font-size (if mike:i-am-a-mac 18 12))
+                                  (mike:enact-font)
+
+                                  (mike:set-theme 'solarized-dark)
 
                                   (global-set-key [?\C-=] 'mike:next-color-theme)
                                   (global-set-key [?\C-+] 'mike:increase-font-size)
                                   (global-set-key [?\C--] 'mike:decrease-font-size)
-                                  (global-set-key [?\C-_] 'mike:toggle-font-bold)
 
-                                  (mike:set-theme 'color-theme-solarized-dark)
-                                  (mike:set-font-size 12)
-                                  (mike:set-font-face "Menlo")
-
-                                  (if mike:i-am-a-mac
-                                      (mike:set-font-size 18))
                                   ))
        ))
-
-;;;
-;;;  customize!
-;;;
-(setq custom-file "~/.emacs.d/custom-file.el")
-(load custom-file)
