@@ -6,6 +6,9 @@
  '(ac-delay 0.5)
  '(ac-trigger-key "")
  '(create-lockfiles nil)
+ '(custom-safe-themes
+   (quote
+    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(fringe-mode nil nil (fringe))
  '(global-undo-tree-mode t)
  '(inhibit-startup-screen t)
@@ -34,11 +37,15 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (magit color-theme-solarized go-mode neotree undo-tree swank-clojure rustfmt rnc-mode powershell org minimap magit-tramp magit-push-remote git-blame flycheck find-file-in-project erlang edit-server css-mode csharp-mode clojure-test-mode cargo auto-highlight-symbol auto-compile)))
+    (crystal-mode solarized-theme magit go-mode neotree undo-tree swank-clojure rustfmt rnc-mode powershell org minimap magit-tramp git-blame flycheck find-file-in-project erlang edit-server css-mode csharp-mode clojure-test-mode cargo auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((require-final-newline . t)
+    ((eval when
+           (fboundp
+            (quote rainbow-mode))
+           (rainbow-mode 1))
+     (require-final-newline . t)
      (mangle-whitespace . t)
      (encoding . utf-8)
      (ruby-compilation-executable . "ruby")
