@@ -37,7 +37,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (crystal-mode solarized-theme magit go-mode neotree undo-tree swank-clojure rustfmt rnc-mode powershell org minimap magit-tramp git-blame flycheck find-file-in-project erlang edit-server css-mode csharp-mode clojure-test-mode cargo auto-highlight-symbol auto-compile)))
+    (diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree swank-clojure rustfmt rnc-mode powershell org minimap git-blame flycheck find-file-in-project erlang edit-server css-mode csharp-mode clojure-test-mode cargo auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote

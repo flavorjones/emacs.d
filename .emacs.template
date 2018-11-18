@@ -46,8 +46,7 @@
 (line-number-mode t)
 (global-linum-mode t)
 
-(require 'git-gutter-fringe)
-(global-git-gutter-mode t)
+(global-diff-hl-mode)
 
 (transient-mark-mode t)
 (setq default-major-mode 'gfm-mode)
