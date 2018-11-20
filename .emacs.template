@@ -47,6 +47,8 @@
 (global-linum-mode t)
 
 (global-diff-hl-mode)
+(diff-hl-flydiff-mode)
+
 (global-hl-todo-mode)
 
 (transient-mark-mode t)
