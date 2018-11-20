@@ -957,6 +957,7 @@ The key typed is executed unless it is SPC."
                                   (setq mike:font-size (if mike:i-am-a-mac 18 12))
                                   (mike:enact-font)
 
+                                  (setq solarized-scale-org-headlines nil)
                                   (mike:set-theme 'solarized-dark)
 
                                   (global-set-key [?\C-=] 'mike:next-color-theme)
