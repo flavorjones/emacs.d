@@ -210,6 +210,9 @@
 (global-set-key [vertical-line down-mouse-1] 'mouse-drag-vertical-line)
 (global-set-key [vertical-scroll-bar S-down-mouse-1] 'mouse-drag-vertical-line)
 
+;;;  where have you been all my life
+(global-set-key "\C-xf" `ffip)
+
 ;;  prepend or replace a cons cell with given key
 (defun my-unique-prepend (key val assoc)
   "Returns a copy of assoc with cons cell (key . val)."
