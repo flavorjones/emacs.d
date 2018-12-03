@@ -804,10 +804,12 @@ The key typed is executed unless it is SPC."
 (global-set-key "\C-ca" 'org-agenda)
 (add-hook 'org-mode-hook
           '(lambda ()
-             ; set the org-mode-map to override any and all minor modes, because there are
-             ; critical collisions with camelCase mode (M-right, M-left).
+             ;; set the org-mode-map to override any and all minor modes, because there are
+             ;; critical collisions with camelCase mode (M-right, M-left).
              (setq minor-mode-overriding-map-alist (list (cons t (copy-keymap org-mode-map))))
-             (linum-mode -1)
+
+             (linum-mode -1) ; omg this slows org-mode to a crawl if it's on
+             (local-set-key (kbd "C-S-SPC") 'org-toggle-checkbox)
              ))
 
 
