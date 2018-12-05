@@ -81,6 +81,8 @@
 ;; no I haven't
 ;; (electric-pair-mode 1)
 
+(windmove-default-keybindings)
+
 ;;;
 ;;;  ido-mode
 ;;;
