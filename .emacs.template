@@ -83,6 +83,10 @@
 
 (windmove-default-keybindings)
 
+;; make a file executable if it's got a shebang
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+
 ;;;
 ;;;  ido-mode
 ;;;
