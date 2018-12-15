@@ -289,6 +289,7 @@
              ;;           'markdown-export
              ;;           nil t) ;; the t is for making the hook local to buffer
              (electric-pair-mode 0)
+             (local-set-key (kbd "C-S-SPC") 'markdown-toggle-gfm-checkbox)
              )))
 (setq markdown-command "marked")
 (setq markdown-css-paths '("~/.emacs.d/github.css"))
