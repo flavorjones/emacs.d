@@ -218,6 +218,7 @@
 
 ;;;  where have you been all my life
 (global-set-key "\C-xf" `ffip)
+;(setq ffip-prune-patterns `("*/tmp" ,@ffip-prune-patterns))
 
 ;;  prepend or replace a cons cell with given key
 (defun my-unique-prepend (key val assoc)
@@ -393,6 +394,7 @@
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
+(add-hook 'ruby-mode-hook 'rufo-minor-mode)
 
 (add-hook 'ruby-mode-hook
           (function
@@ -403,10 +405,16 @@
                    [?\C-o tab ?# return tab ?# ?  ?  return tab ?# ?\C-p ?\C-e])
              (local-set-key "\C-cc" 'my-ruby-comment)
              (local-set-key "\C-cv" 'my-ruby-comment2)
-             (local-set-key (kbd "C-c :") 'ruby-toggle-hash-syntax) ;; matches "C-c {" for toggle-block
+
              (setq case-fold-search t) ;; this should be in ruby-mode, imho.
              (local-set-key "\t" 'indent-for-tab-command) ;; this should be in ruby-mode, imho.
              (setq ruby-deep-indent-paren nil)
+
+             (local-set-key (kbd "C-c :") 'ruby-toggle-hash-syntax) ;; matches "C-c {" for toggle-block
+             (local-set-key (kbd "C-c , R m") 'ruby-refactor-extract-to-method)
+             (local-set-key (kbd "C-c , R l") 'ruby-refactor-extract-to-let )
+             (local-set-key (kbd "C-c , R v") 'ruby-refactor-extract-local-variable )
+             (local-set-key (kbd "C-c , R c") 'ruby-refactor-extract-constant)
 
              ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
              (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
