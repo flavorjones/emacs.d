@@ -262,6 +262,11 @@
           (function
            (lambda ()
              (flyspell-mode)
+
+             ; set buffer-local font to proportional font
+             ; - elisp: https://stackoverflow.com/questions/12283538/emacs-buffer-local-font
+             ; - font choice: http://nickgravgaard.com/elastic-tabstops/programming-fonts
+             (face-remap-add-relative 'default '(:family "Verdana"))
              )))
 
 ;;;
