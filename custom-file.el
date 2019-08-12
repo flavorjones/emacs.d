@@ -37,7 +37,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
+    (haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
@@ -63,6 +63,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(escape-glyph ((t (:foreground "dim gray"))))
+ '(markdown-header-face-1 ((t (:foreground "#1e90ff" :weight bold))))
+ '(markdown-header-face-1 ((t (:foreground "#1e90ff" :weight bold))))
+ '(markdown-header-face-2 ((t (:foreground "#1ea2ee" :weight bold))))
+ '(markdown-header-face-3 ((t (:foreground "#1eb4dd" :weight bold))))
+ '(markdown-header-face-4 ((t (:foreground "#1ec6cc" :weight bold))))
+ '(markdown-header-face-5 ((t (:foreground "#1ed8bb" :weight bold))))
  '(outline-1 ((t (:foreground "#1e90ff" :weight bold))))
  '(outline-2 ((t (:foreground "#1ea2ee" :weight bold))))
  '(outline-3 ((t (:foreground "#1eb4dd" :weight bold))))
