@@ -925,6 +925,12 @@ The key typed is executed unless it is SPC."
 ;;; yaml
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml.erb$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          (function
+           (lambda ()
+             ; for some reason yaml-mode inherits from text mode, wtf?
+             (face-remap-add-relative 'default '(:family "Menlo"))
+             )))
 
 ;;;
 ;;;  move lines up and down
