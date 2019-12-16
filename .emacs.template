@@ -40,8 +40,8 @@
 (global-magit-file-mode 1)
 (yas-global-mode t)
 
-(setq mike:i-am-a-mac (boundp 'mac-command-modifier))
-(if mike:i-am-a-mac (setq mac-command-modifier 'meta))
+(setq flavorjones:i-am-a-mac (boundp 'mac-command-modifier))
+(if flavorjones:i-am-a-mac (setq mac-command-modifier 'meta))
 
 (line-number-mode t)
 (global-linum-mode t)
@@ -99,7 +99,7 @@
 ;; (setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$"))) // TODO *shell*
 (ido-mode)
 
-(when (not mike:i-am-a-mac)
+(when (not flavorjones:i-am-a-mac)
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
   )
@@ -118,7 +118,7 @@
 
 ;; let's let gnome make the decision on how emacs should open URLs
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program  (if mike:i-am-a-mac "open" "gnome-open"))
+      browse-url-generic-program  (if flavorjones:i-am-a-mac "open" "gnome-open"))
 
 ;;;
 ;;;  miscellaneous file types linked to modes
@@ -961,62 +961,79 @@ The key typed is executed unless it is SPC."
 
 
 ;;;
-;;;  personal font and theme stuff
+;;;  personal font stuff
 ;;;
-(cond (window-system
-       (defun what-font ()
-         (interactive)
-         (message (frame-parameter nil 'font)))
+(defun flavorjones:what-font ()
+  (interactive)
+  (message (frame-parameter nil 'font)))
 
-       (requires-emacs-version 23
-                               '(lambda ()
-                                  (defun mike:set-font-face (face)
-                                    (interactive "Font name: ")
-                                    (setq mike:font-face face)
-                                    (mike:enact-font))
+(defun flavorjones:enact-font ()
+  (let* ((font (concat flavorjones:font-face
+                       "-"
+                       (number-to-string flavorjones:font-size))))
+    (set-default-font font)
+    (prin1 font)))
 
-                                  (defun mike:set-font-size (size)
-                                    (interactive "Font size: ")
-                                    (setq mike:font-size size)
-                                    (mike:enact-font))
+(defun flavorjones:set-font-face (face)
+  (interactive "MFont name: ")
+  (setq flavorjones:font-face face)
+  (flavorjones:enact-font))
 
-                                  (defun mike:enact-font ()
-                                    (let* ((font (concat mike:font-face "-" (number-to-string mike:font-size))))
-                                      (set-default-font font)
-                                      (prin1 font)))
+(defun flavorjones:set-font-size (size)
+  (interactive "MFont size: ")
+  (setq flavorjones:font-size size)
+  (flavorjones:enact-font))
 
-                                  (defun mike:modify-font-size (increment)
-                                    (setq mike:font-size (+ mike:font-size increment))
-                                    (mike:enact-font))
+(defun flavorjones:modify-font-size (increment)
+  (setq flavorjones:font-size (+ flavorjones:font-size increment))
+  (flavorjones:enact-font))
 
-                                  (defun mike:increase-font-size ()
-                                    (interactive)
-                                    (mike:modify-font-size 1))
+(defun flavorjones:increase-font-size ()
+  (interactive)
+  (flavorjones:modify-font-size 1))
 
-                                  (defun mike:decrease-font-size ()
-                                    (interactive)
-                                    (mike:modify-font-size -1))
+(defun flavorjones:decrease-font-size ()
+  (interactive)
+  (flavorjones:modify-font-size -1))
 
-                                  (defun mike:set-theme (theme)
-                                    (load-theme theme)
-                                    (setq mike:theme theme))
+(setq flavorjones:font-list (list "Menlo"       ; default sans-serif monospace
+                                  "Ubuntu Mono" ;         sans-serif monospace
+                                  "Verdana"     ; default sans-serif proportional
+                                  "Georgia"     ;         serif      proportional
+                                  "Ubuntu"      ;         sans-serif proportional
+                                  ))                                  
 
-                                  (defun mike:next-color-theme ()
-                                    (interactive)
-                                    (if (eq mike:theme 'solarized-dark)
-                                        (mike:set-theme 'solarized-light)
-                                      (mike:set-theme 'solarized-dark)))
+(defun flavorjones:next-font ()
+  (interactive)
+  (let* ((curpos (cl-position flavorjones:font-face flavorjones:font-list))
+         (nextpos (if curpos (mod (1+ curpos) (cl-list-length flavorjones:font-list)) 0))
+         (nextfont (nth nextpos flavorjones:font-list)))
+    (setq flavorjones:font-face nextfont)
+    (flavorjones:enact-font)
+    ))
 
-                                  (setq mike:font-face "Menlo")
-                                  (setq mike:font-size (if mike:i-am-a-mac 18 12))
-                                  (mike:enact-font)
+(setq flavorjones:font-face (cl-first flavorjones:font-list))
+(setq flavorjones:font-size (if flavorjones:i-am-a-mac 18 12))
+(flavorjones:enact-font)
 
-                                  (setq solarized-scale-org-headlines nil)
-                                  (mike:set-theme 'solarized-dark)
+(global-set-key [?\C-+] 'flavorjones:increase-font-size)
+(global-set-key [?\C--] 'flavorjones:decrease-font-size)
+(global-set-key (kbd "C-M-_") 'flavorjones:next-font)
 
-                                  (global-set-key [?\C-=] 'mike:next-color-theme)
-                                  (global-set-key [?\C-+] 'mike:increase-font-size)
-                                  (global-set-key [?\C--] 'mike:decrease-font-size)
+;;;
+;;;  personal theme stuff
+;;;
+(defun flavorjones:set-theme (theme)
+  (load-theme theme)
+  (setq flavorjones:theme theme))
 
-                                  ))
-       ))
+(defun flavorjones:next-color-theme ()
+  (interactive)
+  (if (eq flavorjones:theme 'solarized-dark)
+      (flavorjones:set-theme 'solarized-light)
+    (flavorjones:set-theme 'solarized-dark)))
+
+(setq solarized-scale-org-headlines nil)
+(flavorjones:set-theme 'solarized-dark)
+
+(global-set-key [?\C-=] 'flavorjones:next-color-theme)
