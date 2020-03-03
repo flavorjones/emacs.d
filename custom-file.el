@@ -11,6 +11,7 @@
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(fringe-mode nil nil (fringe))
  '(global-undo-tree-mode t)
+ '(highlight-indent-guides-method (quote character))
  '(inhibit-startup-screen t)
  '(initial-major-mode (quote gfm-mode))
  '(initial-scratch-message "# scratch buffer
@@ -37,11 +38,12 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
+    (highlight-indent-guides haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((eval when
+    ((whitespace-line-column . 80)
+     (eval when
            (fboundp
             (quote rainbow-mode))
            (rainbow-mode 1))
@@ -64,7 +66,6 @@
  ;; If there is more than one, they won't work right.
  '(escape-glyph ((t (:foreground "dim gray"))))
  '(markdown-header-face-1 ((t (:foreground "#1e90ff" :weight bold))))
- '(markdown-header-face-1 ((t (:foreground "#1e90ff" :weight bold))))
  '(markdown-header-face-2 ((t (:foreground "#1ea2ee" :weight bold))))
  '(markdown-header-face-3 ((t (:foreground "#1eb4dd" :weight bold))))
  '(markdown-header-face-4 ((t (:foreground "#1ec6cc" :weight bold))))
@@ -84,5 +85,4 @@
  '(outline-5 ((t (:foreground "#1ed8bb" :weight bold))))
  '(outline-6 ((t (:foreground "#1eeaaa" :weight bold))))
  '(outline-7 ((t (:foreground "#1efb99" :weight bold))))
- '(outline-8 ((t (:foreground "#1eff88" :weight bold))))
-)
+ '(outline-8 ((t (:foreground "#1eff88" :weight bold)))))
