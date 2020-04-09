@@ -843,13 +843,6 @@ The key typed is executed unless it is SPC."
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;;;  i loves me some emacs server.
-(cond (window-system (server-start)))
-;;;  raise the window when we launch a file
-(add-hook 'server-switch-hook
-          (lambda () (select-frame-set-input-focus (selected-frame))))
-
-
 ;;;  let's try global-auto-revert in case i need to pair program
 (global-auto-revert-mode 1)
 
@@ -877,9 +870,16 @@ The key typed is executed unless it is SPC."
 ;;;
 (if (locate-library "edit-server")
     (progn
-      (edit-server-start)
+      (add-hook 'after-init-hook 'server-start t)
+      (add-hook 'after-init-hook 'edit-server-start t)
+      (setq edit-server-new-frame nil)
       ))
 
+;;;  raise the window when we launch a file from the commandline
+(add-hook 'server-switch-hook
+          (lambda ()
+            (select-frame-set-input-focus (selected-frame))
+            ))
 
 ;;;
 ;;;  rdoc-mode
