@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(ac-delay 0.5)
  '(ac-trigger-key "")
+ '(browse-url-browser-function (quote browse-url-chrome))
  '(create-lockfiles nil)
  '(custom-safe-themes
    (quote
