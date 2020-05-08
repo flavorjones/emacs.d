@@ -9,7 +9,7 @@
  '(create-lockfiles nil)
  '(custom-safe-themes
    (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(fringe-mode nil nil (fringe))
  '(global-undo-tree-mode t)
  '(highlight-indent-guides-method (quote character))
@@ -39,7 +39,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (gnu-elpa-keyring-update highlight-indent-guides haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
+    (gnu-elpa-keyring-update ruby-additional ruby-end ruby-refactor rvm slim-mode toml-mode unicode-fonts markdown-mode+ go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby rufo flycheck-julia undo-tree rnc-mode org minimap git-blame edit-server css-mode auto-highlight-symbol)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote

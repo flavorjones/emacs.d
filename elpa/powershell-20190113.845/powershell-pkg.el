@@ -1,2 +1,0 @@
-;;; -*- no-byte-compile: t -*-
-(define-package "powershell" "20190113.845" "Mode for editing PowerShell scripts" '((emacs "24")) :commit "87cba2c5e0510bda3915b8324ae67ac52adcae31" :keywords '("powershell" "languages") :authors '(("Frédéric Perrin <frederic (dot) perrin (arobas) resel (dot) fr>")) :maintainer '("Frédéric Perrin <frederic (dot) perrin (arobas) resel (dot) fr>") :url "http://github.com/jschaf/powershell.el")
