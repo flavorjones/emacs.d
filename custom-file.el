@@ -39,7 +39,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (highlight-indent-guides haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
+    (gnu-elpa-keyring-update highlight-indent-guides haml-mode lua-mode rspec-mode ruby-additional ruby-end ruby-hash-syntax ruby-refactor rvm sass-mode slim-mode toml-mode unicode-fonts markdown-mode+ markdown-toc go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby feature-mode exec-path-from-shell elm-mode direnv yaml-mode yasnippet rufo dockerfile-mode flycheck-julia julia-mode hl-todo diff-hl magit crystal-mode solarized-theme go-mode neotree undo-tree rnc-mode powershell org minimap git-blame flycheck find-file-in-project edit-server css-mode csharp-mode auto-highlight-symbol auto-compile)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
