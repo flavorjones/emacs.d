@@ -1001,13 +1001,13 @@ The key typed is executed unless it is SPC."
   (flavorjones:modify-font-size -1))
 
 (setq flavorjones:font-list (list
-                             "JetBrains Mono" ; default sans-serif monospace
-                             "Menlo"          ;         sans-serif monospace
-                             "Ubuntu Mono"    ;         sans-serif monospace
-                             "Input"          ; default sans-serif proportional
-                             "Verdana"        ;         sans-serif proportional
-                             "Georgia"        ;         serif      proportional
-                             "Ubuntu"         ;         sans-serif proportional
+                             "Menlo"          ; sans-serif monospace (default)
+                             "JetBrains Mono" ; sans-serif monospace
+                             ;; "Ubuntu Mono"    ; sans-serif monospace
+                             ;; "Input"          ; sans-serif proportional
+                             ;; "Verdana"        ; sans-serif proportional
+                             ;; "Ubuntu"         ; sans-serif proportional
+                             ;; "Georgia"        ; serif proportional
                              ))
 
 (defun flavorjones:next-font ()
