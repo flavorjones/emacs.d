@@ -133,6 +133,7 @@
                                 ("\\.scss$" . sass-mode)
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
+                                ("\\.liquid$" . web-mode)
                                 )
                               auto-mode-alist))
 (setq auto-mode-alist
