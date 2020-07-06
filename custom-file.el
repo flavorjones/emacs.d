@@ -9,7 +9,7 @@
  '(create-lockfiles nil)
  '(custom-safe-themes
    (quote
-    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(fringe-mode nil nil (fringe))
  '(global-undo-tree-mode t)
  '(highlight-indent-guides-method (quote character))
@@ -43,7 +43,35 @@
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((whitespace-line-column . 80)
+    ((eval c-set-offset
+           (quote inlambda)
+           0)
+     (eval c-set-offset
+           (quote access-label)
+           (quote -))
+     (eval c-set-offset
+           (quote substatement-open)
+           0)
+     (eval c-set-offset
+           (quote arglist-cont-nonempty)
+           (quote +))
+     (eval c-set-offset
+           (quote arglist-cont)
+           0)
+     (eval c-set-offset
+           (quote arglist-intro)
+           (quote +))
+     (eval c-set-offset
+           (quote inline-open)
+           0)
+     (eval c-set-offset
+           (quote defun-open)
+           0)
+     (eval c-set-offset
+           (quote innamespace)
+           0)
+     (indicate-empty-lines . t)
+     (whitespace-line-column . 80)
      (eval when
            (fboundp
             (quote rainbow-mode))
