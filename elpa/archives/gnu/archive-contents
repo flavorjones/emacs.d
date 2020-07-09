@@ -10,7 +10,7 @@
 	       (:maintainer "Oleh Krehel" . "ohwoeowho@gmail.com")
 	       (:url . "https://github.com/abo-abo/ace-window"))])
  (ack .
-      [(1 8)
+      [(1 10)
        nil "interface to ack-like tools" tar
        ((:url . "https://github.com/leoliu/ack-el")
 	(:maintainer "João Távora" . "joaotavora@gmail.com")
@@ -457,7 +457,7 @@
 		  ("Daiki Ueno" . "ueno@gnu.org"))
 		 (:maintainer nil . "emacs-devel@gnu.org"))])
  (debbugs .
-	  [(0 24)
+	  [(0 25)
 	   ((emacs
 	     (25 1))
 	    (soap-client
@@ -675,7 +675,7 @@
 	      (:keywords "lisp")
 	      (:url . "http://elpa.gnu.org/packages/el-search.html"))])
  (eldoc .
-	[(1 0 0)
+	[(1 1 0)
 	 ((emacs
 	   (26 3)))
 	 "Show function arglist or variable docstring in echo area" single
@@ -816,7 +816,9 @@
  (flymake .
 	  [(1 0 8)
 	   ((emacs
-	     (26 1)))
+	     (26 1))
+	    (eldoc
+	     (1 1 0)))
 	   "A universal on-the-fly syntax checker" single
 	   ((:url . "http://elpa.gnu.org/packages/flymake.html")
 	    (:keywords "c" "languages" "tools")

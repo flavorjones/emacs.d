@@ -307,6 +307,7 @@
 ;; (setq markdown-xhtml-header-content
 ;;       "<meta http-equiv=\"refresh\" content=\"5\">")
 
+(add-hook 'markdown-mode-hook 'outline-minor-mode)
 
 ;;;
 ;;;  css-mode
@@ -615,6 +616,21 @@
              (setq hs-show-hidden-short-form nil)
              (local-set-key "\C-cl" 'hs-hide-level)
              )))
+
+;;;
+;;;  bicycle - outline mode and hideshow mode folding
+;;;
+(use-package bicycle
+             :after outline
+             :bind (:map outline-minor-mode-map
+                         ([C-tab] . bicycle-cycle)
+                         ([S-tab] . bicycle-cycle-global)))
+
+(use-package prog-mode
+             :config
+             (add-hook 'prog-mode-hook 'outline-minor-mode)
+             (add-hook 'prog-mode-hook 'hs-minor-mode))
+
 
 ;;;;;;;;;;
 ;;;  scheme mode
