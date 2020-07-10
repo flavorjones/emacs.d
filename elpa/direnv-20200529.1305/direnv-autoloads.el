@@ -1,9 +1,12 @@
 ;;; direnv-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads nil "direnv" "direnv.el" (24302 12065 490079 91000))
+;;;### (autoloads nil "direnv" "direnv.el" (0 0 0 0))
 ;;; Generated autoloads from direnv.el
 
 (autoload 'direnv-update-environment "direnv" "\
@@ -54,11 +57,14 @@ Since .envrc files are shell scripts, this mode inherits from sh-mode.
 
 (add-to-list 'auto-mode-alist '("\\.envrc\\'" . direnv-envrc-mode))
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "direnv" '("direnv-")))
+
 ;;;***
 
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; direnv-autoloads.el ends here

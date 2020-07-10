@@ -1,10 +1,12 @@
 ;;; markdown-toc-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads nil "markdown-toc" "markdown-toc.el" (24302 12052
-;;;;;;  10061 315000))
+;;;### (autoloads nil "markdown-toc" "markdown-toc.el" (0 0 0 0))
 ;;; Generated autoloads from markdown-toc.el
 
 (autoload 'markdown-toc-version "markdown-toc" "\
@@ -52,10 +54,11 @@ Commands:
 
 \(fn &optional ARG)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "markdown-toc" '("markdown-")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("markdown-toc-pkg.el") (24302 12052 2061
-;;;;;;  304000))
+;;;### (autoloads nil nil ("markdown-toc-pkg.el") (0 0 0 0))
 
 ;;;***
 
@@ -63,5 +66,6 @@ Commands:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; markdown-toc-autoloads.el ends here

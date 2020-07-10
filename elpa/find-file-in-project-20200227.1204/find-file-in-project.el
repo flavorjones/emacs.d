@@ -5,6 +5,7 @@
 ;;
 ;; Version: 5.7.10
 ;; Package-Version: 20200227.1204
+;; Package-Commit: 506f35e91e06463cca7390da6ebffc411b8c220f
 ;; Author: Phil Hagelberg, Doug Alcorn, and Will Farrington
 ;; Maintainer: Chen Bin <chenbin.sh@gmail.com>
 ;; URL: https://github.com/technomancy/find-file-in-project

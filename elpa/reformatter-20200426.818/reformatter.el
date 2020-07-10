@@ -4,6 +4,7 @@
 
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; Keywords: convenience, tools
+;; Package-Commit: dc6278a6b1e3565604346ac41a6ffc3cbab04031
 ;; Homepage: https://github.com/purcell/reformatter.el
 ;; Package-Requires: ((emacs "24.3"))
 ;; Package-Version: 20200426.818

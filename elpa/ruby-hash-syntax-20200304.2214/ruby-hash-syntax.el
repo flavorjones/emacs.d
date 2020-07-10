@@ -6,6 +6,7 @@
 ;; Package-Version: 20200304.2214
 ;; Package-X-Original-Version: 0
 ;; Package-Requires: ((emacs "24.1"))
+;; Package-Commit: d64036278dcfb4fa0603e6697142e02c2876f634
 ;; URL: https://github.com/purcell/ruby-hash-syntax
 ;; Keywords: languages
 

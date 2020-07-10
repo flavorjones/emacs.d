@@ -255,10 +255,6 @@
   )
 (define-key global-map [C-f2] 'mark-datetime)
 
-;;;  removed because annoying
-;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;; (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
-
 ;;;;;;;;;;
 ;;;  text-mode
 ;;;;;;;;;;

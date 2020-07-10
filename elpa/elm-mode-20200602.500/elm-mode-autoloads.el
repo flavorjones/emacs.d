@@ -1,20 +1,37 @@
 ;;; elm-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads nil "elm-format" "elm-format.el" (24302 12064 570077
-;;;;;;  893000))
+;;;### (autoloads nil "elm-font-lock" "elm-font-lock.el" (0 0 0 0))
+;;; Generated autoloads from elm-font-lock.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-font-lock" '("elm-")))
+
+;;;***
+
+;;;### (autoloads nil "elm-format" "elm-format.el" (0 0 0 0))
 ;;; Generated autoloads from elm-format.el
  (autoload 'elm-format-buffer "elm-format" nil t)
  (autoload 'elm-format-on-save-mode "elm-format" nil t)
 
 (define-obsolete-function-alias 'elm-mode-format-buffer 'elm-format-buffer "20190113")
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-format" '("elm-format-")))
+
 ;;;***
 
-;;;### (autoloads nil "elm-indent" "elm-indent.el" (24302 12064 546077
-;;;;;;  862000))
+;;;### (autoloads nil "elm-imenu" "elm-imenu.el" (0 0 0 0))
+;;; Generated autoloads from elm-imenu.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-imenu" '("elm-imenu-")))
+
+;;;***
+
+;;;### (autoloads nil "elm-indent" "elm-indent.el" (0 0 0 0))
 ;;; Generated autoloads from elm-indent.el
 
 (autoload 'elm-indent-mode "elm-indent" "\
@@ -36,10 +53,12 @@ Invokes `elm-indent-hook' if not nil.
 
 \(fn &optional ARG)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-indent" '("elm-indent-")))
+
 ;;;***
 
-;;;### (autoloads nil "elm-interactive" "elm-interactive.el" (24302
-;;;;;;  12064 598077 930000))
+;;;### (autoloads nil "elm-interactive" "elm-interactive.el" (0 0
+;;;;;;  0 0))
 ;;; Generated autoloads from elm-interactive.el
 
 (autoload 'elm-interactive-mode "elm-interactive" "\
@@ -198,10 +217,11 @@ Run the elm-test command on the current project.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-interactive" '("elm-")))
+
 ;;;***
 
-;;;### (autoloads nil "elm-mode" "elm-mode.el" (24302 12064 582077
-;;;;;;  909000))
+;;;### (autoloads nil "elm-mode" "elm-mode.el" (0 0 0 0))
 ;;; Generated autoloads from elm-mode.el
 
 (autoload 'elm-mode "elm-mode" "\
@@ -211,10 +231,11 @@ Major mode for editing Elm source code.
 
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . elm-mode))
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-mode" '("elm-")))
+
 ;;;***
 
-;;;### (autoloads nil "elm-tags" "elm-tags.el" (24302 12064 578077
-;;;;;;  903000))
+;;;### (autoloads nil "elm-tags" "elm-tags.el" (0 0 0 0))
 ;;; Generated autoloads from elm-tags.el
 
 (autoload 'elm-mode-generate-tags "elm-tags" "\
@@ -222,10 +243,18 @@ Generate a TAGS file for the current project.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-tags" '("elm-tags-")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("elm-font-lock.el" "elm-imenu.el" "elm-mode-pkg.el"
-;;;;;;  "elm-util.el") (24302 12064 602077 935000))
+;;;### (autoloads nil "elm-util" "elm-util.el" (0 0 0 0))
+;;; Generated autoloads from elm-util.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "elm-util" '("elm-")))
+
+;;;***
+
+;;;### (autoloads nil nil ("elm-mode-pkg.el") (0 0 0 0))
 
 ;;;***
 
@@ -233,5 +262,6 @@ Generate a TAGS file for the current project.
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; elm-mode-autoloads.el ends here

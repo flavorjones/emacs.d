@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "unicode-fonts" "20200709.1437" "Configure Unicode fonts" '((font-utils "0.7.8") (ucs-utils "0.8.2") (list-utils "0.4.2") (persistent-soft "0.8.10") (pcache "0.3.1")) :commit "11d62034dbfb11d82d6d1df1beb600fc4f54f23e" :keywords '("i18n" "faces" "frames" "wp" "interface") :authors '(("Roland Walker" . "walker@pobox.com")) :maintainer '("Roland Walker" . "walker@pobox.com") :url "http://github.com/rolandwalker/unicode-fonts")

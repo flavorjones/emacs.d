@@ -1,10 +1,12 @@
 ;;; julia-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads nil "julia-mode" "julia-mode.el" (24245 54327 572645
-;;;;;;  967000))
+;;;### (autoloads nil "julia-mode" "julia-mode.el" (0 0 0 0))
 ;;; Generated autoloads from julia-mode.el
 
 (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
@@ -22,10 +24,19 @@ Run an inferior instance of julia inside Emacs.
 (defalias 'run-julia #'inferior-julia "\
 Run an inferior instance of julia inside Emacs.")
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "julia-mode" '("inferior-julia-" "julia-")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("julia-mode-latexsubs.el" "julia-mode-pkg.el")
-;;;;;;  (24245 54327 580645 858000))
+;;;### (autoloads nil "julia-mode-latexsubs" "julia-mode-latexsubs.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from julia-mode-latexsubs.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "julia-mode-latexsubs" '("julia-mode-latexsubs")))
+
+;;;***
+
+;;;### (autoloads nil nil ("julia-mode-pkg.el") (0 0 0 0))
 
 ;;;***
 
@@ -33,5 +44,6 @@ Run an inferior instance of julia inside Emacs.")
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; julia-mode-autoloads.el ends here
