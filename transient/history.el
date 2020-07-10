@@ -1,0 +1,2 @@
+((magit-commit nil
+               ("--verbose")))
