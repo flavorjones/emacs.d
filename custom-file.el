@@ -39,7 +39,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (bicycle web-mode solarized-theme gnu-elpa-keyring-update ruby-additional ruby-end ruby-refactor rvm slim-mode toml-mode unicode-fonts markdown-mode+ go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby rufo flycheck-julia undo-tree rnc-mode org minimap git-blame edit-server css-mode auto-highlight-symbol)))
+    (udev-mode bicycle web-mode solarized-theme gnu-elpa-keyring-update ruby-additional ruby-end ruby-refactor rvm slim-mode toml-mode unicode-fonts markdown-mode+ go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby rufo flycheck-julia undo-tree rnc-mode org minimap git-blame edit-server css-mode auto-highlight-symbol)))
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
