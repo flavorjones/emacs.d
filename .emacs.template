@@ -1043,15 +1043,23 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  personal theme stuff
 ;;;
+(setq flavorjones:theme-list (list
+                              'solarized-dark
+                              'solarized-gruvbox-dark
+                              'solarized-light
+                              ))
+
 (defun flavorjones:set-theme (theme)
   (load-theme theme)
   (setq flavorjones:theme theme))
 
 (defun flavorjones:next-color-theme ()
   (interactive)
-  (if (eq flavorjones:theme 'solarized-dark)
-      (flavorjones:set-theme 'solarized-light)
-    (flavorjones:set-theme 'solarized-dark)))
+  (let* ((curpos (cl-position flavorjones:theme flavorjones:theme-list))
+         (nextpos (if curpos (mod (1+ curpos) (cl-list-length flavorjones:theme-list)) 0))
+         (nexttheme (nth nextpos flavorjones:theme-list)))
+    (flavorjones:set-theme nexttheme)
+    ))
 
 (setq solarized-scale-org-headlines nil)
 (setq solarized-use-variable-pitch nil)
