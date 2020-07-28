@@ -48,7 +48,6 @@
 
 (global-diff-hl-mode)
 (diff-hl-flydiff-mode)
-
 (global-hl-todo-mode)
 
 (transient-mark-mode t)
@@ -64,24 +63,20 @@
 ;;; turn off all the decorations and gui-helpful bullshit
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 (set-scroll-bar-mode 'right) ;; but i like the scrollbar. having an analog indicator of position in a buffer is good.
 
-(if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
 
 (setq fill-column 100) ;; yay widescreen
 
-(global-undo-tree-mode)
+(global-undo-tree-mode) ;; better
+
 (direnv-mode)
 
-;; enable narrowing via C-x n n and C-x n w
-(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil) ;; enable narrowing via C-x n n and C-x n w
 
-;; i've finally come around
-;; no I haven't
-;; (electric-pair-mode 1)
-
-(windmove-default-keybindings)
+(windmove-default-keybindings) ;; use S-<arrow> to move between buffers
 
 ;; make a file executable if it's got a shebang
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
@@ -99,13 +94,12 @@
 ;; (setq ido-ignore-buffers (quote ("\\` " "^\\*.*\\*$"))) // TODO *shell*
 (ido-mode)
 
+;; x clipboard
 (when (not flavorjones:i-am-a-mac)
   (setq x-select-enable-clipboard t)
   (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
   )
-
-(setq max-specpdl-size 1000000) ;; for byte-compiling js2-mode and mumamo-do-fontify
-(setq max-lisp-eval-depth 10000) ;; for mumamo-do-fontify (!?)
+(if (fboundp 'menu-bar-enable-clipboard) (menu-bar-enable-clipboard))
 
 ;; save desktop only when in windowing mode, to avoid getting prompted for
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
