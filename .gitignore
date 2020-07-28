@@ -1,5 +1,6 @@
 *.elc
 *~
+\#*\#
 .emacs
 .emacs.desktop*
 auto-save
@@ -9,3 +10,4 @@ var
 session.*
 ac-comphist.dat
 projectile-bookmarks.eld
+transient/
