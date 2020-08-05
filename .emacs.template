@@ -397,7 +397,7 @@
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch)
-(add-hook 'ruby-mode-hook 'rufo-minor-mode)
+;(add-hook 'ruby-mode-hook 'rufo-minor-mode)
 
 (add-hook 'ruby-mode-hook
           (function
