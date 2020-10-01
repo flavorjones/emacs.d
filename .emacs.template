@@ -945,6 +945,11 @@ The key typed is executed unless it is SPC."
              ;; (face-remap-add-relative 'default '(:family "Menlo")) ;; only needed if we're overriding in text-mode
              )))
 
+(add-hook `dockerfile-mode-hook
+          (function (lambda ()
+                      (setq tab-width 8)
+                      )))
+
 ;;;
 ;;;  move lines up and down
 ;;;  https://emacsredux.com/blog/2013/04/02/move-current-line-up-or-down/
