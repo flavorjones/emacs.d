@@ -57,7 +57,7 @@
 (display-time)
 (set-input-mode nil nil t)       ; so we can use ALT as a META key (?)
 (setq-default indent-tabs-mode nil)
-(setq default-tab-width 2)
+(setq-default tab-width 2)
 (when window-system (mwheel-install)) ;; enable wheelmouse support by default
 
 ;;; turn off all the decorations and gui-helpful bullshit
@@ -68,7 +68,7 @@
 
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
 
-(setq fill-column 100) ;; yay widescreen
+(set-fill-column 100) ;; yay widescreen
 
 (global-undo-tree-mode) ;; better
 
@@ -321,7 +321,6 @@
              (c-set-offset 'case-label '+)
 
              (auto-fill-mode)
-             (set-fill-column 80)
 
              (fset 'my-cpp-comment-wide
                    [?\C-o tab ?/ ?/ escape ?9 ?* return tab ?/ ?/ return tab ?/ ?/ escape ?9 ?* ?\C-p ?  ? ])
