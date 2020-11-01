@@ -68,8 +68,6 @@
 
 (auto-compression-mode 1) ;; allow opening of .gz (et al) files directly
 
-(set-fill-column 100) ;; yay widescreen
-
 (global-undo-tree-mode) ;; better
 
 (direnv-mode)
