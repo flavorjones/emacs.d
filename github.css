@@ -436,8 +436,7 @@ body {
    padding: 45px ;
    word-wrap: break-word;
 
-   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "A
-pple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-size: 16px;
    line-height: 1.6;
 
@@ -566,10 +565,11 @@ body hr {
   border: 1px solid #e6e6e6;
 }
 
-a {
-    color: #4078c0;
-    text-decoration: none;
-}
+/* flavorjones commented this */
+/* a { */
+/*     color: #4078c0; */
+/*     text-decoration: none; */
+/* } */
 
 body table {
     display: block;
@@ -636,7 +636,7 @@ tbody {
 
 /* overrides added by flavorjones below here */
 body {
-  font-size: 10pt !important;
+  font-size: 11pt !important;
 }
 
 body h1 {
@@ -660,6 +660,6 @@ body h4 {
 }
 
 body h5 {
-  font-size: 10pt;
+  font-size: 11pt;
   font-weight: bold;
 }
