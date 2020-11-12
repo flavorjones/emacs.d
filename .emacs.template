@@ -249,10 +249,17 @@
   )
 (define-key global-map [C-f2] 'mark-datetime)
 
-;;;;;;;;;;
-;;;  text-mode
-;;;;;;;;;;
+;;; git-commit messages
 (setq auto-mode-alist (append '(("COMMIT_EDITMSG" . text-mode)) auto-mode-alist))
+(add-hook 'git-commit-mode-hook
+          (function
+           (lambda ()
+             (setq fill-column 70)
+             )))
+
+;;;
+;;;  text-mode
+;;;
 (add-hook 'text-mode-hook
           (function
            (lambda ()
