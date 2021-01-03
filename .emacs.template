@@ -79,6 +79,7 @@
 ;; make a file executable if it's got a shebang
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
+(editorconfig-mode 1)
 
 ;;;
 ;;;  ido-mode
@@ -126,6 +127,7 @@
                                 ("\\.as$" . java-mode) ; actionscript
                                 ("\\.m$" . matlab-mode) ; actionscript
                                 ("\\.liquid$" . web-mode)
+                                ("\\.star$" . bazel-starlark-mode)
                                 )
                               auto-mode-alist))
 (setq auto-mode-alist
@@ -321,7 +323,7 @@
           (function
            (lambda ()
              (setq indent-tabs-mode nil)
-             (c-set-style "k&r")
+             (c-set-style "1tbs")
              (setq c-basic-offset 2)
              (c-set-offset 'case-label '+)
 
@@ -1071,3 +1073,9 @@ The key typed is executed unless it is SPC."
 (flavorjones:set-theme 'solarized-dark)
 
 (global-set-key [?\C-=] 'flavorjones:next-color-theme)
+
+;;; interaction log
+(require 'interaction-log)
+(global-set-key
+ (kbd "C-h C-l")
+ (lambda () (interactive) (display-buffer ilog-buffer-name)))
