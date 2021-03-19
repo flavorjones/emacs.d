@@ -995,7 +995,7 @@ The key typed is executed unless it is SPC."
   (let* ((font (concat flavorjones:font-face
                        "-"
                        (number-to-string flavorjones:font-size))))
-    (set-default-font font)
+    (set-frame-font font)
     (prin1 font)))
 
 (defun flavorjones:set-font-face (face)
@@ -1023,6 +1023,7 @@ The key typed is executed unless it is SPC."
 (setq flavorjones:font-list (list
                              "JetBrains Mono" ; sans-serif monospace (default)
                              "Menlo"          ; sans-serif monospace
+                             "SFMono"         ; sans-serif monospace
                              ;; "Ubuntu Mono"    ; sans-serif monospace
                              ;; "Input"          ; sans-serif proportional
                              ;; "Verdana"        ; sans-serif proportional
