@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "packed" "20201120.2047" "package manager agnostic Emacs Lisp package utilities" '((emacs "24.3")) :commit "47437da7839394b079699eb4cfcc00627ab2df8e" :authors '(("Jonas Bernoulli" . "jonas@bernoul.li")) :maintainer '("Jonas Bernoulli" . "jonas@bernoul.li") :keywords '("compile" "convenience" "lisp" "package" "library") :url "https://github.com/emacscollective/packed")
