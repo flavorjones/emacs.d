@@ -37,7 +37,6 @@
 ;;;;;;;;;;
 ;;; general variables, functions
 ;;;;;;;;;;
-(global-magit-file-mode 1)
 (yas-global-mode t)
 
 (setq flavorjones:i-am-a-mac (boundp 'mac-command-modifier))
@@ -192,7 +191,6 @@
 (global-set-key "\C-c\t" 'tab-to-tab-stop)
 (global-set-key "\C-x\C-q" 'read-only-mode)
 (global-set-key "\C-co" 'my-find-other-file)
-(global-set-key "\C-xg" 'magit-status)
 (global-set-key [\C-return] [?\C-a ?\C-n ?\C-o tab]) ; open a new line below point without splitting the line
 (global-set-key "\C-c;" 'comment-or-uncomment-region)
 (global-set-key "\C-cl" 'visual-line-mode)
