@@ -322,6 +322,7 @@
              (c-set-style "k&r")
              (setq c-basic-offset 2)
              (c-set-offset 'case-label '+)
+             (editorconfig-apply)
 
              (auto-fill-mode)
 
@@ -368,6 +369,7 @@
           (function
            (lambda ()
              (setq c-basic-offset 4)
+             (editorconfig-apply)
              )))
 
 ;;;;;;;;;;
@@ -452,6 +454,7 @@
              (local-set-key "\C-cc" 'my-cpp-comment-wide)
              (local-set-key "\C-cv" 'my-cpp-comment)
              (setq c-basic-offset 4)
+             (editorconfig-apply)
              ))
           )
 
