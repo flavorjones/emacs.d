@@ -211,6 +211,7 @@
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(define-key projectile-rails-mode-map (kbd "C-c p r") 'projectile-rails-command-map)
 (setq projectile-completion-system 'ivy)
 
 ;;  prepend or replace a cons cell with given key
