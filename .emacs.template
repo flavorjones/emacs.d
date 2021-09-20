@@ -1021,14 +1021,25 @@ The key typed is executed unless it is SPC."
   (flavorjones:modify-font-size -1))
 
 (setq flavorjones:font-list (list
-                             "JetBrains Mono" ; sans-serif monospace (default)
-                             "Menlo"          ; sans-serif monospace
-                             "SFMono"         ; sans-serif monospace
-                             ;; "Ubuntu Mono"    ; sans-serif monospace
-                             ;; "Input"          ; sans-serif proportional
-                             ;; "Verdana"        ; sans-serif proportional
-                             ;; "Ubuntu"         ; sans-serif proportional
-                             ;; "Georgia"        ; serif proportional
+                             ;; sans-serif monospace
+                             "JetBrains Mono"
+                             "Menlo"
+                             "SFMono"
+                             "Ubuntu Mono"
+
+                             ;; serif monospace
+                             "Courier New"
+                             "CMU Typewriter Text"
+
+                             ;; sans-serif proportional
+                             "Input"
+                             "Verdana"
+                             "Ubuntu"
+                             "CMU Sans Serif"
+
+                             ;; serif proportional
+                             "Georgia"
+                             "CMU Serif"
                              ))
 
 (defun flavorjones:next-font ()
