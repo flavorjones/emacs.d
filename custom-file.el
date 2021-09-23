@@ -9,7 +9,7 @@
  '(create-lockfiles nil)
  '(custom-safe-themes
    (quote
-    ("fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(dired-listing-switches "-alG")
  '(dired-use-ls-dired t)
  '(electric-pair-pairs (quote ((34 . 34) (8216 . 8217) (8220 . 8221) (96 . 96))))
@@ -48,7 +48,7 @@
  '(org-startup-folded (quote content))
  '(package-selected-packages
    (quote
-    (projectile-rails edit-indirect editorconfig rubocopfmt interaction-log bazel-mode ivy json-mode projectile nix-mode auto-compile crystal-mode csharp-mode direnv dockerfile-mode elm-mode exec-path-from-shell feature-mode git-commit go-mode haml-mode hl-todo julia-mode lua-mode magit markdown-toc neotree powershell rspec-mode ruby-hash-syntax sass-mode use-package yaml-mode markdown-mode udev-mode bicycle web-mode solarized-theme gnu-elpa-keyring-update ruby-additional ruby-end ruby-refactor rvm slim-mode toml-mode unicode-fonts markdown-mode+ go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby rufo flycheck-julia undo-tree rnc-mode org minimap git-blame edit-server css-mode auto-highlight-symbol)))
+    (rhtml-mode projectile-rails edit-indirect editorconfig rubocopfmt interaction-log bazel-mode ivy json-mode projectile nix-mode auto-compile crystal-mode csharp-mode direnv dockerfile-mode elm-mode exec-path-from-shell feature-mode git-commit go-mode haml-mode hl-todo julia-mode lua-mode magit markdown-toc neotree powershell rspec-mode ruby-hash-syntax sass-mode use-package yaml-mode markdown-mode udev-mode bicycle web-mode solarized-theme gnu-elpa-keyring-update ruby-additional ruby-end ruby-refactor rvm slim-mode toml-mode unicode-fonts markdown-mode+ go-autocomplete go-snippets golint gitattributes-mode gitconfig-mode gitignore-mode flymake-ruby rufo flycheck-julia undo-tree rnc-mode org minimap git-blame edit-server css-mode auto-highlight-symbol)))
  '(paradox-github-token t)
  '(projectile-rails-global-mode t)
  '(rubocopfmt-use-bundler-when-possible nil)

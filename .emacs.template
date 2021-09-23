@@ -125,6 +125,7 @@
                                 ("\\.m$" . matlab-mode) ; actionscript
                                 ("\\.liquid$" . web-mode)
                                 ("\\.star$" . bazel-starlark-mode)
+                                ("\\.rhtml$" . rhtml-mode)
                                 )
                               auto-mode-alist))
 (setq auto-mode-alist
