@@ -52,6 +52,7 @@
  '(paradox-github-token t)
  '(projectile-rails-global-mode t)
  '(rubocopfmt-use-bundler-when-possible nil)
+ '(ruby-align-to-stmt-keywords t)
  '(ruby-flymake-use-rubocop-if-available nil)
  '(safe-local-variable-values
    (quote
