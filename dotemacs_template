@@ -12,19 +12,16 @@
 ;;;
 ;;;  our external resources.
 ;;;
-;;;  note that "~/.emacs.d" will get replaced by the rake task at
-;;;  installation.
-;;;
-(setq user-emacs-directory "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(let ((default-directory  "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
+(setq user-emacs-directory "__DIR__")
+(add-to-list 'load-path "__DIR__/lisp")
+;; (let ((default-directory  "__DIR__"))
+;;   (normal-top-level-add-subdirs-to-load-path))
 
 ;;;
 ;;; package managers
 ;;;
 (require 'package)
-(setq package-user-dir "~/.emacs.d/elpa")
+(setq package-user-dir "__DIR__/elpa")
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
@@ -101,7 +98,6 @@
 ;; saving by 'emacs -nw', which is what my EDITOR envvar is set to (which
 ;; is used by git, svn, etc.)
 (when window-system
-  (setq desktop-dirname "~/.emacs.d")
   (desktop-save-mode 1)
   (run-with-idle-timer 30 t (lambda () (desktop-save-in-desktop-dir)))
   )
@@ -301,7 +297,7 @@
              (local-set-key (kbd "C-S-SPC") 'markdown-toggle-gfm-checkbox)
              )))
 (setq markdown-command "marked")
-(setq markdown-css-paths '("~/.emacs.d/github.css"))
+(setq markdown-css-paths '("__DIR__/github.css"))
 ;; (setq markdown-xhtml-header-content
 ;;       "<meta http-equiv=\"refresh\" content=\"5\">")
 
@@ -982,7 +978,7 @@ The key typed is executed unless it is SPC."
 ;;;
 ;;;  customize!
 ;;;
-(setq custom-file "~/.emacs.d/custom-file.el")
+(setq custom-file "__DIR__/custom-file.el")
 (load custom-file)
 
 
